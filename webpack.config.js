@@ -75,6 +75,16 @@ module.exports = {
           template: __dirname + "/src/index-nada.html",
           inject: 'body'
     }),
+    new HtmlWebpackPlugin({
+        filename: 'index-isidore.html',
+          template: __dirname + "/src/index-isidore.html",
+          inject: 'body'
+    }),
+    new HtmlWebpackPlugin({
+        filename: 'index-skos.html',
+          template: __dirname + "/src/index-skos.html",
+          inject: 'body'
+    }),
 	new MiniCssExtractPlugin({
 	  filename: "sparnatural.css",
 	  chunkFilename: "[id].css"
