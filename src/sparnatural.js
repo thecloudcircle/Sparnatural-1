@@ -360,19 +360,16 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 			return specProvider.expandQuery(sparqlQuery);
 		}
 
-		function loadQuery(jsonQuery) {
+		this.loadQuery = function(jsonQuery) {
 			
 			// sets the selected class on the first CriteriaGroup
-			// var firstCriteriaGroup = 
+			var firstCriteriaGroup = this.components[0].CriteriaGroup;
+			firstCriteriaGroup.StartClassGroup.setValue("http://dbpedia.org/ontology/Museum");
+			firstCriteriaGroup.EndClassGroup.setValue("http://dbpedia.org/ontology/Country");
 
-
+			// trigger a submit
+			$(this.element).trigger( { type:"submit" } ) ;
 		}
-		
-
-
-
-
-
 		
 	/**
 	 * Builds a selector for a class based on provided domainId, by reading the
@@ -546,8 +543,8 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 				}
 
 				// re-submit form after deletion
-				initGeneralEvent(formObject) ;
-				$(this.element).trigger( { type:"submit" } ) ;
+				this.sparnatural.initGeneralEvent() ;
+				$(this.sparnatural.element).trigger( { type:"submit" } ) ;
 			}
 			
 			return false ;
@@ -630,6 +627,14 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 				$(this.ParentComponent.sparnatural.element).trigger( {type:"submit" } ) ;
 			}	
 		};
+
+		// sets the value from the outside
+		this.setValue = function(uri) {
+			this.value_selected = uri;
+			$(this.ParentComponent.StartClassGroup.html).find('.input-val').attr('disabled', 'disabled').niceSelect('update'); 
+			// trigger event on the whole line/criteria
+			$(this.ParentComponent).trigger( {type:"StartClassGroupSelected" } ) ;
+		}
 		
 		this.init() ;
 	} 
@@ -859,6 +864,26 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 			$(this.ParentComponent).trigger( {type:"EndClassGroupSelected" } ) ;
 		};
 
+		// sets the value from the outside
+		this.setValue = function(uri) {
+			this.value_selected = uri;
+			$(this.ParentComponent.EndClassGroup.html).find('.input-val').attr('disabled', 'disabled').niceSelect('update');
+			if (specProvider.hasConnectedClasses(this.value_selected)) {
+				$(this.ParentComponent.html).parent('li').removeClass('WhereImpossible') ;
+			} else {
+				$(this.ParentComponent.html).parent('li').addClass('WhereImpossible') ;
+			}
+			this.cssClasses.HasInputsCompleted = true ;
+			this.cssClasses.IsOnEdit = false ;
+			this.init() ;
+
+			// show and init the property selection
+			this.ParentComponent.ObjectPropertyGroup.cssClasses.Invisible = false;
+			this.ParentComponent.ObjectPropertyGroup.init() ;
+			// trigger the event that will call the ObjectPropertyGroup
+			$(this.ParentComponent).trigger( {type:"EndClassGroupSelected" } ) ;
+		}
+
 		this.onRemoveSelected = function onRemoveSelected () {			
 			$(this.ParentComponent.html).find('>.EndClassWidgetGroup .EndClassWidgetValue span.unselect').trigger('click') ;
 			this.ParentComponent.ObjectPropertyGroup.cssClasses.Invisible = true ;
@@ -1037,7 +1062,7 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 			
 			$(this.ParentComponent.html).find('.EndClassGroup>.EditComponents').removeClass('newOr') ;
 
-			initGeneralEvent();
+			this.ParentComponent.sparnatural.initGeneralEvent();
 		};
 		
 		this.onAddOrValue = function needAddOrValue() {
@@ -1111,7 +1136,7 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 				eventProxiCriteria
 			);
 			
-			initGeneralEvent();			
+			this.ParentComponent.sparnatural.initGeneralEvent();			
 		}
 		
 		this.onAddWhere = function () {	
