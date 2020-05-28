@@ -3,22 +3,22 @@
 
 export class SpecificationProviderFactory {
 
-	build(config, language, callback) {
+	build(config, language, sparnatural, callback) {
 		if(typeof(config) == "object") {
 			// if the config is a JSON object in the page, read it directly
-			callback(new JsonLdSpecificationProvider(config, language));
+			callback(new JsonLdSpecificationProvider(config, language), sparnatural);
 		} else if(config.includes("@prefix") || config.includes("<http")) {
 			// inline Turtle
 			RDFSpecificationProvider.build(config, language).then(function(provider) {
 			    console.log(provider);
-			    callback(provider);
+			    callback(provider, sparnatural);
 			});
 		} else {
 			if(config.includes("json")) {
 				// otherwise interpret it as a URL, load id and parse the result
 				$.when(
 					$.getJSON( config, function( data ) {
-						callback(new JsonLdSpecificationProvider(data, language));
+						callback(new JsonLdSpecificationProvider(data, language), sparnatural);
 					}).fail(function(response) {
 						console.log("Sparnatural - unable to load JSON config file : " +config);
 						console.log(response);
@@ -33,7 +33,7 @@ export class SpecificationProviderFactory {
 				.done( function( configData ) {
 					RDFSpecificationProvider.build(configData, language).then(function(provider) {
 					    console.log(provider);
-					    callback(provider);
+					    callback(provider, sparnatural);
 					});
 				})
 				.fail(function(response) {
