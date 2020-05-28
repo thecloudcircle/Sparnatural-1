@@ -31,22 +31,22 @@ class DefaultQueryGenerator {
 	/**
 	 * Generates the query and notifies the callback
 	 **/
-	generateQuery(formObject) {
+	generateQuery(sparnatural) {
 		var jsonQuery = this.newQueryJson() ;
 
 		var ArrayLiIndex = [] ;		
-		$(formObject._this).find('ul.componentsListe li.groupe').each(function(i) {			
+		$(sparnatural.element).find('ul.componentsListe li.groupe').each(function(i) {			
 			var data_id = $(this).attr('data-index') ;
 			ArrayLiIndex[data_id] = ArrayLiIndex.length ;
 		}) ;
 
-		if(this.hasEnoughCriteria(formObject)) {
-			for (var i = 0; i < formObject.components.length; i++) {
+		if(this.hasEnoughCriteria(sparnatural)) {
+			for (var i = 0; i < sparnatural.components.length; i++) {
 				jsonQuery = this.processQueryComponent(
 					jsonQuery,
-					formObject,
+					sparnatural,
 					ArrayLiIndex,
-					formObject.components[i],
+					sparnatural.components[i],
 					i
 				);
 			} ;
@@ -58,14 +58,14 @@ class DefaultQueryGenerator {
 		}
 	}
 
-	hasEnoughCriteria(formObject) {
-		for (var i = 0; i < formObject.components.length; i++) {			
+	hasEnoughCriteria(sparnatural) {
+		for (var i = 0; i < sparnatural.components.length; i++) {			
 			// if there is no value selected and the widget required one
 			// do not process this component			
 			if(
-				($.inArray(formObject.components[i].CriteriaGroup.EndClassWidgetGroup.inputTypeComponent.widgetType, this.WIDGETS_REQUIRING_VALUES) > -1)
+				($.inArray(sparnatural.components[i].CriteriaGroup.EndClassWidgetGroup.inputTypeComponent.widgetType, this.WIDGETS_REQUIRING_VALUES) > -1)
 				&&
-				(formObject.components[i].CriteriaGroup.EndClassWidgetGroup.selectedValues.length === 0)
+				(sparnatural.components[i].CriteriaGroup.EndClassWidgetGroup.selectedValues.length === 0)
 			) {
 				continue;
 			} else {
@@ -78,7 +78,7 @@ class DefaultQueryGenerator {
 		return false;	
 	}
 
-	processQueryComponent(jsonQuery, formObject, ArrayLiIndex, component, index) {
+	processQueryComponent(jsonQuery, sparnatural, ArrayLiIndex, component, index) {
 		var VALUE_SELECTION_WIDGETS = [
 			Config.LIST_PROPERTY,
 			Config.AUTOCOMPLETE_PROPERTY,
@@ -92,7 +92,7 @@ class DefaultQueryGenerator {
 		var obj = component.CriteriaGroup.ObjectPropertyGroup.value_selected ;
 		var end = component.CriteriaGroup.EndClassGroup.value_selected ; 
 		
-		var dependantDe = this.GetDependantCriteria(formObject, index) ;
+		var dependantDe = this.GetDependantCriteria(sparnatural, index) ;
 		// get index of subject and object variables
 		var subjectVariableIndex;
 		var objectVarIndex;
@@ -224,10 +224,10 @@ class DefaultQueryGenerator {
 		return jsonQuery;		
 	}
 
-	GetDependantCriteria(thisForm_, id) {
+	GetDependantCriteria(sparnatural, id) {
 		var dependant = null ;
 		var dep_id = null ;
-		var element = thisForm_._this.find('li[data-index="'+id+'"]') ;
+		var element = $(sparnatural.find).find('li[data-index="'+id+'"]') ;
 		
 		if ($(element).parents('li').length > 0) {			
 			dep_id = $($(element).parents('li')[0]).attr('data-index') ;
@@ -239,7 +239,7 @@ class DefaultQueryGenerator {
 			}
 		}
 
-		$(thisForm_.components).each(function(index) {			
+		$(sparnatural.components).each(function(index) {			
 			if (this.index == dep_id) {
 				dependant.element = this.CriteriaGroup ;
 			}

@@ -406,30 +406,32 @@
       var sparnatural;
       $( document ).ready(function($) {          
 
-        sparnatural = $('#ui-search').Sparnatural({
-          config: config,
-          language: lang,
-          maxDepth: 4,
-          addDistinct: true,
-          noTypeCriteriaForObjects: ["http://dbpedia.org/ontology/Artwork"],
-          sendQueryOnFirstClassSelected: true,
-          backgroundBaseColor: '2,184,117',
-          autocomplete : null,
-          list : null,
-          defaultEndpoint: "http://fr.dbpedia.org/sparql",
-          sparqlPrefixes : {
-            "dbpedia" : "http://dbpedia.org/ontology/"
-          },
-          onQueryUpdated: function(queryString, queryJson) {
-            queryString = semanticPostProcess(queryString, queryJson);
-            queryString = rdfsLabelPostProcess(queryString, queryJson);
-            queryString = isPrimaryTopicOfPostProcess(queryString, queryJson);
-            queryString = orderByPostProcess(queryString, queryJson);
-            $('#sparql code').html(queryString.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"));
-            yasqe.setValue(queryString);
-            yasqe.query();
-          }
-        });
+        sparnatural = new Sparnatural(
+          document.getElementById('ui-search'),
+          {
+            config: config,
+            language: lang,
+            maxDepth: 4,
+            addDistinct: true,
+            noTypeCriteriaForObjects: ["http://dbpedia.org/ontology/Artwork"],
+            sendQueryOnFirstClassSelected: true,
+            backgroundBaseColor: '2,184,117',
+            autocomplete : null,
+            list : null,
+            defaultEndpoint: "http://fr.dbpedia.org/sparql",
+            sparqlPrefixes : {
+              "dbpedia" : "http://dbpedia.org/ontology/"
+            },
+            onQueryUpdated: function(queryString, queryJson) {
+              queryString = semanticPostProcess(queryString, queryJson);
+              queryString = rdfsLabelPostProcess(queryString, queryJson);
+              queryString = isPrimaryTopicOfPostProcess(queryString, queryJson);
+              queryString = orderByPostProcess(queryString, queryJson);
+              $('#sparql code').html(queryString.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+              yasqe.setValue(queryString);
+              yasqe.query();
+            }
+          });
       }) ;
 
       prefixesPostProcess = function(queryString, queryJson) {

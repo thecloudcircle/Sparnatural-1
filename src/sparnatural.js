@@ -45,9 +45,8 @@ require("./Widgets.js");
 var Config = require("./SparnaturalConfig.js");
 var Datasources = require("./SparnaturalConfigDatasources.js");
 
-(function( $ ) {
 	
-    $.fn.Sparnatural = function( options ) {
+    Sparnatural = function( element, options ) {
  
     	var specProvider;
 
@@ -199,62 +198,18 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 		
 		// merge given options with default values
 		var settings = $.extend( true, {}, defaults, options );
-
-		this.each(function() {
-            var thisForm = {
-            	_this : $(this),
-            	components : []
-            } ;
-			$(this).addClass('Sparnatural') ;
-			
-			langSearch = i18nLabels[settings.language];
-
-			var specProviderFactory = new SpecificationProviderFactory();
-
-			specProviderFactory.build(settings.config, settings.language, function(sp) {
-				specProvider = sp;
-				initForm(thisForm);
-			});		
-        });	
 		
-		function initForm(form) {	
-			var contexte = $('<div class="bg-wrapper"><ul class="componentsListe"></ul></div>');
-			$(form._this).append(contexte) ;
-			
-			var contexte1 = addComponent(form, contexte.find('ul')) ;
-			
-			$(form._this).find('.nice-select').trigger('click') ;
-			
-			initGeneralEvent(form) ;
-			
-			// triggered when Sparnatural is submitted : generates output SPARQL
-			// query
-			$(form._this).on('submit', { formObject : form }, function (event) {		
-				event.preventDefault();
-				var qGenerator = new DefaultQueryGenerator(
-					settings.addDistinct,
-					settings.typePredicate,
-					specProvider
-				);
-				qGenerator.setPrefixes(settings.sparqlPrefixes);
-				var queries = qGenerator.generateQuery(event.data.formObject);
-				// fire callback
-				settings.onQueryUpdated(queries.generatedQuery, queries.jsonQuery);
+		this.element = element;
+		this.components = [];
 
-			}) ;
-		}
 
-		function expandQuery(sparqlQuery) {
-			return specProvider.expandQuery(sparqlQuery);
-		}
-		
-	function initGeneralEvent(thisForm_) {
+	this.initGeneralEvent = function() {
 		$('li.groupe').off( "mouseover" ) ;
 		$('li.groupe').off( "mouseleave" ) ;
 		$('li.groupe').on( "mouseover", function(event) {
 			event.stopImmediatePropagation();
 			$('li.groupe').removeClass('OnHover') ;
-			$(this).addClass('OnHover') ;
+			$(this.element).addClass('OnHover') ;
 			
 		} );
 		$('li.groupe').on( "mouseleave", function(event) {
@@ -263,7 +218,7 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 		} );
 		 /*background: linear-gradient(180deg, rgba(255,0,0,1) 0%, rgba(255,0,0,1) 27%, rgba(5,193,255,1) 28%, rgba(5,193,255,1) 51%, rgba(255,0,0,1) 52%, rgba(255,0,0,1) 77%, rgba(0,0,0,1) 78%, rgba(0,0,0,1) 100%); /* w3c */
 		 
-		var $all_li = thisForm_._this.find('li.groupe') ;
+		var $all_li = $(this.element).find('li.groupe') ;
 		var leng = $all_li.length ;
 		if (leng  <= 10 ) {
 			leng = 10 ;
@@ -288,8 +243,136 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 			}
 		});
 
-		thisForm_._this.find('div.bg-wrapper').css({background : cssdef+')' }) ;
+		$(this.element).find('div.bg-wrapper').css({background : cssdef+')' }) ;
 	}
+
+
+	this.addComponent = function (contexte) {
+		
+		if (this.components.length > 0 ) {
+			var new_index = this.components[this.components.length-1].index + 1 ;
+		} else {
+			var new_index = 0 ;
+		}
+		
+		// disable the WHERE if we have reached maximum depth
+		var classWherePossible = 'addWereEnable' ;
+		if (($(contexte).parents('li.groupe').length + 1 ) == (settings.maxDepth - 1) ) {
+			classWherePossible = 'addWereDisable' ;
+		}
+		
+		var gabari = '<li class="groupe" data-index="'+new_index+'"><span class="link-and-bottom"><span>'+langSearch.And+'</span></span><span class="link-where-bottom"></span><input name="a-'+new_index+'" type="hidden" value=""><input name="b-'+new_index+'" type="hidden" value=""><input name="c-'+new_index+'" type="hidden" value=""></li>' ;
+		
+		// si il faut descendre d'un niveau
+		if ($(contexte).is('li')) {
+			if ($(contexte).find('>ul').length == 0) {
+				var ul = $('<ul class="childsList"><div class="lien-top"><span>'+langSearch.Where+'</span></div></ul>').appendTo($(contexte)) ;
+				var parent_li = $(ul).parent('li') ;
+				var n_width = 0;
+				n_width = n_width + getOffset( $(parent_li).find('>div>.EndClassGroup'), $(ul) ) - 111 + 15 + 11 + 20 + 5 + 3 ;
+				var t_width = getOffset( $(parent_li).find('>div>.EndClassGroup'), $(ul) ) + 15 + 11 + 20 + 5  ;
+				$(ul).attr('data-test', getOffset( $(parent_li).find('>div>.EndClassGroup'), $(ul) ) );
+				$(ul).find('>.lien-top').css('width', n_width) ;
+				$(parent_li).find('>.link-where-bottom').css('left', t_width) ;
+			} else {
+				var ul = $(contexte).find('>ul') ;
+			}
+			
+			gabari = $(gabari).appendTo(ul);
+			//gabarib = $(gabari).appendTo(contexte) ;
+		} else {
+			gabari = $(gabari).appendTo(contexte) ;
+		}
+
+		$(gabari).addClass(classWherePossible) ;		
+		
+		var UnCritere = new CriteriaGroup(
+			{ 
+				AncestorHtmlContext: contexte,
+				HtmlContext : gabari,
+				sparnatural: this,
+				ContextComponentIndex: new_index
+			},
+			settings,
+			specProvider
+		);
+		
+		this.components.push({index: new_index, CriteriaGroup: UnCritere });			
+		this.initGeneralEvent();			
+		return $(gabari) ;
+	}
+
+
+		this.initForm = function() {	
+			var contexte = $('<div class="bg-wrapper"><ul class="componentsListe"></ul></div>');
+			$(this.element).append(contexte) ;
+
+			var contexte1 = this.addComponent(contexte.find('ul')) ;
+			
+			$(this.element).find('.nice-select').trigger('click') ;
+			
+			this.initGeneralEvent() ;
+			
+			// triggered when Sparnatural is submitted : generates output SPARQL
+			// query
+			var sparnatural = this;
+			$(this.element).on('submit', { }, function (event) {		
+				event.preventDefault();
+				var qGenerator = new DefaultQueryGenerator(
+					settings.addDistinct,
+					settings.typePredicate,
+					specProvider
+				);
+				qGenerator.setPrefixes(settings.sparqlPrefixes);
+				var queries = qGenerator.generateQuery(sparnatural);
+				// fire callback
+				settings.onQueryUpdated(queries.generatedQuery, queries.jsonQuery);
+
+			}) ;
+		}
+
+
+		// begin init
+		var thisForm = {
+			_this : $(element)
+        	// _this : $(element),
+        	// components : []
+        } ;
+		$(element).addClass('Sparnatural') ;
+		
+		langSearch = i18nLabels[settings.language];
+
+		this.onSpecProviderFactoryBuild = function(aSpecProvider, sparnatural) {
+			specProvider = aSpecProvider;
+			sparnatural.initForm();
+		}
+
+		var sparnatural = this;
+		var specProviderFactory = new SpecificationProviderFactory();
+		specProviderFactory.build(settings.config, settings.language, this, this.onSpecProviderFactoryBuild);
+		// end init
+
+
+		
+
+
+		function expandQuery(sparqlQuery) {
+			return specProvider.expandQuery(sparqlQuery);
+		}
+
+		function loadQuery(jsonQuery) {
+			
+			// sets the selected class on the first CriteriaGroup
+			// var firstCriteriaGroup = 
+
+
+		}
+		
+
+
+
+
+
 		
 	/**
 	 * Builds a selector for a class based on provided domainId, by reading the
@@ -363,69 +446,16 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 			return html_list ;
 		}
 	}
-		
-	function addComponent(thisForm_, contexte) {
-		
-		if (thisForm_.components.length > 0 ) {
-			var new_index = thisForm_.components[thisForm_.components.length-1].index + 1 ;
-		} else {
-			var new_index = 0 ;
-		}
-		
-		// disable the WHERE if we have reached maximum depth
-		var classWherePossible = 'addWereEnable' ;
-		if (($(contexte).parents('li.groupe').length + 1 ) == (settings.maxDepth - 1) ) {
-			classWherePossible = 'addWereDisable' ;
-		}
-		
-		var gabari = '<li class="groupe" data-index="'+new_index+'"><span class="link-and-bottom"><span>'+langSearch.And+'</span></span><span class="link-where-bottom"></span><input name="a-'+new_index+'" type="hidden" value=""><input name="b-'+new_index+'" type="hidden" value=""><input name="c-'+new_index+'" type="hidden" value=""></li>' ;
-		
-		// si il faut descendre d'un niveau
-		if ($(contexte).is('li')) {
-			if ($(contexte).find('>ul').length == 0) {
-				var ul = $('<ul class="childsList"><div class="lien-top"><span>'+langSearch.Where+'</span></div></ul>').appendTo($(contexte)) ;
-				var parent_li = $(ul).parent('li') ;
-				var n_width = 0;
-				n_width = n_width + getOffset( $(parent_li).find('>div>.EndClassGroup'), $(ul) ) - 111 + 15 + 11 + 20 + 5 + 3 ;
-				var t_width = getOffset( $(parent_li).find('>div>.EndClassGroup'), $(ul) ) + 15 + 11 + 20 + 5  ;
-				$(ul).attr('data-test', getOffset( $(parent_li).find('>div>.EndClassGroup'), $(ul) ) );
-				$(ul).find('>.lien-top').css('width', n_width) ;
-				$(parent_li).find('>.link-where-bottom').css('left', t_width) ;
-			} else {
-				var ul = $(contexte).find('>ul') ;
-			}
-			
-			gabari = $(gabari).appendTo(ul);
-			//gabarib = $(gabari).appendTo(contexte) ;
-		} else {
-			gabari = $(gabari).appendTo(contexte) ;
-		}
-
-		$(gabari).addClass(classWherePossible) ;		
-		
-		var UnCritere = new CriteriaGroup(
-			{ 
-				AncestorHtmlContext: contexte,
-				HtmlContext : gabari,
-				FormContext: thisForm_,
-				ContextComponentIndex: new_index
-			},
-			settings,
-			specProvider
-		);
-		
-		thisForm_.components.push({index: new_index, CriteriaGroup: UnCritere });			
-		initGeneralEvent(thisForm_);			
-		return $(gabari) ;
-	}
+	
 
 	/**
 	 * A single line/criteria
 	 **/
 	function CriteriaGroup(context, settings, specProvider) {
 		this._this = this ;
-		this.thisForm_ = context.FormContext ;
-		this.ParentComponent = context.FormContext  ;
+		this.sparnatural = context.sparnatural;
+		// this.thisForm_ = context.FormContext ;
+		// this.ParentComponent = context.FormContext  ;
 		this.ComponentHtml = context.HtmlContext ;
 		this.AncestorComponentHtml = context.AncestorHtmlContext ;
 		
@@ -465,8 +495,8 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 		this.onRemoveCriteria = function() {
 			var index_to_remove = this.id ;
 			// iterate on every "line" in the query
-			$(this.ParentComponent.components).each(function() {
-				var parentOrSibling = findParentOrSiblingCriteria(this.CriteriaGroup.thisForm_, this.index ) ;
+			$(this.sparnatural.components).each(function() {
+				var parentOrSibling = findParentOrSiblingCriteria(this.index ) ;
 				if ((parentOrSibling != null) && (parentOrSibling.type == 'parent')){
 					// if the line is a child of the one to remove, remove it too
 					if (parentOrSibling.element.id == index_to_remove) {
@@ -475,12 +505,11 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 				}
 			}) ;
 			
-			var formObject = this.thisForm_ ;
 			var formContextHtml = this.Context.contexteReference.AncestorHtmlContext;
 			
 			// fetch parentOrSibling _before_ removing HTML and removing
 			// component from list !!
-			var parentOrSibling = findParentOrSiblingCriteria(this.thisForm_, this.id ) ;
+			var parentOrSibling = findParentOrSiblingCriteria(this.id ) ;
 
 			// remove event listeners
 			this.ComponentHtml.outerHTML = this.ComponentHtml.outerHTML;
@@ -488,18 +517,18 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 			$(this.ComponentHtml).remove() ;
 			
 			var iteration_to_remove = false ;
-			$(this.ParentComponent.components).each(function(i) {					
+			$(this.sparnatural.components).each(function(i) {					
 				if (this.index == index_to_remove){					
 					iteration_to_remove = i ;
 				}
 			}) ;
 			// remove from list of components
-			this.ParentComponent.components.splice(iteration_to_remove , 1);
+			this.sparnatural.components.splice(iteration_to_remove , 1);
 			
 			
-			if (this.ParentComponent.components.length == 0) {
+			if (this.sparnatural.components.length == 0) {
 				// top-level criteria : add first criteria and trigger click on class selection
-				var new_component = addComponent(formObject, formContextHtml) ;			
+				var new_component = this.sparnatural.addComponent(formContextHtml) ;			
 				$(new_component).find('.nice-select').trigger('click') ;				
 			} else {
 				if (parentOrSibling !== null) {
@@ -518,7 +547,7 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 
 				// re-submit form after deletion
 				initGeneralEvent(formObject) ;
-				$(this.thisForm_._this).trigger( { type:"submit" } ) ;
+				$(this.element).trigger( { type:"submit" } ) ;
 			}
 			
 			return false ;
@@ -598,7 +627,7 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 			$(this.ParentComponent).trigger( {type:"StartClassGroupSelected" } ) ;
 
 			if(settings.sendQueryOnFirstClassSelected) {
-				$(this.ParentComponent.thisForm_._this).trigger( {type:"submit" } ) ;
+				$(this.ParentComponent.sparnatural.element).trigger( {type:"submit" } ) ;
 			}	
 		};
 		
@@ -656,7 +685,7 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 				$(this.html).find('.input-val').attr('disabled', 'disabled').niceSelect('update'); 
 			}
 			$(this.ParentComponent).trigger( {type:"ObjectPropertyGroupSelected" } ) ;			
-			$(this.ParentComponent.thisForm_._this).trigger( {type:"submit" } ) ;			
+			$(this.ParentComponent.sparnatural.element).trigger( {type:"submit" } ) ;			
 		};
 			
 		this.init() ;
@@ -729,7 +758,7 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 
 			if (this.ParentComponent instanceof StartClassGroup) {
 				
-				var parentOrSibling = findParentOrSiblingCriteria(this.ParentComponent.ParentComponent.thisForm_, id) ;
+				var parentOrSibling = findParentOrSiblingCriteria(id) ;
 				if (parentOrSibling) {
 					if (parentOrSibling.type == 'parent' ) {
 						// if we are child in a WHERE relation, the selected class is the selected
@@ -938,7 +967,7 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 			}
 
 			$(this.ParentComponent).trigger( {type:"EndClassWidgetGroupUnselected" } ) ;
-			$(this.ParentComponent.thisForm_._this).trigger( {type:"submit" } ) ;
+			$(this.ParentComponent.sparnatural.element).trigger( {type:"submit" } ) ;
 
 		} ;
 
@@ -983,7 +1012,7 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 			this.ParentComponent.initCompleted() ;
 			
 			$(this.ParentComponent).trigger( {type:"EndClassWidgetGroupSelected" } ) ;
-			$(this.ParentComponent.thisForm_._this).trigger( {type:"submit" } ) ;
+			$(this.ParentComponent.sparnatural.element).trigger( {type:"submit" } ) ;
 			
 			if ( VALUE_SELECTION_WIDGETS.indexOf(this.inputTypeComponent.widgetType) !== -1 ) {
 				if ($(this.ParentComponent.html).find('.EndClassWidgetGroup>div').length == 1) {
@@ -1008,7 +1037,7 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 			
 			$(this.ParentComponent.html).find('.EndClassGroup>.EditComponents').removeClass('newOr') ;
 
-			initGeneralEvent(this.ParentComponent.thisForm_);
+			initGeneralEvent();
 		};
 		
 		this.onAddOrValue = function needAddOrValue() {
@@ -1082,7 +1111,7 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 				eventProxiCriteria
 			);
 			
-			initGeneralEvent(this.ParentComponent.thisForm_);			
+			initGeneralEvent();			
 		}
 		
 		this.onAddWhere = function () {	
@@ -1090,7 +1119,6 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 			this.ParentComponent.initCompleted() ;
 			
 			var new_component = addComponent(
-				this.ParentComponent.thisForm_,
 				this.ParentComponent.Context.contexteReference.HtmlContext
 			) ;
 			
@@ -1101,7 +1129,6 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 
 		this.onAddAnd = function () {
 			var new_component = addComponent(
-				this.ParentComponent.thisForm_,
 				this.ParentComponent.Context.contexteReference.AncestorHtmlContext
 			) ;
 			
@@ -1421,10 +1448,10 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 	 * either the "parent" in a WHERE criteria, or the "sibling"
 	 * in an AND criteria
 	 **/
-	function findParentOrSiblingCriteria(thisForm_, id) {
+	function findParentOrSiblingCriteria(id) {
 		var dependant = null ;
 		var dep_id = null ;
-		var element = thisForm_._this.find('li[data-index="'+id+'"]') ;
+		var element = $(this.element).find('li[data-index="'+id+'"]') ;
 		
 		if ($(element).parents('li').length > 0) {			
 			dep_id = $($(element).parents('li')[0]).attr('data-index') ;
@@ -1436,7 +1463,7 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 			}
 		}
 
-		$(thisForm_.components).each(function(index) {			
+		$(this.components).each(function(index) {			
 			if (this.index == dep_id) {
 				dependant.element = this.CriteriaGroup ;
 			}
@@ -1552,7 +1579,3 @@ Object.compare = function (obj1, obj2) {
 	}
 	return true;
 };
-
-	
- 
-}( jQuery ));
