@@ -117,24 +117,24 @@ body {
 			position: absolute;
 			top: -9px;
 			right: 0;
-			width: 22px;
-			height: 22px!important;
+			width: 23px;
+			height: 23px!important;
 			padding: 0 0;
 			text-align: center;
 			cursor: pointer;
 			color: $custom-red-bold;
 			background: #fff!important;
-			line-height: 22px;
-			font-size: 18px;
+			line-height: 18px;
+			font-size: 12px;
 			box-sizing:border-box;
-			border-radius: 11px;
+			border-radius: 11.5px;
 			z-index: 1;
-			/*border: 2px solid #333;
-			
+			border: 2px solid $custom-red-bold;;
+			/*
 			line-height: 13px;
-			font-size: 10px;
+			font-size: 10px;*/
 			
-			font-weight: 700;*/
+			font-weight: 900;
 		}
 		.EndClassGroup.IsOnEdit>span.unselect {
 			display: none;
@@ -523,8 +523,9 @@ body {
 
 					.unselect {
 						position: relative;
-						top: 0;
-						line-height: 46px;
+						top: 50%;
+						transform: translateY(-50%);
+						/*line-height: 46px;*/
 					}
 				}
 			}

@@ -901,7 +901,7 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 			Created : false
 		}; 
 		this.inputTypeComponent = new ClassTypeId(this, specProvider) ;
-		this.unselect = $('<span class="unselect unselectEndClass"><i class="far fa-times-circle"></i></span>') ;
+		this.unselect = $('<span class="unselect unselectEndClass">&#10005;</span>') ;
 
 		// triggered when the subject/domain is selected
 		this.onStartClassGroupSelected = function() {
@@ -1077,7 +1077,7 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 			
 			var value_data = (Array.isArray(theValue))?theValue.toString():theValue;
 
-			this.unselect = $('<span class="unselect" value-data="'+value_data+'"><i class="far fa-times-circle"></i></span>') ;
+			this.unselect = $('<span class="unselect" value-data="'+value_data+'">&#10005;</span>') ;
 			if ($(this.ParentComponent.html).find('.EndClassWidgetGroup>div').length == 0) {
 				$(this.ParentComponent.html).find('.EndClassWidgetGroup').append('<div class="EndClassWidgetValue"><span class="triangle-h"></span><span class="triangle-b"></span><p>'+theValueLabel+'</p></div>').find('div').append(this.unselect) ;
 			} else {
@@ -1309,7 +1309,7 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 		}; 
 
 		this.init = function () {
-			this.widgetHtml = '<a><span class="unselect"><i class="far fa-times-circle"></i></span></a>' ;
+			this.widgetHtml = '<a><span class="unselect">&#10005;</span></a>' ;
 			this.cssClasses.IsOnEdit = true ;
 			this.tools = new GenericTools(this) ;
 			this.tools.initHtml() ;
