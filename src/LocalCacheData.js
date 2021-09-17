@@ -4,19 +4,19 @@ class LocalCacheData {
 
     }
 
-    fetcha(uri, init, ttl) {
+    fetcha(uri, options, ttl) {
         if (this.storageAvailable('localStorage')) {
-            var lastLoading = localStorage[uri] ;
-            if (lastLoading < Date.now() - ttl) {
+            var lastLoading = localStorage.getItem(uri) ;            
+            if ((Date.now() - lastLoading) > ttl) {
                 localStorage.setItem(uri, Date.now()) ;
-                init.cache = 'reload' ;
-                return fetch(uri, init) ;
+                options.cache = 'reload' ;
+                return fetch(uri, options) ;
             } else {
-                init.cache = 'force-cache' ;
-                return fetch(uri, init) ;
+                options.cache = 'force-cache' ;
+                return fetch(uri, options) ;
             }
         } else {
-            return fetch(uri, init) ;
+            return fetch(uri, options) ;
         }
     }
 

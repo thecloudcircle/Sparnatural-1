@@ -97,6 +97,7 @@
 			document.getElementById(id_input).style.display = 'block' ;
 			document.getElementById(id_input).closest('.list-widget').querySelector('.no-items').style.display = 'none' ;
 
+			/*
 			var options = {
 				url: listHandler.listUrl(
 					startClassGroup_value,
@@ -109,18 +110,21 @@
 					  dataType: "json"
 				}
 			} ;
+			*/
+
 			let url = listHandler.listUrl(
 				startClassGroup_value,
 				ObjectPropertyGroup_value,
 				endClassGroup_value
 			);
-			let Init = { method: 'GET',
+			let options = {
+				method: 'GET',
 				headers: new Headers(),
 				mode: 'cors',
 				cache: 'default' 
 			};
 			let temp = new LocalCacheData() ;
-			let fetchpromise = temp.fetcha(url, Init, 1000) ;
+			let fetchpromise = temp.fetcha(url, options, 1000) ;
 			fetchpromise.then(response => response.json())
 			.then(data => {
 				var items = listHandler.listLocation(

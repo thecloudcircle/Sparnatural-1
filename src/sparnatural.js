@@ -41,7 +41,7 @@ SparqlTemplateAutocompleteHandler = require("./AutocompleteAndListHandlers.js").
 
 SimpleStatisticsHandler = require("./StatisticsHandlers.js").SimpleStatisticsHandler;
 
-LocalCacheData = require("./CacheData.js").LocalCacheData;
+LocalCacheData = require("./LocalCacheData.js").LocalCacheData;
 DefaultQueryGenerator = require("./QueryGenerators.js").DefaultQueryGenerator;
 
 require("./Widgets.js");
