@@ -15,7 +15,7 @@ require("easy-autocomplete");
 
 require("./assets/js/jquery-nice-select/jquery.nice-select.js");
 
-const removeIcon = require("./assets/icons/buttons/remove.png");
+//const removeIcon = require("./assets/icons/buttons/remove.png");
 
 // WARNING : if you use ES6 syntax (like import instead of require), 
 // webpack will automatically add "use strict" as all ES6 modules 
@@ -1440,10 +1440,9 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 		this.onAddWhere = function () {	
 			this.parentCriteriaGroup.html.parent('li').addClass('haveWhereChild') ;
 			this.parentCriteriaGroup.initCompleted() ;
-			
 			var new_component = addComponent(
 				this.parentCriteriaGroup.thisForm_,
-				this.parentCriteriaGroup.Context.contexteReference.HtmlContext,
+				this.parentCriteriaGroup.ComponentHtml,
 				(this.parentCriteriaGroup.jsonQueryBranch && this.parentCriteriaGroup.jsonQueryBranch.children && this.parentCriteriaGroup.jsonQueryBranch.children.length > 0)?this.parentCriteriaGroup.jsonQueryBranch.children[0]:null
 			) ;
 			
@@ -1455,7 +1454,7 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 		this.onAddAnd = function () {
 			var new_component = addComponent(
 				this.parentCriteriaGroup.thisForm_,
-				this.parentCriteriaGroup.Context.contexteReference.AncestorHtmlContext,
+				this.parentCriteriaGroup.AncestorComponentHtml,
 				(this.parentCriteriaGroup.jsonQueryBranch)?this.parentCriteriaGroup.jsonQueryBranch.nextSibling:null
 			) ;
 			
