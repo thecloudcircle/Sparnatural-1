@@ -1,21 +1,22 @@
 
-	
+
 	AutoCompleteWidget = function(inputTypeComponent, autocompleteHandler) {
 		this.autocompleteHandler = autocompleteHandler;
 		this.ParentComponent = inputTypeComponent ;
 
 		this.IdCriteriaGroupe = this.ParentComponent.ParentComponent.parentCriteriaGroup.id ;
 		this.html = '<input id="ecgrw-'+this.IdCriteriaGroupe+'-input" /><input id="ecgrw-'+this.IdCriteriaGroupe+'-input-value" type="hidden"/>' ;
-		
+
 		this.init = function init() {
 			var startClassGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.StartClassGroup.value_selected ;
 			var endClassGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.EndClassGroup.value_selected ;
 			var ObjectPropertyGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.ObjectPropertyGroup.value_selected ;
-			
-			var id_inputs = this.IdCriteriaGroupe ;			
-			var itc_obj = this.ParentComponent;	
+
+			var id_inputs = this.IdCriteriaGroupe ;
+			var itc_obj = this.ParentComponent;
 			var isMatch = autocompleteHandler.enableMatch(startClassGroup_value, ObjectPropertyGroup_value, endClassGroup_value);
-			
+
+			var $loading_indicator = $('<div class="sparnatural--loading"></div>');
 			var options = {
 				// ajaxSettings: {crossDomain: true, type: 'GET'} ,
 				url: function(phrase) {
@@ -24,10 +25,10 @@
 				listLocation: function (data) {
 					return autocompleteHandler.listLocation(startClassGroup_value, ObjectPropertyGroup_value, endClassGroup_value, data) ;
 				},
-				getValue: function (element) { 
+				getValue: function (element) {
 					return autocompleteHandler.elementLabel(element) ;
 				},
-				
+
 				adjustWidth: false,
 
 				ajaxSettings: {
@@ -36,10 +37,14 @@
 					method: "GET",
 					data: {
 				  		dataType: "json"
+					},
+					complete: function(a,b,c) {
+						$('#ecgrw-'+id_inputs+'-input').closest('.easy-autocomplete').find('.sparnatural--loading').remove()
 					}
 				},
 
 				preparePostData: function(data) {
+					$('#ecgrw-'+id_inputs+'-input').closest('.easy-autocomplete').append($loading_indicator);
 					data.phrase = $('#ecgrw-'+id_inputs+'-input').val();
 					return data;
 				},
@@ -51,9 +56,9 @@
 
 					onChooseEvent: function() {
 						var value = $('#ecgrw-'+id_inputs+'-input').getSelectedItemData();
-						
-						var label = autocompleteHandler.elementLabel(value) ; 
-						var uri = autocompleteHandler.elementUri(value) ; 
+
+						var label = autocompleteHandler.elementLabel(value) ;
+						var uri = autocompleteHandler.elementUri(value) ;
 						$('#ecgrw-'+id_inputs+'-input').val(label)
 						$('#ecgrw-'+id_inputs+'-input-value').val(uri).trigger("change");
 						$(itc_obj).trigger("change");
@@ -63,7 +68,8 @@
 				requestDelay: 400
 			};
 			//Need to add in html befor
-			
+
+
 			$('#ecgrw-'+id_inputs+'-input').easyAutocomplete(options);
 		}
 
@@ -78,21 +84,21 @@
 			} ;
 		}
 	};
-	
+
 	ListWidget = function(inputTypeComponent, listHandler, langSearch, settings) {
 		this.listHandler = listHandler;
 		this.ParentComponent = inputTypeComponent ;
 		this.IdCriteriaGroupe = this.ParentComponent.ParentComponent.parentCriteriaGroup.id ;
-		
+
 		this.id_input = 'ecgrw-'+ this.IdCriteriaGroupe +'-input-value' ;
 		this.html = '<div class="list-widget"><select id="'+this.id_input+'"></select><div class="no-items" style="display: none; font-style:italic;">'+langSearch.ListWidgetNoItem+'</div></div>' ;
 		//this.select = $('<select id="'+this.id_input+'"></select>');
-		
+
 		this.init = function init() {
 			var startClassGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.StartClassGroup.value_selected ;
 			var endClassGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.EndClassGroup.value_selected ;
 			var ObjectPropertyGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.ObjectPropertyGroup.value_selected ;
-			
+
 			var itc_obj = this.ParentComponent;
 			var id_input = 'ecgrw-'+ this.IdCriteriaGroupe +'-input-value' ;
 
@@ -111,10 +117,12 @@
 				method: 'GET',
 				headers: headers,
 				mode: 'cors',
-				cache: 'default' 
+				cache: 'default'
 			};
 			let temp = new LocalCacheData() ;
 			let fetchpromise = temp.fetch(url, init, settings.localCacheDataTtl) ;
+			var $loading_indicator = $('<div class="sparnatural--loading"></div>');
+			$('#'+id_input).closest('.list-widget').append($loading_indicator);
 			fetchpromise.then(response => response.json())
 			.then(data => {
 				var items = listHandler.listLocation(
@@ -123,10 +131,12 @@
 					endClassGroup_value,
 					data
 				) ;
+
+				$('#'+id_input).siblings('.sparnatural--loading').remove();
 				if (items.length > 0) {
-					$.each( items, function( key, val ) {				  
-						var label = listHandler.elementLabel(val) ; 
-						var uri = listHandler.elementUri(val) ; 
+					$.each( items, function( key, val ) {
+						var label = listHandler.elementLabel(val) ;
+						var uri = listHandler.elementUri(val) ;
 						$('#'+id_input).append( "<option value='" + uri + "'>" + label + "</option>" );
 					});
 					$('#'+id_input).niceSelect();
@@ -139,7 +149,7 @@
 					console.warn('No item in widget list for :'+'\n'+' - Start Class => '+startClassGroup_value+'\n'+' - Object property => '+ObjectPropertyGroup_value+'\n'+' - End Class =>'+ endClassGroup_value+' '+'\n'+' - Get data on Url => '+options.url) ;
 				}  ;
 			});
-			
+
 			/*
 			var options = {
 				url: listHandler.listUrl(
@@ -153,10 +163,10 @@
 					  dataType: "json"
 				}
 			} ;
-	
+
 			var request = $.ajax( options );
 			//var select = $(this.html).find('select') ;
-			request.done(function( data ) {			  
+			request.done(function( data ) {
 			  	var items = listHandler.listLocation(
 			  		startClassGroup_value,
 			  		ObjectPropertyGroup_value,
@@ -164,9 +174,9 @@
 			  		data
 			  	) ;
 				if (items.length > 0) {
-					$.each( items, function( key, val ) {				  
-						var label = listHandler.elementLabel(val) ; 
-						var uri = listHandler.elementUri(val) ; 
+					$.each( items, function( key, val ) {
+						var label = listHandler.elementLabel(val) ;
+						var uri = listHandler.elementUri(val) ;
 						$('#'+id_input).append( "<option value='" + uri + "' title='" + label + "'>" + label + "</option>" );
 					});
 					$('#'+id_input).niceSelect();
@@ -177,7 +187,7 @@
 					document.getElementById(id_input).style.display = 'none' ;
 					document.getElementById(id_input).closest('.list-widget').querySelector('.no-items').style.display = 'block' ;
 					console.warn('No item in widget list for :'+'\n'+' - Start Class => '+startClassGroup_value+'\n'+' - Object property => '+ObjectPropertyGroup_value+'\n'+' - End Class =>'+ endClassGroup_value+' '+'\n'+' - Get data on Url => '+options.url) ;
-				} 
+				}
 			});
 			*/
 		}
@@ -193,122 +203,24 @@
 			} ;
 		}
 	}
-	
-
-	ListWidgetNew = function(inputTypeComponent, listDatasource, langSearch) {
-		this.listDatasource = listDatasource;
-		this.ParentComponent = inputTypeComponent ;
-		this.IdCriteriaGroupe = this.ParentComponent.ParentComponent.parentCriteriaGroup.id ;
-		
-		this.id_input = 'ecgrw-'+ this.IdCriteriaGroupe +'-input-value' ;
-		this.html = '<div class="list-widget"><select id="'+this.id_input+'"></select><div class="no-items" style="display: none; font-style:italic;">'+langSearch.ListWidgetNoItem+'</div></div>' ;
-		
-		this.init = function init() {
-			var startClassGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.StartClassGroup.value_selected ;
-			var endClassGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.EndClassGroup.value_selected ;
-			var ObjectPropertyGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.ObjectPropertyGroup.value_selected ;
-			
-			var itc_obj = this.ParentComponent;
-			var id_input = 'ecgrw-'+ this.IdCriteriaGroupe +'-input-value' ;
-
-			document.getElementById(id_input).style.display = 'block' ;
-			document.getElementById(id_input).closest('.list-widget').querySelector('.no-items').style.display = 'none' ;
-
-			var items = listDatasource.getItems(
-				startClassGroup_value,
-				ObjectPropertyGroup_value,
-				endClassGroup_value,
-				function( items ) {
-					if (items.length > 0) {
-						$.each( items, function( key, val ) {				  
-							var label = listHandler.elementLabel(val) ; 
-							var uri = listHandler.elementUri(val) ; 
-							$('#'+id_input).append( "<option value='" + uri + "' title='" + label + "'>" + label + "</option>" );
-						});
-						$('#'+id_input).niceSelect();
-						$('#'+id_input).on("change", function() {
-							$(itc_obj).trigger('change') ;
-						});
-					} else {
-						document.getElementById(id_input).style.display = 'none' ;
-						document.getElementById(id_input).closest('.list-widget').querySelector('.no-items').style.display = 'block' ;
-						console.warn('No item in widget list for :'+'\n'+' - Start Class => '+startClassGroup_value+'\n'+' - Object property => '+ObjectPropertyGroup_value+'\n'+' - End Class =>'+ endClassGroup_value+' '+'\n'+' - Get data on Url => '+options.url) ;
-					} 
-				}
-			);
-		}
-
-		this.getValue = function() {
-			var id_input = '#'+ this.id_input ;
-			// return $(id_input).val() ;
-
-			return {
-				key: $(id_input).val(),
-				label: $(id_input).find('option:selected').text(),
-				uri: $(id_input).val()
-			} ;
-		}
-	}
-
-	URLListDatasource = function(listHandler) {
-		
-		this.getItems = function(
-			startClassGroup_value,
-			ObjectPropertyGroup_value,
-			endClassGroup_value,
-			callback
-		) {
-			var options = {
-				url: listHandler.listUrl(
-					startClassGroup_value,
-					ObjectPropertyGroup_value,
-					endClassGroup_value
-				),
-				dataType: "json",
-				method: "GET",
-				data: {
-					  dataType: "json"
-				}
-			} ;
-			
-			var request = $.ajax( options );
-			request.done(function( data ) {			  
-			  	var items = listHandler.listLocation(
-			  		startClassGroup_value,
-			  		ObjectPropertyGroup_value,
-			  		endClassGroup_value,
-			  		data
-			  	) ;
-
-			  	var result = [];
-			  	$.each( items, function( key, val ) {				  
-					var label = listHandler.elementLabel(val) ; 
-					var uri = listHandler.elementUri(val) ; 
-					result[uri] = label;
-				});
-
-			  	callback(result);
-			});
-		}
-	}
 
 	DatesWidget = function(inputTypeComponent, datesHandler, langSearch) {
 		this.datesHandler = datesHandler;
 		this.ParentComponent = inputTypeComponent ;
 		this.IdCriteriaGroupe = this.ParentComponent.ParentComponent.parentCriteriaGroup.id ;
-		
+
 		this.html = '<div class="date-widget"><input id="ecgrw-date-'+this.IdCriteriaGroupe+'-input" placeholder="'+langSearch.PlaceHolderDatePeriod+'" /><input id="ecgrw-date-'+this.IdCriteriaGroupe+'-input-start" placeholder="'+langSearch.PlaceHolderDateFrom+'"/><input id="ecgrw-date-'+this.IdCriteriaGroupe+'-input-stop" placeholder="'+langSearch.PlaceHolderDateTo+'" /><input id="ecgrw-date-'+this.IdCriteriaGroupe+'-input-value" type="hidden"/><button class="button-add" id="ecgrw-date-'+this.IdCriteriaGroupe+'-add">'+langSearch.ButtonAdd+'</button></div>' ;
-		
+
 		this.init = function init() {
 			var startClassGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.StartClassGroup.value_selected ;
 			var endClassGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.EndClassGroup.value_selected ;
 			var ObjectPropertyGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.ObjectPropertyGroup.value_selected ;
 			var phrase ="" ;
 			var data_json = null ;
-			
-			var id_inputs = this.IdCriteriaGroupe ;			
-			var itc_obj = this.ParentComponent;			
-			
+
+			var id_inputs = this.IdCriteriaGroupe ;
+			var itc_obj = this.ParentComponent;
+
 			$.ajax({
 				url: datesHandler.datesUrl(
 					startClassGroup_value,
@@ -320,23 +232,23 @@
 				success: function (data){
 					data_json = data;
 				}
-			});			
-			
+			});
+
 			var options = {
-				
+
 				data: data_json,
-			
-				getValue: function (element) { 
+
+				getValue: function (element) {
 					return datesHandler.elementLabel(element) ;
 				},
-				 
+
 				list: {
 					match: {
 						enabled: true
 					},
 
 					onChooseEvent: function() {
-						
+
 						var values = $('#ecgrw-date-'+id_inputs+'-input').getSelectedItemData();
 						var value = datesHandler.elementLabel(values) ;
 						var start = datesHandler.elementStart(values) ;
@@ -345,14 +257,14 @@
 						$('#ecgrw-date-'+id_inputs+'-input').val(value).trigger("change");
 						$('#ecgrw-date-'+id_inputs+'-input-start').val(start).trigger("change");
 						$('#ecgrw-date-'+id_inputs+'-input-stop').val(stop).trigger("change");
-						
+
 						$('#ecgrw-'+id_inputs+'-input-value').val(value).trigger("change");
 					}
 				},
 
 				template: {
 					type: "custom",
-					method: function(value, item) {							
+					method: function(value, item) {
 						var label = datesHandler.elementLabel(item) ;
 						var start = datesHandler.elementStart(item) ;
 						var stop  = datesHandler.elementEnd(item) ;
@@ -362,7 +274,7 @@
 
 				requestDelay: 400
 			};
-			
+
 			$('#ecgrw-date-'+id_inputs+'-input').easyAutocomplete(options);
 			$('#ecgrw-date-'+this.IdCriteriaGroupe+'-add').on('click', function() {
 				$(itc_obj).trigger("change");
@@ -371,12 +283,12 @@
 
 		this.getValue = function() {
 			var id_input = '#ecgrw-date-'+ this.IdCriteriaGroupe +'-input' ;
-			
-			var value = { 
+
+			var value = {
 				start: $(id_input+'-start').val(),
-				stop: $(id_input+'-stop').val() 
+				stop: $(id_input+'-stop').val()
 			} ;
-			
+
 			if ((value.start == '') || (value.stop == '')) {
 				value = null ;
 			} else {
@@ -402,29 +314,29 @@
 				start: value.start,
 				stop: value.stop
 			};
-		}		
+		}
 	}
-	
+
 	TimeDatePickerWidget = function(inputTypeComponent, datesHandler, format, langSearch) {
 		this.datesHandler = datesHandler;
 		this.ParentComponent = inputTypeComponent ;
-		
+
 		this.IdCriteriaGroupe = this.ParentComponent.ParentComponent.parentCriteriaGroup.id ;
 		this.formatDate = format ;
 
 		placeHolder = (this.formatDate == 'day')?langSearch.PlaceholderTimeDateDayFormat:langSearch.PlaceholderTimeDateFormat ;
 		this.html = '<div class="date-widget">'+langSearch.LabelDateFrom+' <input id="ecgrw-date-'+this.IdCriteriaGroupe+'-input-start" placeholder="'+placeHolder+'" autocomplete="off"/> '+langSearch.LabelDateTo+' <input id="ecgrw-date-'+this.IdCriteriaGroupe+'-input-stop" placeholder="'+placeHolder+'" autocomplete="off" /><input id="ecgrw-date-'+this.IdCriteriaGroupe+'-input-value" type="hidden"/><button class="button-add" id="ecgrw-date-'+this.IdCriteriaGroupe+'-add">'+langSearch.ButtonAdd+'</button></div>' ;
-		
+
 		this.init = function init() {
 			var startClassGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.StartClassGroup.value_selected ;
 			var endClassGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.EndClassGroup.value_selected ;
 			var ObjectPropertyGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.ObjectPropertyGroup.value_selected ;
-			
-			var id_inputs = this.IdCriteriaGroupe ;			
+
+			var id_inputs = this.IdCriteriaGroupe ;
 			var itc_obj = this.ParentComponent;
 
 			format = (this.formatDate == 'day')?langSearch.InputTimeDateDayFormat:langSearch.InputTimeDateFormat;
-			
+
 			var options = {
 				language: langSearch.LangCodeTimeDate,
 				autoHide: true,
@@ -432,7 +344,7 @@
 				date: null,
 				startView: 2
 			};
-			
+
 			$('#ecgrw-date-'+id_inputs+'-input-start, #ecgrw-date-'+id_inputs+'-input-stop').datepicker(options);
 			$('#ecgrw-date-'+this.IdCriteriaGroupe+'-add').on('click', function() {
 				$(itc_obj).trigger("change");
@@ -481,7 +393,7 @@
 					value.stop = value.stop + '-12-31T23:59:59';
 				}
 			}
-				
+
 			if ((value.start == null) && (value.stop == null)) {
 				value = null ;
 			}
@@ -521,28 +433,27 @@
 			if (format == 'day') {
 				return '' + y + '-' + (m<=9 ? '0' + m : m) + '-' + (d <= 9 ? '0' + d : d) + "T00:00:00";
 			}
-			return y ;		
-		}	
+			return y ;
+		}
 	}
 
 	SearchWidget = function(inputTypeComponent, langSearch) {
 		this.ParentComponent = inputTypeComponent ;
 		this.IdCriteriaGroupe = this.ParentComponent.ParentComponent.parentCriteriaGroup.id ;
-		
+
 		this.html = '<div class="search-widget"><input id="ecgrw-search-'+this.IdCriteriaGroupe+'-input-value" /><button id="ecgrw-search-'+this.IdCriteriaGroupe+'-add" class="button-add">'+langSearch.ButtonAdd+'</button></div>' ;
-		
+
 		this.init = function init() {
-			var id_inputs = this.IdCriteriaGroupe;			
-			var itc_obj = this.ParentComponent;			
+			var id_inputs = this.IdCriteriaGroupe;
+			var itc_obj = this.ParentComponent;
 			var CriteriaGroup = this.ParentComponent.ParentComponent.parentCriteriaGroup ;
-			
+
 			$('#ecgrw-search-'+this.IdCriteriaGroupe+'-add').on(
 				'click',
 				function() {
 					$('#ecgrw-search-'+id_inputs+'-input-value').trigger("change");
 					$(itc_obj).trigger("change");
-					// N'est plus à cacher, lutilisateur peut choisi d'afficher les valeurs
-					//$(CriteriaGroup.ComponentHtml[0]).addClass('hideEndClassProperty') ;
+					$(CriteriaGroup.ComponentHtml[0]).addClass('hideEndClassProperty') ;
 				}
 			);
 		}
@@ -559,51 +470,9 @@
 		}
 	}
 
-
-	BooleanWidget = function(inputTypeComponent, langSearch) {
-		this.ParentComponent = inputTypeComponent ;
-		this.IdCriteriaGroupe = this.ParentComponent.ParentComponent.parentCriteriaGroup.id ;
-		
-		this.html = '<div class="boolean-widget" id="boolean-widget-'+this.IdCriteriaGroupe+'"><span class="boolean-value" id="boolean-widget-'+this.IdCriteriaGroupe+'-true">'+langSearch.true+'</span> <span class="or">'+langSearch.Or+'</span> <span class="boolean-value" id="boolean-widget-'+this.IdCriteriaGroupe+'-false">'+langSearch.false+'</span><input type="hidden" id="boolean-widget-'+this.IdCriteriaGroupe+'-value" /></div>' ;
-		
-		this.init = function init() {
-			var id_inputs = this.IdCriteriaGroupe;			
-			var itc_obj = this.ParentComponent;			
-			var CriteriaGroup = this.ParentComponent.ParentComponent.parentCriteriaGroup ;
-			var id_input = '#boolean-widget-'+ this.IdCriteriaGroupe +'-value' ;
-
-			$('#boolean-widget-'+this.IdCriteriaGroupe+'-true').on(
-				'click',
-				function() {
-					$(id_input).val("true");
-					$(itc_obj).trigger("change");
-				}
-			);
-
-			$('#boolean-widget-'+this.IdCriteriaGroupe+'-false').on(
-				'click',
-				function() {
-					$(id_input).val("false");
-					$(itc_obj).trigger("change");
-				}
-			);
-		}
-
-		this.getValue = function() {
-			var id_input = '#boolean-widget-'+ this.IdCriteriaGroupe +'-value' ;
-			
-			return {
-				key: $(id_input).val(),
-				label: ($(id_input).val() == "true")?langSearch.true:langSearch.false,
-				boolean: $(id_input).val()
-			}
-		}
-	}
-
-
 	NoWidget = function(inputTypeComponent) {
 		this.html = null ;
-		
+
 		this.init = function init() {
 			// nothing
 		} ;
