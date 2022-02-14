@@ -18,11 +18,14 @@ let multipleHtmlPlugins = htmlPageNames.map(name => {
 });
 
 module.exports = {
-  entry: [ "babel-polyfill", "./src/sparnatural.js" ],
+  entry: {
+		"sparnatural": [ "babel-polyfill", "./src/sparnatural.js"],
+		"demo-styles": [ "./src/assets/stylesheets/antd-for-demo.scss" ]
+	},
   output: {
     path: path.resolve(__dirname, "./dist"),
-    filename: "sparnatural.js"
-  },
+    filename: "[name].js"
+	},
   module: {
     rules: [
     	{
@@ -33,12 +36,12 @@ module.exports = {
     	{
 			test: /\.(sass|scss)$/,
 			use: [
-			{ 
+			{
 				loader: MiniCssExtractPlugin.loader
 			},
 			{
 			    loader: "css-loader" // translates CSS into CommonJS
-			}, 
+			},
 			{
 			    loader: "sass-loader" // compiles Sass to CSS
 			}
@@ -47,7 +50,7 @@ module.exports = {
     	{
 			test: /\.css$/,
 			use: [
-			{ 
+			{
 				loader: MiniCssExtractPlugin.loader
 			},
 			{
@@ -59,12 +62,12 @@ module.exports = {
             test: /\.(png|jp(e*)g|svg|gif)$/,
             use: [{
                 loader: 'url-loader',
-                options: { 
+                options: {
                     limit: 8000,
                     // Convert images < 8kb to base64 strings
                     // in case larger images are processed by file-loader
                     name: 'images/[hash]-[name].[ext]'
-                } 
+                }
             }]
         }
     ]
@@ -81,7 +84,7 @@ module.exports = {
 		inject: 'body'
 	}),
 	new MiniCssExtractPlugin({
-	  filename: "sparnatural.css",
+	  filename: "[name].css",
 	  chunkFilename: "[id].css"
 	}),
 	new CopyPlugin([
@@ -94,7 +97,7 @@ module.exports = {
 	  }),
 	*/
 	new WebpackBundleSizeAnalyzerPlugin('./webpack-bundle-size-analyzer-report.txt')
-	  
+
   ],
 	devServer: {
 	  contentBase: path.resolve(__dirname, "./dist"),
