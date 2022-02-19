@@ -535,7 +535,7 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 			}
 		});
 
-		$(thisForm_.sparnatural).find('div.bg-wrapper').css({background : cssdef+')' }) ;
+		// $(thisForm_.sparnatural).find('div.bg-wrapper').css({background : cssdef+')' }) ;
 
 	}
 
