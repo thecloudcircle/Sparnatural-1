@@ -907,6 +907,12 @@ li.completed {
 
 }
 
+.componentsListe > .groupe:first-child {
+	.CriteriaGroup {
+		margin-top: 0;
+	}
+}
+
 li.hideEndClassProperty {
 	&>div>.EndClassGroup {
 		&>.unselect,
@@ -1009,8 +1015,6 @@ li.hideEndClassProperty {
 	}
 	ul.componentsListe {
 		padding: 0;
-		width: 1200px;
-		max-width: 90%;
 		margin: 0 auto;
 		&,
 		ul {
