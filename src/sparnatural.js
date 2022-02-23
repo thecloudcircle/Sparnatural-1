@@ -31,6 +31,8 @@ const tippy = require('tippy.js').default;
 
 require('tippy.js/dist/tippy.css');
 
+const Sortable = require('sortablejs/modular/sortable.core.esm.js').Sortable;
+
 JsonLdSpecificationProvider = require("./JsonLdSpecificationProvider.js").JsonLdSpecificationProvider;
 SpecificationProviderFactory = require("./SpecificationProviderFactory.js").SpecificationProviderFactory;
 RDFSpecificationProvider = require("./RDFSpecificationProvider.js").RDFSpecificationProvider ;
@@ -305,6 +307,8 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 			// On Clear form new component is automaticaly added, json gets loaded
 			clearForm(form) ;
 
+			form.sparnatural.variablesSelector.loadQuery() ;
+
 			// And now, submit form
 			$(form.sparnatural).trigger('submit')
 			form.preLoad = false ;
@@ -359,6 +363,13 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 			var contexte = $('<div class="bg-wrapper"><ul class="componentsListe"></ul></div>');
 			$(form.sparnatural).append(contexte) ;
 
+			form.queryOptions = {
+				distinct : settings.addDistinct,
+				displayVariableList: ['?this'],
+				orderSort: null,
+				defaultLang: settings.language
+			}
+
 			initGeneralEvent(form) ;
 
 			// triggered when Sparnatural is submitted : generates output SPARQL query
@@ -381,7 +392,6 @@ var Datasources = require("./SparnaturalConfigDatasources.js");
 						// prints the SPARQL generated from the writing of the JSON data structure
 						console.log("*** New SPARQL from JSON data structure ***");
 						var writer = new QuerySPARQLWriter(
-							settings.addDistinct,
 							settings.typePredicate,
 							specProvider
 						);
