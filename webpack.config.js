@@ -18,14 +18,11 @@ let multipleHtmlPlugins = htmlPageNames.map(name => {
 });
 
 module.exports = {
-  entry: {
-		"sparnatural": [ "babel-polyfill", "./src/sparnatural.js"],
-		"demo-styles": [ "./src/assets/stylesheets/antd-for-demo.scss" ]
-	},
+  entry: [ "babel-polyfill", "./src/sparnatural.js" ],
   output: {
     path: path.resolve(__dirname, "./dist"),
-    filename: "[name].js"
-	},
+    filename: "sparnatural.js"
+  },
   module: {
     rules: [
     	{
@@ -36,12 +33,12 @@ module.exports = {
     	{
 			test: /\.(sass|scss)$/,
 			use: [
-			{
+			{ 
 				loader: MiniCssExtractPlugin.loader
 			},
 			{
 			    loader: "css-loader" // translates CSS into CommonJS
-			},
+			}, 
 			{
 			    loader: "sass-loader" // compiles Sass to CSS
 			}
@@ -50,7 +47,7 @@ module.exports = {
     	{
 			test: /\.css$/,
 			use: [
-			{
+			{ 
 				loader: MiniCssExtractPlugin.loader
 			},
 			{
@@ -62,12 +59,12 @@ module.exports = {
             test: /\.(png|jp(e*)g|svg|gif)$/,
             use: [{
                 loader: 'url-loader',
-                options: {
+                options: { 
                     limit: 8000,
                     // Convert images < 8kb to base64 strings
                     // in case larger images are processed by file-loader
                     name: 'images/[hash]-[name].[ext]'
-                }
+                } 
             }]
         }
     ]
@@ -84,19 +81,26 @@ module.exports = {
 		inject: 'body'
 	}),
 	new MiniCssExtractPlugin({
-	  filename: "[name].css",
+	  filename: "sparnatural.css",
 	  chunkFilename: "[id].css"
 	}),
 	new CopyPlugin([
       { from: 'static' }
     ]),
 	new DashboardPlugin(),
+	// so that JQuery is automatically inserted
+	new webpack.ProvidePlugin({
+	  $: 'jquery',
+	  jQuery: 'jquery',
+	})
 	/*
 	new webpack.ProvidePlugin({
         datepicker: '@chenfengyuan/datepicke',
 	  }),
 	*/
+	/*
 	new WebpackBundleSizeAnalyzerPlugin('./webpack-bundle-size-analyzer-report.txt')
+	*/
 
   ],
 	devServer: {
