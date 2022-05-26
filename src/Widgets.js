@@ -1,4 +1,9 @@
 
+	const jstree = require('jstree').default;
+	const datepicker = require('@chenfengyuan/datepicker').default;
+	const select2 = require('select2');
+	require('select2/dist/css/select2.css');
+	const tippy = require('tippy.js').default;
 
 	AutoCompleteWidget = function(inputTypeComponent, autocompleteHandler) {
 		this.autocompleteHandler = autocompleteHandler;
@@ -17,6 +22,7 @@
 			var isMatch = autocompleteHandler.enableMatch(startClassGroup_value, ObjectPropertyGroup_value, endClassGroup_value);
 
 			var $loading_indicator = $('<div class="sparnatural--loading"></div>');
+
 			var options = {
 				// ajaxSettings: {crossDomain: true, type: 'GET'} ,
 				url: function(phrase) {
@@ -40,7 +46,7 @@
 					},
 					complete: function(a,b,c) {
 						$('#ecgrw-'+id_inputs+'-input').closest('.easy-autocomplete').find('.sparnatural--loading').remove()
-					}
+					},
 				},
 
 				preparePostData: function(data) {
@@ -50,6 +56,7 @@
 				},
 
 				list: {
+					maxNumberOfElements: 100,
 					match: {
 						enabled: isMatch
 					},
@@ -69,7 +76,6 @@
 			};
 			//Need to add in html befor
 
-
 			$('#ecgrw-'+id_inputs+'-input').easyAutocomplete(options);
 		}
 
@@ -85,10 +91,11 @@
 		}
 	};
 
-	ListWidget = function(inputTypeComponent, listHandler, langSearch, settings) {
+	ListWidget = function(inputTypeComponent, listHandler, langSearch, settings, sort) {
 		this.listHandler = listHandler;
 		this.ParentComponent = inputTypeComponent ;
 		this.IdCriteriaGroupe = this.ParentComponent.ParentComponent.parentCriteriaGroup.id ;
+		this.sort = sort;
 
 		this.id_input = 'ecgrw-'+ this.IdCriteriaGroupe +'-input-value' ;
 		this.html = '<div class="list-widget"><select id="'+this.id_input+'"></select><div class="no-items" style="display: none; font-style:italic;">'+langSearch.ListWidgetNoItem+'</div></div>' ;
@@ -121,8 +128,6 @@
 			};
 			let temp = new LocalCacheData() ;
 			let fetchpromise = temp.fetch(url, init, settings.localCacheDataTtl) ;
-			var $loading_indicator = $('<div class="sparnatural--loading"></div>');
-			$('#'+id_input).closest('.list-widget').append($loading_indicator);
 			fetchpromise.then(response => response.json())
 			.then(data => {
 				var items = listHandler.listLocation(
@@ -131,18 +136,32 @@
 					endClassGroup_value,
 					data
 				) ;
-
-				$('#'+id_input).siblings('.sparnatural--loading').remove();
 				if (items.length > 0) {
+
+					if(sort) {
+						// here, if we need to sort, then sort according to lang
+						var collator = new Intl.Collator(settings.language);
+						items.sort(function(a, b) {
+							return collator.compare(listHandler.elementLabel(a),listHandler.elementLabel(b));
+						});
+					}
+
 					$.each( items, function( key, val ) {
 						var label = listHandler.elementLabel(val) ;
 						var uri = listHandler.elementUri(val) ;
 						$('#'+id_input).append( "<option value='" + uri + "'>" + label + "</option>" );
 					});
-					$('#'+id_input).niceSelect();
-					$('#'+id_input).on("change", function() {
-						$(itc_obj).trigger('change') ;
-					});
+					if(items.length < 30) {
+						$('#'+id_input).niceSelect();
+						$('#'+id_input).on("change", function() {
+							$(itc_obj).trigger('change') ;
+						});
+					} else {
+						$('#'+id_input).select2();
+						$('#'+id_input).on("select2:close", function() {
+							$(itc_obj).trigger('change') ;
+						});
+					}
 				} else {
 					document.getElementById(id_input).style.display = 'none' ;
 					document.getElementById(id_input).closest('.list-widget').querySelector('.no-items').style.display = 'block' ;
@@ -204,12 +223,113 @@
 		}
 	}
 
+
+	ListWidgetNew = function(inputTypeComponent, listDatasource, langSearch) {
+		this.listDatasource = listDatasource;
+		this.ParentComponent = inputTypeComponent ;
+		this.IdCriteriaGroupe = this.ParentComponent.ParentComponent.parentCriteriaGroup.id ;
+
+		this.id_input = 'ecgrw-'+ this.IdCriteriaGroupe +'-input-value' ;
+		this.html = '<div class="list-widget"><select id="'+this.id_input+'"></select><div class="no-items" style="display: none; font-style:italic;">'+langSearch.ListWidgetNoItem+'</div></div>' ;
+
+		this.init = function init() {
+			var startClassGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.StartClassGroup.value_selected ;
+			var endClassGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.EndClassGroup.value_selected ;
+			var ObjectPropertyGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.ObjectPropertyGroup.value_selected ;
+
+			var itc_obj = this.ParentComponent;
+			var id_input = 'ecgrw-'+ this.IdCriteriaGroupe +'-input-value' ;
+
+			document.getElementById(id_input).style.display = 'block' ;
+			document.getElementById(id_input).closest('.list-widget').querySelector('.no-items').style.display = 'none' ;
+
+			var $loading_indicator = $('<div class="sparnatural--loading"></div>');
+			$('#'+id_input).closest('.list-widget').append($loading_indicator);
+
+			var items = listDatasource.getItems(
+				startClassGroup_value,
+				ObjectPropertyGroup_value,
+				endClassGroup_value,
+				function( items ) {
+					if (items.length > 0) {
+						$.each( items, function( key, val ) {
+							var label = listHandler.elementLabel(val) ;
+							var uri = listHandler.elementUri(val) ;
+							$('#'+id_input).append( "<option value='" + uri + "' title='" + label + "'>" + label + "</option>" );
+						});
+						$('#'+id_input).niceSelect();
+						$('#'+id_input).on("change", function() {
+							$(itc_obj).trigger('change') ;
+						});
+					} else {
+						document.getElementById(id_input).style.display = 'none' ;
+						document.getElementById(id_input).closest('.list-widget').querySelector('.no-items').style.display = 'block' ;
+						console.warn('No item in widget list for :'+'\n'+' - Start Class => '+startClassGroup_value+'\n'+' - Object property => '+ObjectPropertyGroup_value+'\n'+' - End Class =>'+ endClassGroup_value+' '+'\n'+' - Get data on Url => '+options.url) ;
+					}
+				}
+			);
+		}
+
+		this.getValue = function() {
+			var id_input = '#'+ this.id_input ;
+			// return $(id_input).val() ;
+
+			return {
+				key: $(id_input).val(),
+				label: $(id_input).find('option:selected').text(),
+				uri: $(id_input).val()
+			} ;
+		}
+	}
+
+	URLListDatasource = function(listHandler) {
+
+		this.getItems = function(
+			startClassGroup_value,
+			ObjectPropertyGroup_value,
+			endClassGroup_value,
+			callback
+		) {
+			var options = {
+				url: listHandler.listUrl(
+					startClassGroup_value,
+					ObjectPropertyGroup_value,
+					endClassGroup_value
+				),
+				dataType: "json",
+				method: "GET",
+				data: {
+					  dataType: "json"
+				}
+			} ;
+
+			var request = $.ajax( options );
+			request.done(function( data ) {
+			  	var items = listHandler.listLocation(
+			  		startClassGroup_value,
+			  		ObjectPropertyGroup_value,
+			  		endClassGroup_value,
+			  		data
+			  	) ;
+
+			  	var result = [];
+			  	$.each( items, function( key, val ) {
+					var label = listHandler.elementLabel(val) ;
+					var uri = listHandler.elementUri(val) ;
+					result[uri] = label;
+				});
+
+			  	callback(result);
+			});
+		}
+	}
+
 	DatesWidget = function(inputTypeComponent, datesHandler, langSearch) {
 		this.datesHandler = datesHandler;
 		this.ParentComponent = inputTypeComponent ;
 		this.IdCriteriaGroupe = this.ParentComponent.ParentComponent.parentCriteriaGroup.id ;
 
-		this.html = '<div class="date-widget"><input id="ecgrw-date-'+this.IdCriteriaGroupe+'-input" placeholder="'+langSearch.PlaceHolderDatePeriod+'" /><input id="ecgrw-date-'+this.IdCriteriaGroupe+'-input-start" placeholder="'+langSearch.PlaceHolderDateFrom+'"/><input id="ecgrw-date-'+this.IdCriteriaGroupe+'-input-stop" placeholder="'+langSearch.PlaceHolderDateTo+'" /><input id="ecgrw-date-'+this.IdCriteriaGroupe+'-input-value" type="hidden"/><button class="button-add" id="ecgrw-date-'+this.IdCriteriaGroupe+'-add">'+langSearch.ButtonAdd+'</button></div>' ;
+		this.html = '<div class="date-widget"><input id="ecgrw-date-'+this.IdCriteriaGroupe+'-input" placeholder="'+langSearch.PlaceHolderDatePeriod+'" /><input id="ecgrw-date-'+this.IdCriteriaGroupe+'-input-start" placeholder="'+langSearch.TimeWidgetDateFrom+'"/><input id="ecgrw-date-'+this.IdCriteriaGroupe+'-input-stop" placeholder="'+langSearch.TimeWidgetDateTo+'" /><input id="ecgrw-date-'+this.IdCriteriaGroupe+'-input-value" type="hidden"/><button class="button-add" id="ecgrw-date-'+this.IdCriteriaGroupe+'-add">'+langSearch.ButtonAdd+'</button></div>' ;
 
 		this.init = function init() {
 			var startClassGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.StartClassGroup.value_selected ;
@@ -325,7 +445,8 @@
 		this.formatDate = format ;
 
 		placeHolder = (this.formatDate == 'day')?langSearch.PlaceholderTimeDateDayFormat:langSearch.PlaceholderTimeDateFormat ;
-		this.html = '<div class="date-widget">'+langSearch.LabelDateFrom+' <input id="ecgrw-date-'+this.IdCriteriaGroupe+'-input-start" placeholder="'+placeHolder+'" autocomplete="off"/> '+langSearch.LabelDateTo+' <input id="ecgrw-date-'+this.IdCriteriaGroupe+'-input-stop" placeholder="'+placeHolder+'" autocomplete="off" /><input id="ecgrw-date-'+this.IdCriteriaGroupe+'-input-value" type="hidden"/><button class="button-add" id="ecgrw-date-'+this.IdCriteriaGroupe+'-add">'+langSearch.ButtonAdd+'</button></div>' ;
+		this.html = '<div class="date-widget">'+langSearch.LabelDateFrom+' <input id="ecgrw-date-'+this.IdCriteriaGroupe+'-input-start" placeholder="'+placeHolder+'" autocomplete="off"/> '+langSearch.LabelDateTo+' <input id="ecgrw-date-'+this.IdCriteriaGroupe+'-input-stop" placeholder="'+placeHolder+'" autocomplete="off" /><input id="ecgrw-date-'+this.IdCriteriaGroupe+'-input-value" type="hidden"/>';
+		this.html += '&nbsp;<span id="circle-info-'+this.IdCriteriaGroupe+'" data-tippy-content="'+((this.formatDate == 'day')?langSearch.TimeWidgetDateHelp:langSearch.TimeWidgetYearHelp)+'">'+UiuxConfig.ICON_CIRCLE_INFO+'</span><button class="button-add" id="ecgrw-date-'+this.IdCriteriaGroupe+'-add">'+langSearch.ButtonAdd+'</button></div>' ;
 
 		this.init = function init() {
 			var startClassGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.StartClassGroup.value_selected ;
@@ -335,7 +456,7 @@
 			var id_inputs = this.IdCriteriaGroupe ;
 			var itc_obj = this.ParentComponent;
 
-			format = (this.formatDate == 'day')?langSearch.InputTimeDateDayFormat:langSearch.InputTimeDateFormat;
+			format = (this.formatDate == 'day')?langSearch.TimeWidgetDateFormat:langSearch.TimeWidgetYearFormat;
 
 			var options = {
 				language: langSearch.LangCodeTimeDate,
@@ -349,6 +470,14 @@
 			$('#ecgrw-date-'+this.IdCriteriaGroupe+'-add').on('click', function() {
 				$(itc_obj).trigger("change");
 			});
+
+			// set a tooltip on the info circle
+			var tippySettings = Object.assign({}, this.ParentComponent.settings.tooltipConfig);
+			tippySettings.placement = "left";
+			tippySettings.trigger = "click";
+			tippySettings.offset = [(this.formatDate == 'day')?75:50,-20];
+			tippySettings.delay = [0,0];
+			tippy('#circle-info-'+this.IdCriteriaGroupe, tippySettings);
 		}
 
 		this.getValue = function() {
@@ -384,6 +513,12 @@
 			if (this.formatDate == 'day') {
 				dateToYMD(start, 'day') ;
 				value = { start: dateToYMD(start, 'day') , stop: dateToYMD(end, 'day')  } ;
+				if (value.start != null)  {
+					value.start = value.start + 'T00:00:00';
+				}
+				if (value.stop != null)  {
+					value.stop = value.stop + 'T23:59:59';
+				}
 			} else {
 				value = { start: dateToYMD(start, false) , stop: dateToYMD(end, false)  } ;
 				if (value.start != null)  {
@@ -431,7 +566,7 @@
 			var m = date.getMonth() + 1; //Month from 0 to 11
 			var y = date.getFullYear();
 			if (format == 'day') {
-				return '' + y + '-' + (m<=9 ? '0' + m : m) + '-' + (d <= 9 ? '0' + d : d) + "T00:00:00";
+				return '' + y + '-' + (m<=9 ? '0' + m : m) + '-' + (d <= 9 ? '0' + d : d);
 			}
 			return y ;
 		}
@@ -453,7 +588,8 @@
 				function() {
 					$('#ecgrw-search-'+id_inputs+'-input-value').trigger("change");
 					$(itc_obj).trigger("change");
-					$(CriteriaGroup.ComponentHtml[0]).addClass('hideEndClassProperty') ;
+					// N'est plus à cacher, lutilisateur peut choisi d'afficher les valeurs
+					//$(CriteriaGroup.ComponentHtml[0]).addClass('hideEndClassProperty') ;
 				}
 			);
 		}
@@ -470,6 +606,48 @@
 		}
 	}
 
+
+	BooleanWidget = function(inputTypeComponent, langSearch) {
+		this.ParentComponent = inputTypeComponent ;
+		this.IdCriteriaGroupe = this.ParentComponent.ParentComponent.parentCriteriaGroup.id ;
+
+		this.html = '<div class="boolean-widget" id="boolean-widget-'+this.IdCriteriaGroupe+'"><span class="boolean-value" id="boolean-widget-'+this.IdCriteriaGroupe+'-true">'+langSearch.true+'</span> <span class="or">'+langSearch.Or+'</span> <span class="boolean-value" id="boolean-widget-'+this.IdCriteriaGroupe+'-false">'+langSearch.false+'</span><input type="hidden" id="boolean-widget-'+this.IdCriteriaGroupe+'-value" /></div>' ;
+
+		this.init = function init() {
+			var id_inputs = this.IdCriteriaGroupe;
+			var itc_obj = this.ParentComponent;
+			var CriteriaGroup = this.ParentComponent.ParentComponent.parentCriteriaGroup ;
+			var id_input = '#boolean-widget-'+ this.IdCriteriaGroupe +'-value' ;
+
+			$('#boolean-widget-'+this.IdCriteriaGroupe+'-true').on(
+				'click',
+				function() {
+					$(id_input).val("true");
+					$(itc_obj).trigger("change");
+				}
+			);
+
+			$('#boolean-widget-'+this.IdCriteriaGroupe+'-false').on(
+				'click',
+				function() {
+					$(id_input).val("false");
+					$(itc_obj).trigger("change");
+				}
+			);
+		}
+
+		this.getValue = function() {
+			var id_input = '#boolean-widget-'+ this.IdCriteriaGroupe +'-value' ;
+
+			return {
+				key: $(id_input).val(),
+				label: ($(id_input).val() == "true")?langSearch.true:langSearch.false,
+				boolean: $(id_input).val()
+			}
+		}
+	}
+
+
 	NoWidget = function(inputTypeComponent) {
 		this.html = null ;
 
@@ -482,3 +660,247 @@
 			return null;
 		}
 	}
+
+	TreeWidget = function(inputTypeComponent, loaderHandler, settings, langSearch) {
+		this.loaderHandler = loaderHandler;
+		this.ParentComponent = inputTypeComponent ;
+		this.langSearch = langSearch;
+		this.IdCriteriaGroupe = this.ParentComponent.ParentComponent.parentCriteriaGroup.id ;
+		this.html = '<a id="ecgrw-'+this.IdCriteriaGroupe+'-input" class="treeBtnDisplay">'+UiuxConfig.ICON_TREE+'</a><input id="ecgrw-'+this.IdCriteriaGroupe+'-input-value" type="hidden"/><div  id="ecgrw-'+this.IdCriteriaGroupe+'-displayLayer" class="treeLayer"><div class="treeClose"><i class="far fa-times-circle"></i></div><div class="treeNotice"></div><div class="treeDisplay" id="ecgrw-'+this.IdCriteriaGroupe+'-display"></div><div class="treeActions"><a class="treeCancel">'+this.langSearch.TreeWidgetDelete+'</a><a class="treeSubmit">'+this.langSearch.TreeWidgetSelect+'</a></div></div>' ;
+
+		this.init = function init() {
+			var startClassGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.StartClassGroup.value_selected ;
+			var endClassGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.EndClassGroup.value_selected ;
+			var ObjectPropertyGroup_value = this.ParentComponent.ParentComponent.parentCriteriaGroup.ObjectPropertyGroup.value_selected ;
+
+			var id_inputs = this.IdCriteriaGroupe ;
+			this.itc_obj = this.ParentComponent;
+
+			//console.log(this.loaderHandler) ;
+			var self = this ;
+			var options = {
+				'core' : {
+					"multiple" : true,
+					'data' : function (node, callback) {
+
+						var options = {
+							url: node.id === '#' ?
+						 		loaderHandler.treeRootUrl(startClassGroup_value, ObjectPropertyGroup_value, endClassGroup_value) :
+						 		loaderHandler.treeChildrenUrl(startClassGroup_value, ObjectPropertyGroup_value, endClassGroup_value, node.id),
+							dataType: "json",
+							method: "GET",
+							data: {
+								  dataType: "json"
+							}
+						} ;
+
+						var request = $.ajax( options );
+
+						request.done(function( data ) {
+							var result = [];
+							var items = loaderHandler.nodeListLocation(startClassGroup_value, ObjectPropertyGroup_value, endClassGroup_value, data);
+							for (var i = 0; i < items.length; i++) {
+								var aNode = {
+									id: loaderHandler.nodeUri(items[i]),
+									text: loaderHandler.nodeLabel(items[i])
+								};
+								if(loaderHandler.nodeHasChildren(items[i])) {
+									aNode.children = true ;
+								}
+								if(loaderHandler.nodeDisabled(items[i])) {
+									aNode.state = {
+										disabled  : true  // node disabled
+									}
+								}
+								aNode.parent=node.id;
+								result.push(aNode);
+							}
+							callback.call(this, result);
+							if( node.id === '#') {
+								self.onTreeDataLoaded(result);
+							}
+
+						});
+			        },
+					"themes" : {
+						"icons" : false
+					}
+				},
+				/*"massload" : {
+					"url" : loaderHandler.treeChildrenUrl(startClassGroup_value, ObjectPropertyGroup_value, endClassGroup_value, node.id),
+					"data" : function (nodes) {
+					  return { "ids" : nodes.join(",") };
+					}
+				},*/
+				"checkbox" : {
+					"keep_selected_style" : false,
+					"three_state" : false,
+					"cascade" : 'down+undetermined',
+					"cascade_to_disabled" : true
+				},
+				"plugins" : [ "changed", "wholerow", "checkbox"/*, "massload", "state" */ ]
+			} ;
+			//Need to add in html befor
+
+			this.jsTree = $('#ecgrw-'+id_inputs+'-display').jstree(options);
+
+			$('#ecgrw-'+this.IdCriteriaGroupe+'-input').on("click",  { arg1 : this },  this.onClickDisplay);
+			//disable/enable on max selction
+			this.jsTree.on("changed.jstree",  { arg1 : this },  this.onChangedJstree);
+			this.jsTree.on("after_open.jstree",  { arg1 : this },  this.onChangedJstree);
+
+			$('#ecgrw-'+this.IdCriteriaGroupe+'-displayLayer').find('.treeSubmit').on("click",  { arg1 : this },  this.onClickSelect);
+			$('#ecgrw-'+this.IdCriteriaGroupe+'-displayLayer').find('.treeCancel').on("click",  { arg1 : this },  this.onClickCancel);
+			$('#ecgrw-'+this.IdCriteriaGroupe+'-displayLayer').find('.treeClose').on("click",  { arg1 : this },  this.onClickClose);
+
+
+			$('#ecgrw-'+this.IdCriteriaGroupe+'-displayLayer').hide() ;
+
+			/*$('#ecgrw-'+id_inputs+'-input').on('changed.jstree', function (e, data) {
+				if(data && data.selected && data.selected.length) {
+					$.get(loaderHandler.treeChildrenUrl(startClassGroup_value, ObjectPropertyGroup_value, endClassGroup_value, data.selected.join(':')) , function (d) {
+						if(d && typeof d.type !== 'undefined') {
+							$('#data .content').hide();
+							switch(d.type) {
+								case 'text':
+								case 'txt':
+								case 'md':
+								case 'htaccess':
+								case 'log':
+								case 'sql':
+								case 'php':
+								case 'js':
+								case 'json':
+								case 'css':
+								case 'html':
+									$('#data .code').show();
+									$('#code').val(d.content);
+									break;
+								case 'png':
+								case 'jpg':
+								case 'jpeg':
+								case 'bmp':
+								case 'gif':
+									$('#data .image img').one('load', function () { $(this).css({'marginTop':'-' + $(this).height()/2 + 'px','marginLeft':'-' + $(this).width()/2 + 'px'}); }).attr('src',d.content);
+									$('#data .image').show();
+									break;
+								default:
+									$('#data .default').html(d.content).show();
+									break;
+							}
+						}
+					});
+				}
+			});*/
+		}
+
+		this.onTreeDataLoaded = function onTreeDataLoaded(result) {
+			if(result.length == 0) {
+				$('#ecgrw-'+this.IdCriteriaGroupe+'-displayLayer .treeNotice').text(this.langSearch.TreeWidgetNoData).show() ;
+
+			} else {
+				$('#ecgrw-'+this.IdCriteriaGroupe+'-displayLayer .treeNotice').hide() ;
+			}
+		}
+
+		//limit to 3 selction
+		this.onChangedJstree = function (e, data) {
+			this_ = e.data.arg1;
+			var items = $(this_.jsTree).find('li.jstree-node') ;
+
+			var selecteds = this_.jsTree.jstree().get_top_checked() ;
+			for (var i = 0; i < items.length; i++) {
+				var id = $(items[i]).attr('id') ;
+				if(selecteds.indexOf(id) > -1) {
+					$(items[i]).addClass('tree-item-selected') ;
+				} else {
+					$(items[i]).removeClass('tree-item-selected') ;
+				}
+				if($(items[i]).parents('.tree-item-selected').length  > 0) {
+					var node = this_.jsTree.jstree(true).get_node(id) ;
+					if(!this_.jsTree.jstree(true).is_disabled(node)) {
+						$(items[i]).addClass('is-reactivable') ;
+						this_.jsTree.jstree(true).disable_checkbox(node);
+						this_.jsTree.jstree(true).disable_node(node);
+					}
+				} else {
+					if($(items[i]).hasClass('is-reactivable') ) {
+						$(items[i]).addClass('red') ;
+						this_.jsTree.jstree('enable_checkbox', id);
+						this_.jsTree.jstree(true).enable_node(id);
+					}
+				}
+			}
+
+			//console.log(data);
+			if (this_.jsTree.jstree().get_top_checked().length >= settings.maxOr) {
+
+				for (var i = 0; i < items.length; i++) {
+					var id = $(items[i]).attr('id') ;
+					if(selecteds.indexOf(id) == -1) {
+						var node = this_.jsTree.jstree(true).get_node(id) ;
+						if(!this_.jsTree.jstree(true).is_disabled(node)) {
+							$(items[i]).addClass('is-reactivable') ;
+							this_.jsTree.jstree(true).disable_checkbox(node);
+							this_.jsTree.jstree(true).disable_node(node);
+						}
+
+					}
+				}
+				this_.jsTree.addClass('max-selected') ;
+			} else {
+				if (this_.jsTree.hasClass('max-selected')) {
+					var items = $(this_.jsTree).find('li.jstree-node') ;
+					for (var i = 0; i < items.length; i++) {
+						var id = $(items[i]).attr('id') ;
+						if(selecteds.indexOf(id) == -1) {
+							if($(items[i]).hasClass('is-reactivable') ) {
+								$(items[i]).addClass('red') ;
+								if($(items[i]).parents('.tree-item-selected').length  == 0) {
+									this_.jsTree.jstree('enable_checkbox', id);
+									this_.jsTree.jstree(true).enable_node(id);
+								}
+							}
+						}
+					}
+					this_.jsTree.removeClass('max-selected')
+				}
+			}
+		}
+
+		this.onClickDisplay = function(e) {
+			this_ = e.data.arg1;
+			$('#ecgrw-'+this_.IdCriteriaGroupe+'-displayLayer').show() ;
+		}
+		this.onClickCancel = function(e) {
+			this_ = e.data.arg1;
+			this_.jsTree.jstree().deselect_all()
+			//$('#ecgrw-'+this_.IdCriteriaGroupe+'-displayLayer').hide() ;
+		}
+		this.onClickSelect = function(e) {
+			this_ = e.data.arg1;
+			$('#ecgrw-'+this_.IdCriteriaGroupe+'-displayLayer').hide() ;
+			$(this_.itc_obj).trigger("change");
+		}
+		this.onClickClose = function(e) {
+			this_ = e.data.arg1;
+			$('#ecgrw-'+this_.IdCriteriaGroupe+'-displayLayer').hide() ;
+		}
+
+		this.getValue = function() {
+			var checked = this.jsTree.jstree().get_top_checked(true);
+
+			// rebuild a clean data structure
+			var values = [] ;
+			for (var node in checked) {
+				var v = {
+					key: checked[node].id,
+					label: checked[node].original.text,
+					uri: checked[node].id
+				} ;
+				values.push(v) ;
+			}
+
+			return values ;
+		}
+	};

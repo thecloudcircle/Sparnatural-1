@@ -37,6 +37,8 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 				value == "sparnatural:NonSelectableProperty"
 				||
 				value == "sparnatural:BooleanProperty"
+				||
+				value == "sparnatural:TreeProperty"
 			) {
 				return this._expand(value);
 			}
@@ -45,23 +47,44 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 
 	this.getDatasource = function(propertyOrClassId) {
 		var propertyOrClass = this._getResourceById(propertyOrClassId);
+		return this._buildDatasource(propertyOrClass['datasource']);
+	}
 
-		var datasourceValue = propertyOrClass['datasource'];
+	this.getTreeRootsDatasource = function(propertyOrClassId) {
+		var propertyOrClass = this._getResourceById(propertyOrClassId);
+		return this._buildDatasource(propertyOrClass['treeRootsDatasource']);
+	}
 
-		if(datasourceValue == null) {
+	this.getTreeChildrenDatasource = function(propertyOrClassId) {
+		var propertyOrClass = this._getResourceById(propertyOrClassId);
+		return this._buildDatasource(propertyOrClass['treeChildrenDatasource']);
+	}
+
+	/**
+	 * {
+	 *   queryString: "...",
+	 *   queryTemplate: "...",
+	 *   labelPath: "...",
+	 *   labelProperty: "...",
+	 *   childrenPath: "...",
+	 *   childrenProperty: "..."
+	 * }
+	 **/
+	this._buildDatasource = function(datasourceObject) {
+		if(datasourceObject == null) {
 			return null;
 		}
 
 		var datasource = {};
-		
-		if (typeof datasourceValue === "object") {
+
+		if (typeof datasourceObject === "object") {
 			// if datasource is an object...
 
 			// Alternative 1 : read optional queryString
-			datasource.queryString = datasourceValue['queryString'];
+			datasource.queryString = datasourceObject['queryString'];
 
 			// Alternative 2 : queryTemplate + labelPath
-			var queryTemplate = datasourceValue['queryTemplate'];
+			var queryTemplate = datasourceObject['queryTemplate'];
 
 			if(queryTemplate != null) {
 				var expandedQueryTemplate = this._expand(queryTemplate);
@@ -71,40 +94,52 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 					datasource.queryTemplate = knownQueryTemplate;
 				} else {
 					// 2.2 Unknown, could be defined in the config itself
+					// TODO
+					console.log("Reference to custom query template currently unsupported in JSON config");
 				}
 			}
 
 			// labelPath
-			datasource.labelPath = datasourceValue['labelPath'];
+			datasource.labelPath = datasourceObject['labelPath'];
 
 			// labelProperty
-			datasource.labelProperty = datasourceValue['labelProperty'];
+			datasource.labelProperty = datasourceObject['labelProperty'];
+
+			// childrenPath
+			datasource.childrenPath = datasourceObject['childrenPath'];
+
+			// childrenProperty
+			datasource.childrenProperty = datasourceObject['childrenProperty'];
 
 			// read optional sparqlEndpointUrl
-			datasource.sparqlEndpointUrl = datasourceValue['sparqlEndpointUrl'];
+			datasource.sparqlEndpointUrl = datasourceObject['sparqlEndpointUrl'];
+
+			// read optional noSort
+			datasource.noSort = datasourceObject['noSort'];
 		} else {
 			// if datasource is a URI...
 			// look it up in known datasources config
-			datasource = Datasources.DATASOURCES_CONFIG.get(this._expand(datasourceValue));
+			datasource = Datasources.DATASOURCES_CONFIG.get(this._expand(datasourceObject));
 			if(datasource == null) {
 				// look it up in the config
-				// TODO
-			}			
+				console.log("Reference to custom datasource URI currently unsupported in JSON config");
+			}
 		}
 
 		return datasource;
 	}
 
 	this.getIcon = function(classId) {
-		if(this._getResourceById(classId)["faIcon"] != null) {
-			// use of fa-fw for fixed-width icons
-			return "<span style='font-size: 170%;' >&nbsp;<i class='" + this._getResourceById(classId)["faIcon"] + " fa-fw'></i></span>";
-		} else if (this._getResourceById(classId)["icon"] != null) {
-			return this._getResourceById(classId)["icon"];
-		} else {
-			// this is ugly, just so it aligns with other entries having an icon
-			return "<span style='font-size: 175%;' >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
-		}
+		// if(this._getResourceById(classId)["faIcon"] != null) {
+		// 	// use of fa-fw for fixed-width icons
+		// 	return "<span style='font-size: 170%;' >&nbsp;<i class='" + this._getResourceById(classId)["faIcon"] + " fa-fw'></i></span>";
+		// } else if (this._getResourceById(classId)["icon"] != null) {
+		// 	return this._getResourceById(classId)["icon"];
+		// } else {
+		// 	// this is ugly, just so it aligns with other entries having an icon
+		// 	return "<span style='font-size: 175%;' >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
+		// }
+		return "";
 	}
 
 	this.getHighlightedIcon = function(classId) {
@@ -139,11 +174,27 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 		return null ;
 	}
 
+	this.getDefaultLabelProperty = function(classId) {
+		return this._readValue(classId, 'defaultLabelProperty');
+	}
+
+	this.getBeginDateProperty = function(propertyId) {
+		return this._readValue(propertyId, 'beginDateProperty');
+	}
+
+	this.getEndDateProperty = function(propertyId) {
+		return this._readValue(propertyId, 'endDateProperty');
+	}
+
+	this.getExactDateProperty = function(propertyId) {
+		return this._readValue(propertyId, 'exactDateProperty');
+	}
+
 	this.isEnablingOptional = function(propertyId) {
 		var item = this._getResourceById(propertyId) ;
 		if (item !== null) {
 			return (item['enableOptional'] == true);
-		}	
+		}
 
 		return false;
 	}
@@ -152,7 +203,7 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 		var item = this._getResourceById(propertyId) ;
 		if (item !== null) {
 			return (item['enableNegation'] == true);
-		}	
+		}
 
 		return false;
 	}
@@ -161,7 +212,7 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 		var item = this._getResourceById(propertyId) ;
 		if (item !== null) {
 			return (item['isMultilingual'] == true);
-		}	
+		}
 
 		return false;
 	}
@@ -181,15 +232,15 @@ var JsonLdSpecificationProvider = function(specs, lang) {
     }
 
 
-	/* 
+	/*
 		List of possible Class relative to a Class
-		return array of @type Class in jsonSpecs 
+		return array of @type Class in jsonSpecs
 	*/
 	this.getConnectedClasses = function(classId) {
 		var items = [];
 
 		for(var j in this.jsonSpecs['@graph']) {
-			var item = this.jsonSpecs['@graph'][j];		
+			var item = this.jsonSpecs['@graph'][j];
 			if (this._isObjectProperty(item)) {
 				if (this._inDomainOf(item, classId)) {
 					var values = this._readRange(item);
@@ -219,8 +270,8 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 		var items = [];
 
 		for(var j in this.jsonSpecs['@graph']) {
-			var item = this.jsonSpecs['@graph'][j];		
-			if (this._isObjectProperty(item)) {				
+			var item = this.jsonSpecs['@graph'][j];
+			if (this._isObjectProperty(item)) {
 				var domains = this._readDomain(item);
 				for(var i in domains) {
 					var aClass = domains[i]
@@ -241,7 +292,7 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 
 	/* List of possible ObjectProperty relative to a Class
 		@Id of Class
-		return array of @type ObjectProperty in jsonSpecs 
+		return array of @type ObjectProperty in jsonSpecs
 	*/
 	this.getConnectingProperties = function(domainClassId, rangeClassId) {
 		var items = [];
@@ -264,7 +315,7 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 
 	this.isRemoteClass = function(classUri) {
 		var classEntity = this._getResourceById(classUri);
-		
+
 		if(classEntity['subClassOf']) {
 			var superClasses = (classEntity['subClassOf'] === "object")?classEntity['subClassOf']:new Array(classEntity['subClassOf']);
 			for(var i in superClasses) {
@@ -307,6 +358,14 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 		return sparql;
 	}
 
+	this.readRange = function(objectProperty) {
+		var propertyEntity = this._getResourceById(objectProperty);
+		if(propertyEntity != null) {
+			return this._readRange(propertyEntity);
+		}
+		return null;
+	}
+
 
 	this._sortItemsByIndex = function(items) {
 		var me = this;
@@ -323,7 +382,7 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 			return comparison;
 		});
 
-		return items;	
+		return items;
 	}
 
 
@@ -350,11 +409,21 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 				var value = objectProperty[domainOrRange]['unionOf']['@list'][i];
 				result.push(value['@id']);
 			}
-		} else {
+		} else if (objectProperty[domainOrRange]) {
 			result.push(objectProperty[domainOrRange]);
 		}
 
 		return result;
+	}
+
+	this._readValue = function(id, key) {
+		var theObject = this._getResourceById(id);
+
+		if(theObject !== null && theObject[key]) {
+			return theObject[key];
+		}
+
+		return null;
 	}
 
 	this._isObjectProperty = function(item) {
@@ -402,7 +471,7 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 			} else {
 				return this.jsonSpecs['@context']['@vocab']+id;
 			}
-		}		
+		}
 	}
 
 	this._pushIfNotExist = function(item, items) {
@@ -410,11 +479,11 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 			items.push(item) ;
 		}
 
-		return items ;			
+		return items ;
 	}
 
 }
 
 module.exports = {
-	JsonLdSpecificationProvider: JsonLdSpecificationProvider	
+	JsonLdSpecificationProvider: JsonLdSpecificationProvider
 }
