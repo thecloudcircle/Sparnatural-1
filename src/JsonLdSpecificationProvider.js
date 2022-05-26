@@ -76,7 +76,7 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 		}
 
 		var datasource = {};
-		
+
 		if (typeof datasourceObject === "object") {
 			// if datasource is an object...
 
@@ -123,22 +123,23 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 			if(datasource == null) {
 				// look it up in the config
 				console.log("Reference to custom datasource URI currently unsupported in JSON config");
-			}			
+			}
 		}
 
 		return datasource;
 	}
 
 	this.getIcon = function(classId) {
-		if(this._getResourceById(classId)["faIcon"] != null) {
-			// use of fa-fw for fixed-width icons
-			return "<span style='font-size: 170%;' >&nbsp;<i class='" + this._getResourceById(classId)["faIcon"] + " fa-fw'></i></span>";
-		} else if (this._getResourceById(classId)["icon"] != null) {
-			return this._getResourceById(classId)["icon"];
-		} else {
-			// this is ugly, just so it aligns with other entries having an icon
-			return "<span style='font-size: 175%;' >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
-		}
+		// if(this._getResourceById(classId)["faIcon"] != null) {
+		// 	// use of fa-fw for fixed-width icons
+		// 	return "<span style='font-size: 170%;' >&nbsp;<i class='" + this._getResourceById(classId)["faIcon"] + " fa-fw'></i></span>";
+		// } else if (this._getResourceById(classId)["icon"] != null) {
+		// 	return this._getResourceById(classId)["icon"];
+		// } else {
+		// 	// this is ugly, just so it aligns with other entries having an icon
+		// 	return "<span style='font-size: 175%;' >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
+		// }
+		return "";
 	}
 
 	this.getHighlightedIcon = function(classId) {
@@ -193,7 +194,7 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 		var item = this._getResourceById(propertyId) ;
 		if (item !== null) {
 			return (item['enableOptional'] == true);
-		}	
+		}
 
 		return false;
 	}
@@ -202,7 +203,7 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 		var item = this._getResourceById(propertyId) ;
 		if (item !== null) {
 			return (item['enableNegation'] == true);
-		}	
+		}
 
 		return false;
 	}
@@ -211,7 +212,7 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 		var item = this._getResourceById(propertyId) ;
 		if (item !== null) {
 			return (item['isMultilingual'] == true);
-		}	
+		}
 
 		return false;
 	}
@@ -231,15 +232,15 @@ var JsonLdSpecificationProvider = function(specs, lang) {
     }
 
 
-	/* 
+	/*
 		List of possible Class relative to a Class
-		return array of @type Class in jsonSpecs 
+		return array of @type Class in jsonSpecs
 	*/
 	this.getConnectedClasses = function(classId) {
 		var items = [];
 
 		for(var j in this.jsonSpecs['@graph']) {
-			var item = this.jsonSpecs['@graph'][j];		
+			var item = this.jsonSpecs['@graph'][j];
 			if (this._isObjectProperty(item)) {
 				if (this._inDomainOf(item, classId)) {
 					var values = this._readRange(item);
@@ -269,8 +270,8 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 		var items = [];
 
 		for(var j in this.jsonSpecs['@graph']) {
-			var item = this.jsonSpecs['@graph'][j];		
-			if (this._isObjectProperty(item)) {				
+			var item = this.jsonSpecs['@graph'][j];
+			if (this._isObjectProperty(item)) {
 				var domains = this._readDomain(item);
 				for(var i in domains) {
 					var aClass = domains[i]
@@ -291,7 +292,7 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 
 	/* List of possible ObjectProperty relative to a Class
 		@Id of Class
-		return array of @type ObjectProperty in jsonSpecs 
+		return array of @type ObjectProperty in jsonSpecs
 	*/
 	this.getConnectingProperties = function(domainClassId, rangeClassId) {
 		var items = [];
@@ -314,7 +315,7 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 
 	this.isRemoteClass = function(classUri) {
 		var classEntity = this._getResourceById(classUri);
-		
+
 		if(classEntity['subClassOf']) {
 			var superClasses = (classEntity['subClassOf'] === "object")?classEntity['subClassOf']:new Array(classEntity['subClassOf']);
 			for(var i in superClasses) {
@@ -381,7 +382,7 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 			return comparison;
 		});
 
-		return items;	
+		return items;
 	}
 
 
@@ -470,7 +471,7 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 			} else {
 				return this.jsonSpecs['@context']['@vocab']+id;
 			}
-		}		
+		}
 	}
 
 	this._pushIfNotExist = function(item, items) {
@@ -478,11 +479,11 @@ var JsonLdSpecificationProvider = function(specs, lang) {
 			items.push(item) ;
 		}
 
-		return items ;			
+		return items ;
 	}
 
 }
 
 module.exports = {
-	JsonLdSpecificationProvider: JsonLdSpecificationProvider	
+	JsonLdSpecificationProvider: JsonLdSpecificationProvider
 }
