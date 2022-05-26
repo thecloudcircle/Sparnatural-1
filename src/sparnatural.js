@@ -986,7 +986,7 @@ UiuxConfig = require("./UiuxConfig.js");
 				$('.variablesOtherSelect .sortableItem').remove() ;
 
 				var new_component = addComponent(formObject, formContextHtml, jsonQueryBranch) ;
-				$(new_component).find('.StartClassGroup .nice-select:not(.disabled)').trigger('click') ;
+				// $(new_component).find('.StartClassGroup .nice-select:not(.disabled)').trigger('click') ;
 			} else {
 				if (parentOrSibling !== null) {
 					var dependantComponent = parentOrSibling.element ;
