@@ -11,7 +11,7 @@
         <http://data.sparna.fr/ontologies/sparnatural-config-datasources> .
 
 :access_status a owl:ObjectProperty ;
-    rdfs:label "access_status"@en ;
+    rdfs:label "access status"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P6954>"^^xsd:string ;
@@ -22,7 +22,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :access_status_of a owl:ObjectProperty ;
-    rdfs:label "access_status_of"@en ;
+    rdfs:label "access status of"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P6954>"^^xsd:string ;
@@ -44,7 +44,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :active_ingredient_in a owl:ObjectProperty ;
-    rdfs:label "active_ingredient_in"@en ;
+    rdfs:label "active ingredient in"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P3780>"^^xsd:string ;
@@ -55,7 +55,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :active_ingredient_of a owl:ObjectProperty ;
-    rdfs:label "active_ingredient_of"@en ;
+    rdfs:label "active ingredient of"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P3781>"^^xsd:string ;
@@ -89,7 +89,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :anatomical_location a owl:ObjectProperty ;
-    rdfs:label "anatomical_location"@en ;
+    rdfs:label "anatomical location"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P927>"^^xsd:string ;
@@ -111,7 +111,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :award_given_to a owl:ObjectProperty ;
-    rdfs:label "award_given_to"@en ;
+    rdfs:label "award given to"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P166>"^^xsd:string ;
@@ -122,7 +122,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :award_received a owl:ObjectProperty ;
-    rdfs:label "award_received"@en ;
+    rdfs:label "award received"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P166>"^^xsd:string ;
@@ -133,7 +133,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :binds_compound a owl:ObjectProperty ;
-    rdfs:label "binds_compound"@en ;
+    rdfs:label "binds compound"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P129>"^^xsd:string ;
@@ -144,7 +144,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :binds_protein a owl:ObjectProperty ;
-    rdfs:label "binds_protein"@en ;
+    rdfs:label "binds protein"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P129>"^^xsd:string ;
@@ -155,7 +155,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :board_member a owl:ObjectProperty ;
-    rdfs:label "board_member"@en ;
+    rdfs:label "board member"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P3320>"^^xsd:string ;
@@ -166,7 +166,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :board_member_of a owl:ObjectProperty ;
-    rdfs:label "board_member_of"@en ;
+    rdfs:label "board member of"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P3320>"^^xsd:string ;
@@ -177,7 +177,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :cause_of a owl:ObjectProperty ;
-    rdfs:label "cause_of"@en ;
+    rdfs:label "cause of"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P828>"^^xsd:string ;
@@ -199,7 +199,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :child_taxon a owl:ObjectProperty ;
-    rdfs:label "child_taxon"@en ;
+    rdfs:label "child taxon"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P171>"^^xsd:string ;
@@ -210,7 +210,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :cited_by a owl:ObjectProperty ;
-    rdfs:label "cited_by"@en ;
+    rdfs:label "cited by"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P2860>"^^xsd:string ;
@@ -243,7 +243,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :contains_gene a owl:ObjectProperty ;
-    rdfs:label "contains_gene"@en ;
+    rdfs:label "contains gene"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P1057>"^^xsd:string ;
@@ -265,7 +265,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :country_of_citizenship a owl:ObjectProperty ;
-    rdfs:label "country_of_citizenship"@en ;
+    rdfs:label "country of citizenship"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P27>"^^xsd:string ;
@@ -276,7 +276,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :dedicated_to a owl:ObjectProperty ;
-    rdfs:label "dedicated_to"@en ;
+    rdfs:label "dedicated to"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P825>"^^xsd:string ;
@@ -287,7 +287,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :disease_studied_by_trial a owl:ObjectProperty ;
-    rdfs:label "disease_studied_by_trial"@en ;
+    rdfs:label "disease studied by trial"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P1050>"^^xsd:string ;
@@ -298,7 +298,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :doctoral_advisor a owl:ObjectProperty ;
-    rdfs:label "doctoral_advisor"@en ;
+    rdfs:label "doctoral advisor"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P184>"^^xsd:string ;
@@ -309,7 +309,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :doctoral_student a owl:ObjectProperty ;
-    rdfs:label "doctoral_student"@en ;
+    rdfs:label "doctoral student"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P184>"^^xsd:string ;
@@ -320,7 +320,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :drug_studied_by_trial a owl:ObjectProperty ;
-    rdfs:label "drug_studied_by_trial"@en ;
+    rdfs:label "drug studied by trial"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P4844>"^^xsd:string ;
@@ -343,7 +343,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :editor_of a owl:ObjectProperty ;
-    rdfs:label "editor_of"@en ;
+    rdfs:label "editor of"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P98>"^^xsd:string ;
@@ -365,7 +365,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :educated_at a owl:ObjectProperty ;
-    rdfs:label "educated_at"@en ;
+    rdfs:label "educated at"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P69>"^^xsd:string ;
@@ -398,7 +398,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :encoded_by a owl:ObjectProperty ;
-    rdfs:label "encoded_by"@en ;
+    rdfs:label "encoded by"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P702>"^^xsd:string ;
@@ -420,7 +420,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :entry_receptor a owl:ObjectProperty ;
-    rdfs:label "entry_receptor"@en ;
+    rdfs:label "entry receptor"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P8339>"^^xsd:string ;
@@ -431,7 +431,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :exam_for a owl:ObjectProperty ;
-    rdfs:label "exam_for"@en ;
+    rdfs:label "exam for"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P923>"^^xsd:string ;
@@ -442,7 +442,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :expressed_in a owl:ObjectProperty ;
-    rdfs:label "expressed_in"@en ;
+    rdfs:label "expressed in"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P5572>"^^xsd:string ;
@@ -464,7 +464,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :facilitates_flow_of a owl:ObjectProperty ;
-    rdfs:label "facilitates_flow_of"@en ;
+    rdfs:label "facilitates flow of"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P10228>"^^xsd:string ;
@@ -486,7 +486,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :founded_by a owl:ObjectProperty ;
-    rdfs:label "founded_by"@en ;
+    rdfs:label "founded by"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P1066>"^^xsd:string ;
@@ -497,7 +497,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :genetic_association a owl:ObjectProperty ;
-    rdfs:label "genetic_association"@en ;
+    rdfs:label "genetic association"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P2293>"^^xsd:string ;
@@ -508,7 +508,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :has_active_ingredient a owl:ObjectProperty ;
-    rdfs:label "has_active_ingredient"@en ;
+    rdfs:label "has active ingredient"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P3781>"^^xsd:string ;
@@ -519,7 +519,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :has_cause a owl:ObjectProperty ;
-    rdfs:label "has_cause"@en ;
+    rdfs:label "has cause"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P828>"^^xsd:string ;
@@ -530,7 +530,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :has_entry_receptor a owl:ObjectProperty ;
-    rdfs:label "has_entry_receptor"@en ;
+    rdfs:label "has entry receptor"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P8339>"^^xsd:string ;
@@ -541,7 +541,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :has_flow_facilitated_by a owl:ObjectProperty ;
-    rdfs:label "has_flow_facilitated_by"@en ;
+    rdfs:label "has flow facilitated by"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P10228>"^^xsd:string ;
@@ -552,7 +552,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :has_marker a owl:ObjectProperty ;
-    rdfs:label "has_marker"@en ;
+    rdfs:label "has marker"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P8872>"^^xsd:string ;
@@ -563,7 +563,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :has_natural_reservoir a owl:ObjectProperty ;
-    rdfs:label "has_natural_reservoir"@en ;
+    rdfs:label "has natural reservoir"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P1605>"^^xsd:string ;
@@ -574,7 +574,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :has_participant_in_process a owl:ObjectProperty ;
-    rdfs:label "has_participant_in_process"@en ;
+    rdfs:label "has participant in process"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P682>"^^xsd:string ;
@@ -585,7 +585,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :has_student a owl:ObjectProperty ;
-    rdfs:label "has_student"@en ;
+    rdfs:label "has student"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P802>"^^xsd:string ;
@@ -596,7 +596,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :has_subsidiary a owl:ObjectProperty ;
-    rdfs:label "has_subsidiary"@en ;
+    rdfs:label "has subsidiary"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P355>"^^xsd:string ;
@@ -607,7 +607,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :has_symptom a owl:ObjectProperty ;
-    rdfs:label "has_symptom"@en ;
+    rdfs:label "has symptom"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P780>"^^xsd:string ;
@@ -618,7 +618,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :has_variant a owl:ObjectProperty ;
-    rdfs:label "has_variant"@en ;
+    rdfs:label "has variant"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P3433>"^^xsd:string ;
@@ -629,7 +629,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :is_a_transmission_process_of a owl:ObjectProperty ;
-    rdfs:label "is_a_transmission_process_of"@en ;
+    rdfs:label "is a transmission process of"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P1060>"^^xsd:string ;
@@ -640,7 +640,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :is_acknowledged_by a owl:ObjectProperty ;
-    rdfs:label "is_acknowledged_by"@en ;
+    rdfs:label "is acknowledged by"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P7137>"^^xsd:string ;
@@ -651,7 +651,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :is_afflicted_by a owl:ObjectProperty ;
-    rdfs:label "is_afflicted_by"@en ;
+    rdfs:label "is afflicted by"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P689>"^^xsd:string ;
@@ -662,7 +662,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :is_author_of a owl:ObjectProperty ;
-    rdfs:label "is_author_of"@en ;
+    rdfs:label "is author of"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P50>"^^xsd:string ;
@@ -673,7 +673,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :is_chairperson_of a owl:ObjectProperty ;
-    rdfs:label "is_chairperson_of"@en ;
+    rdfs:label "is chairperson of"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P488>"^^xsd:string ;
@@ -684,7 +684,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :is_country_of a owl:ObjectProperty ;
-    rdfs:label "is_country_of"@en ;
+    rdfs:label "is country of"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P17>"^^xsd:string ;
@@ -695,7 +695,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :is_country_of_citizenship_of a owl:ObjectProperty ;
-    rdfs:label "is_country_of_citizenship_of"@en ;
+    rdfs:label "is country of citizenship of"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P27>"^^xsd:string ;
@@ -706,7 +706,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :is_inherited_in_the_mode a owl:ObjectProperty ;
-    rdfs:label "is_inherited_in_the_mode"@en ;
+    rdfs:label "is inherited in the mode"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P1199>"^^xsd:string ;
@@ -717,7 +717,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :is_pregnancy_category_of a owl:ObjectProperty ;
-    rdfs:label "is_pregnancy_category_of"@en ;
+    rdfs:label "is pregnancy category of"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P3489>"^^xsd:string ;
@@ -728,7 +728,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :is_side_effect_of a owl:ObjectProperty ;
-    rdfs:label "is_side_effect_of"@en ;
+    rdfs:label "is side effect of"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P1909>"^^xsd:string ;
@@ -739,7 +739,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :is_way_of_administration_of a owl:ObjectProperty ;
-    rdfs:label "is_way_of_administration_of"@en ;
+    rdfs:label "is way of administration of"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P636>"^^xsd:string ;
@@ -751,7 +751,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :located_in_structure a owl:ObjectProperty ;
-    rdfs:label "located_in_structure"@en ;
+    rdfs:label "located in structure"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P927>"^^xsd:string ;
@@ -762,7 +762,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :main_subject a owl:ObjectProperty ;
-    rdfs:label "main_subject"@en ;
+    rdfs:label "main subject"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P921>"^^xsd:string ;
@@ -773,7 +773,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :main_subject_of a owl:ObjectProperty ;
-    rdfs:label "main_subject_of"@en ;
+    rdfs:label "main subject of"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P921>"^^xsd:string ;
@@ -784,7 +784,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :marker_of a owl:ObjectProperty ;
-    rdfs:label "marker_of"@en ;
+    rdfs:label "marker of"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P8872>"^^xsd:string ;
@@ -795,7 +795,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :may_be_prevented_by a owl:ObjectProperty ;
-    rdfs:label "may_be_prevented_by"@en ;
+    rdfs:label "may be prevented by"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P4954>"^^xsd:string ;
@@ -807,7 +807,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :may_prevent a owl:ObjectProperty ;
-    rdfs:label "may_prevent"@en ;
+    rdfs:label "may prevent"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P4954>"^^xsd:string ;
@@ -819,7 +819,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :medical_condition a owl:ObjectProperty ;
-    rdfs:label "medical_condition"@en ;
+    rdfs:label "medical condition"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P1050>"^^xsd:string ;
@@ -830,7 +830,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :medical_examinations a owl:ObjectProperty ;
-    rdfs:label "medical_examinations"@en ;
+    rdfs:label "medical examinations"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P923>"^^xsd:string ;
@@ -841,7 +841,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :mode_of_inheritance a owl:ObjectProperty ;
-    rdfs:label "mode_of_inheritance"@en ;
+    rdfs:label "mode of inheritance"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P1199>"^^xsd:string ;
@@ -852,7 +852,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :natural_product_of_taxon a owl:ObjectProperty ;
-    rdfs:label "natural_product_of_taxon"@en ;
+    rdfs:label "natural product of taxon"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P1582>"^^xsd:string ;
@@ -863,7 +863,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :natural_reservoir_of a owl:ObjectProperty ;
-    rdfs:label "natural_reservoir_of"@en ;
+    rdfs:label "natural reservoir of"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P1606>"^^xsd:string ;
@@ -874,7 +874,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :parent_organization a owl:ObjectProperty ;
-    rdfs:label "parent_organization"@en ;
+    rdfs:label "parent organization"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P749>"^^xsd:string ;
@@ -885,7 +885,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :parent_taxon a owl:ObjectProperty ;
-    rdfs:label "parent_taxon"@en ;
+    rdfs:label "parent taxon"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P171>"^^xsd:string ;
@@ -896,7 +896,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :participates_in_process a owl:ObjectProperty ;
-    rdfs:label "participates_in_process"@en ;
+    rdfs:label "participates in process"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P682>"^^xsd:string ;
@@ -907,7 +907,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :pregnancy_category a owl:ObjectProperty ;
-    rdfs:label "pregnancy_category"@en ;
+    rdfs:label "pregnancy category"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P3489>"^^xsd:string ;
@@ -918,7 +918,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :present_in_chromosome a owl:ObjectProperty ;
-    rdfs:label "present_in_chromosome"@en ;
+    rdfs:label "present in chromosome"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P1057>"^^xsd:string ;
@@ -929,7 +929,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :present_in_component a owl:ObjectProperty ;
-    rdfs:label "present_in_component"@en ;
+    rdfs:label "present in component"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P681>"^^xsd:string ;
@@ -940,7 +940,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :present_in_this_component a owl:ObjectProperty ;
-    rdfs:label "present_in_this_component"@en ;
+    rdfs:label "present in this component"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P681>"^^xsd:string ;
@@ -962,7 +962,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :published_by a owl:ObjectProperty ;
-    rdfs:label "published_by"@en ;
+    rdfs:label "published by"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P123>"^^xsd:string ;
@@ -973,7 +973,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :research_intervention a owl:ObjectProperty ;
-    rdfs:label "research_intervention"@en ;
+    rdfs:label "research intervention"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P4844>"^^xsd:string ;
@@ -985,7 +985,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :sexually_homologous_with a owl:ObjectProperty ;
-    rdfs:label "sexually_homologous_with"@en ;
+    rdfs:label "sexually homologous with"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P4545>"^^xsd:string ;
@@ -996,7 +996,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :side_effect a owl:ObjectProperty ;
-    rdfs:label "side_effect"@en ;
+    rdfs:label "side effect"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P1909>"^^xsd:string ;
@@ -1007,7 +1007,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :significant_drug_interaction a owl:ObjectProperty ;
-    rdfs:label "significant_drug_interaction"@en ;
+    rdfs:label "significant drug interaction"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P769>"^^xsd:string ;
@@ -1018,7 +1018,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :student_of a owl:ObjectProperty ;
-    rdfs:label "student_of"@en ;
+    rdfs:label "student of"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P1066>"^^xsd:string ;
@@ -1040,7 +1040,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :supervised_by a owl:ObjectProperty ;
-    rdfs:label "supervised_by"@en ;
+    rdfs:label "supervised by"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P7604>"^^xsd:string ;
@@ -1051,7 +1051,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :symptom_of a owl:ObjectProperty ;
-    rdfs:label "symptom_of"@en ;
+    rdfs:label "symptom of"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P780>"^^xsd:string ;
@@ -1062,7 +1062,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :taxon_is_source_of a owl:ObjectProperty ;
-    rdfs:label "taxon_is_source_of"@en ;
+    rdfs:label "taxon is source of"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P1582>"^^xsd:string ;
@@ -1073,7 +1073,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :transmission_process a owl:ObjectProperty ;
-    rdfs:label "transmission_process"@en ;
+    rdfs:label "transmission process"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P1060>"^^xsd:string ;
@@ -1084,7 +1084,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :treated_by a owl:ObjectProperty ;
-    rdfs:label "treated_by"@en ;
+    rdfs:label "treated by"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P2176>"^^xsd:string ;
@@ -1107,7 +1107,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :variant_of a owl:ObjectProperty ;
-    rdfs:label "variant_of"@en ;
+    rdfs:label "variant of"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P3433>"^^xsd:string ;
@@ -1118,7 +1118,7 @@
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :was_dedicated_ a owl:ObjectProperty ;
-    rdfs:label "was_dedicated_"@en ;
+    rdfs:label "was dedicated "@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P825>"^^xsd:string ;
@@ -1196,7 +1196,7 @@ ORDER BY ?label
 LIMIT 50"""^^xsd:string .
 
 :Access_Status a owl:Class ;
-    rdfs:label "Access_Status"@en ;
+    rdfs:label "Access Status"@en ;
     spar2:faIcon "fas fa-block-brick-fire"^^xsd:string ;
     spar2:sparqlString "<http://www.wikidata.org/entity/Q66439731>"^^xsd:string ;
     rdfs:subClassOf spar2:SparnaturalClass .
@@ -1208,7 +1208,7 @@ LIMIT 50"""^^xsd:string .
     rdfs:subClassOf spar2:SparnaturalClass .
 
 :Cell_Component a owl:Class ;
-    rdfs:label "Cell_Component"@en ;
+    rdfs:label "Cell Component"@en ;
     spar2:faIcon "fas fa-cloudsmith"^^xsd:string ;
     spar2:sparqlString "<http://www.wikidata.org/entity/Q5058355>"^^xsd:string ;
     rdfs:subClassOf spar2:SparnaturalClass .
@@ -1220,25 +1220,25 @@ LIMIT 50"""^^xsd:string .
     rdfs:subClassOf spar2:SparnaturalClass .
 
 :Gene_Variant a owl:Class ;
-    rdfs:label "Gene_Variant"@en ;
+    rdfs:label "Gene Variant"@en ;
     spar2:faIcon "fas fa-dna"^^xsd:string ;
     spar2:sparqlString "<http://www.wikidata.org/entity/Q15304597>"^^xsd:string ;
     rdfs:subClassOf spar2:SparnaturalClass .
 
 :Medical_Test a owl:Class ;
-    rdfs:label "Medical_Test"@en ;
+    rdfs:label "Medical Test"@en ;
     spar2:faIcon "fas fa-stethoscope"^^xsd:string ;
     spar2:sparqlString "<http://www.wikidata.org/entity/Q55215251>"^^xsd:string ;
     rdfs:subClassOf spar2:SparnaturalClass .
 
 :Mode_of_Inheritance a owl:Class ;
-    rdfs:label "Mode_of_Inheritance"@en ;
+    rdfs:label "Mode of Inheritance"@en ;
     spar2:faIcon "fas fa-sitemap"^^xsd:string ;
     spar2:sparqlString "<http://www.wikidata.org/entity/Q1348351>"^^xsd:string ;
     rdfs:subClassOf spar2:SparnaturalClass .
 
 :Route_of_Administration a owl:Class ;
-    rdfs:label "Route_of_Administration"@en ;
+    rdfs:label "Route of Administration"@en ;
     spar2:faIcon "fas fa-syringe"^^xsd:string ;
     spar2:sparqlString "<http://www.wikidata.org/entity/Q621636>"^^xsd:string ;
     rdfs:subClassOf spar2:SparnaturalClass .
@@ -1250,26 +1250,26 @@ LIMIT 50"""^^xsd:string .
     rdfs:subClassOf spar2:SparnaturalClass .
 
 :US_Pregnancy_Category a owl:Class ;
-    rdfs:label "US_Pregnancy_Category"@en ;
+    rdfs:label "US Pregnancy Category"@en ;
     spar2:faIcon "fas fa-baby-carriage"^^xsd:string ;
     spar2:sparqlString "<http://www.wikidata.org/entity/Q28123509>"^^xsd:string ;
     rdfs:subClassOf spar2:SparnaturalClass .
 
 :Biological_Process a owl:Class ;
-    rdfs:label "Biological_Process"@en ;
+    rdfs:label "Biological Process"@en ;
     spar2:faIcon "fas fa-egg"^^xsd:string ;
     spar2:sparqlString "<http://www.wikidata.org/entity/Q2996394>"^^xsd:string ;
     rdfs:subClassOf spar2:SparnaturalClass .
 
 :Cell_Type a owl:Class ;
-    rdfs:label "Cell_Type"@en ;
+    rdfs:label "Cell Type"@en ;
     spar2:faIcon "fas fa-bullseye"^^xsd:string ;
     spar2:order 4 ;
     spar2:sparqlString "<http://www.wikidata.org/entity/Q189118>"^^xsd:string ;
     rdfs:subClassOf spar2:SparnaturalClass .
 
 :Clinical_Trial a owl:Class ;
-    rdfs:label "Clinical_Trial"@en ;
+    rdfs:label "Clinical Trial"@en ;
     spar2:faIcon "fas fa-stethoscope"^^xsd:string ;
     spar2:order 5 ;
     spar2:sparqlString "<http://www.wikidata.org/entity/Q30612>"^^xsd:string ;
@@ -1304,7 +1304,7 @@ LIMIT 50"""^^xsd:string .
     spar:queryTemplate :query_search_wikidata_domain_in_humans .
 
 :Anatomical_Structure a owl:Class ;
-    rdfs:label "Anatomical_Structure"@en ;
+    rdfs:label "Anatomical Structure"@en ;
     spar2:faIcon "fas fa-lungs"^^xsd:string ;
     spar2:sparqlString "<http://www.wikidata.org/entity/Q4936952>"^^xsd:string ;
     rdfs:subClassOf spar2:SparnaturalClass .
@@ -1346,7 +1346,7 @@ LIMIT 50"""^^xsd:string .
     rdfs:subClassOf spar2:SparnaturalClass .
 
 :Chemical_Compound a owl:Class ;
-    rdfs:label "Chemical_Compound"@en ;
+    rdfs:label "Chemical Compound"@en ;
     spar2:faIcon "fas fa-flask"^^xsd:string ;
     spar2:order 3 ;
     spar2:sparqlString "<http://www.wikidata.org/entity/Q11173>"^^xsd:string ;
