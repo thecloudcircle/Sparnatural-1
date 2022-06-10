@@ -90,5 +90,139 @@
 
     <!-- YASGUI stuff -->
     <script src="https://unpkg.com/@triply/yasgui/build/yasgui.min.js"></script>
+    <script>
+      $.urlParam = function(name){
+        var results = new RegExp('[\\?&amp;]' + name + '=([^&amp;#]*)').exec(window.location.href);
+        if(results == null) { return null; }
+        return results[1] || 0;
+      }
+      var lang = ($.urlParam('lang') != null)?$.urlParam('lang'):'en';
+
+      var sparnatural;
+      $( document ).ready(function($) {
+
+        sparnatural = document.getElementById('ui-search').Sparnatural({
+          config: './config_python_test.ttl',
+          language: lang,
+          maxDepth: 4,
+          addDistinct: true,
+          sendQueryOnFirstClassSelected: true,
+          backgroundBaseColor: '255,255,255',
+          autocomplete: null,
+          list: null,
+          defaultEndpoint: $('#endpoint').text(),
+          onQueryUpdated: function (queryString, queryJson) {
+            queryString = semanticPostProcess(queryString, queryJson);
+            queryString = rdfsLabelPostProcess(queryString, queryJson);
+            queryString = orderByPostProcess(queryString, queryJson);
+            queryString = wdtP31PostProcess(queryString, queryJson);
+            $('#sparql code').html(queryString.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+            yasqe.setValue(queryString);
+            // yasqe.query();
+          },
+          tooltipConfig : {
+            delay: [800, 100],
+            duration: [100, 100],
+          },
+          // triggered when "play" button is clicked
+          onSubmit: function(form) {
+            // enable loader on button
+            form.sparnatural.enableLoading() ;
+            // trigger the query from YasQE
+            yasqe.query();
+          }
+        });
+
+      });
+      displayLabelPostProcess = function (queryString, queryJson) {
+        queryString = queryString.replace(new RegExp('}$'), "  OPTIONAL { ?this rdfs:label ?theLabel FILTER(lang(?theLabel) = 'fr') } \n}");
+        queryString = queryString.replace(new RegExp('}$'), "  OPTIONAL { ?this skos:notation ?notation } \n}");
+        queryString = queryString.replace(new RegExp('}$'), "}\nORDER BY ?notation");
+        return queryString;
+      }
+
+
+      rdfsLabelPostProcess = function (queryString, queryJson) {
+        let var_now = "";
+        for (let var_i=0; var_i<queryJson.variables.length; var_i++){
+          var_now = queryJson.variables[var_i];
+          queryString = queryString.replace(new RegExp('}$'), '  ' + var_now + ' rdfs:label ' + var_now + '_label FILTER(lang(' + var_now + '_label) = "en") \n}');
+        }
+        return queryString;
+      }
+
+      orderByPostProcess = function (queryString, queryJson) {
+        let var_now = "";
+        let projections = "";
+        for (let var_i=0; var_i<queryJson.variables.length; var_i++){
+          var_now = queryJson.variables[var_i];
+          projections = projections + ' ' + var_now + ' ' + var_now + '_label';
+        }
+        queryString = queryString.replace(new RegExp('SELECT DISTINCT .*? WHERE'), 'SELECT DISTINCT ' + projections);
+        return queryString;
+      }
+
+      limitPostProcess = function (queryString, queryJson) {
+        queryString = queryString.replace(new RegExp('$'), "\nLIMIT 1000");
+        // queryString = queryString.replace(new RegExp('}$'), "}\nORDER BY ?label LIMIT 1000");
+        // queryString = queryString.replace(new RegExp('}$'), "}\nLIMIT 1000");
+        return queryString;
+      }
+
+      wdtP31P279PostProcess = function (queryString, queryJson) {
+        return queryString.replaceAll("rdf:type", "<http://www.wikidata.org/prop/direct/P31>/<http://www.wikidata.org/prop/direct/P279>*");
+      }
+
+      wdtP31PostProcess = function (queryString, queryJson) {
+        return queryString.replaceAll("rdf:type", "<http://www.wikidata.org/prop/direct/P31>");
+      }
+
+      prefixesPostProcess = function (queryString, queryJson) {
+        if (queryString.indexOf("rdf-schema#") == -1) {
+          queryString = queryString.replace("SELECT ", "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> \nSELECT ");
+        }
+        return queryString;
+      }
+
+
+
+      semanticPostProcess = function (queryString, queryJson) {
+        queryString = prefixesPostProcess(queryString, queryJson);
+        queryString = sparnatural.expandSparql(queryString);
+        return queryString;
+      }
+
+
+
+      const yasqe = new Yasqe(document.getElementById("yasqe"), {
+        requestConfig: { endpoint: $('#endpoint').text() },
+        copyEndpointOnNewTab: false
+      });
+
+      const yasr = new Yasr(document.getElementById("yasr"), {
+        //this way, the URLs in the results are prettified using the defined prefixes in the query
+        getUsedPrefixes : yasqe.getPrefixesFromQuery,
+        "drawOutputSelector": false,
+        "drawDownloadIcon": false,
+        // avoid persistency side-effects
+        "persistency": { "prefix": false, "results": { "key": false }}
+      });
+
+
+      // link yasqe and yasr
+      yasqe.on("queryResponse", function(_yasqe, response, duration) {
+        yasr.setResponse(response, duration);
+        sparnatural.disableLoading() ;
+      });
+
+      /*console.log('****************************');
+      var codec = require('json-url')('lzma');
+      codec.decompress(savedQuery).then(json => {
+          console.log(json) ;
+          sparnatural.loadData(json) ;
+
+      }) ;*/
+
+    </script>
   </body>
 </html>
