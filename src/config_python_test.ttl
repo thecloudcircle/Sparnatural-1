@@ -1,0 +1,1384 @@
+@prefix : <http://www.semanticweb.org/lubianat/ontologies/2022/4/sparnanatural_wisecube#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix spar: <http://data.sparna.fr/ontologies/sparnatural-config-datasources#> .
+@prefix spar2: <http://data.sparna.fr/ontologies/sparnatural-config-core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.semanticweb.org/lubianat/ontologies/2022/4/sparnanatural_wisecube> a owl:Ontology ;
+    owl:imports <http://data.sparna.fr/ontologies/sparnatural-config-core>,
+        <http://data.sparna.fr/ontologies/sparnatural-config-datasources> .
+
+:access_status a owl:ObjectProperty ;
+    rdfs:label "access_status"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P6954>"^^xsd:string ;
+    spar2:tooltip "property or qualifier for an ID property indicating whether linked content is directly readable online"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Publisher ;
+    rdfs:range :Access_Status ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:access_status_of a owl:ObjectProperty ;
+    rdfs:label "access_status_of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P6954>"^^xsd:string ;
+    spar2:tooltip "access status of"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Access_Status ;
+    rdfs:range :Publisher ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:acknowledges a owl:ObjectProperty ;
+    rdfs:label "acknowledges"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P7137>"^^xsd:string ;
+    spar2:tooltip "persons or institutions acknowledged on a creative work"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Publication ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:active_ingredient_in a owl:ObjectProperty ;
+    rdfs:label "active_ingredient_in"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P3780>"^^xsd:string ;
+    spar2:tooltip "is part of and forms biologically active component. Inverse of \"has active ingredient\""^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Chemical_Compound ;
+    rdfs:range :Drug ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:active_ingredient_of a owl:ObjectProperty ;
+    rdfs:label "active_ingredient_of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P3781>"^^xsd:string ;
+    spar2:tooltip "active ingredient of"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Chemical_Compound ;
+    rdfs:range :Drug ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:administration a owl:ObjectProperty ;
+    rdfs:label "administration"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P636>"^^xsd:string ;
+    spar2:tooltip "path by which a drug, fluid, poison, or other substance is taken into the body"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :Drug :Chemical_Compound ) ] ;
+    rdfs:range :Route_of_Administration ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:afflicts a owl:ObjectProperty ;
+    rdfs:label "afflicts"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P689>"^^xsd:string ;
+    spar2:tooltip "type of organism, organ or anatomical structure which a condition or disease afflicts"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Disease ;
+    rdfs:range :Anatomical_Structure ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:anatomical_location a owl:ObjectProperty ;
+    rdfs:label "anatomical_location"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P927>"^^xsd:string ;
+    spar2:tooltip "where in the body does this anatomical feature lie"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Cell_Type ;
+    rdfs:range :Anatomical_Structure ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:author a owl:ObjectProperty ;
+    rdfs:label "author"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P50>"^^xsd:string ;
+    spar2:tooltip "main creator(s) of a written work (use on works, not humans); use P2093 when Wikidata item is unknown or does not exist"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Publication ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:award_given_to a owl:ObjectProperty ;
+    rdfs:label "award_given_to"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P166>"^^xsd:string ;
+    spar2:tooltip "award given to"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Award ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:award_received a owl:ObjectProperty ;
+    rdfs:label "award_received"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P166>"^^xsd:string ;
+    spar2:tooltip "award or recognition received by a person, organisation or creative work"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Person ;
+    rdfs:range :Award ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:binds_compound a owl:ObjectProperty ;
+    rdfs:label "binds_compound"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P129>"^^xsd:string ;
+    spar2:tooltip "binds compound"@en ;
+    spar:datasource :search_wikidata_domain_in_humans ;
+    rdfs:domain :Protein ;
+    rdfs:range :Chemical_Compound ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:binds_protein a owl:ObjectProperty ;
+    rdfs:label "binds_protein"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P129>"^^xsd:string ;
+    spar2:tooltip "physical entity that the subject interacts with"^^xsd:string ;
+    spar:datasource :search_wikidata_in_humans ;
+    rdfs:domain :Chemical_Compound ;
+    rdfs:range :Protein ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:board_member a owl:ObjectProperty ;
+    rdfs:label "board_member"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P3320>"^^xsd:string ;
+    spar2:tooltip "member(s) of the board for the organization"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Organization ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:board_member_of a owl:ObjectProperty ;
+    rdfs:label "board_member_of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P3320>"^^xsd:string ;
+    spar2:tooltip "board member of"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Person ;
+    rdfs:range :Organization ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:cause_of a owl:ObjectProperty ;
+    rdfs:label "cause_of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P828>"^^xsd:string ;
+    spar2:tooltip "cause of"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Organism ;
+    rdfs:range :Disease ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:chairperson a owl:ObjectProperty ;
+    rdfs:label "chairperson"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P488>"^^xsd:string ;
+    spar2:tooltip "presiding member of an organization, group or body"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Organization ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:child_taxon a owl:ObjectProperty ;
+    rdfs:label "child_taxon"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P171>"^^xsd:string ;
+    spar2:tooltip "child taxon"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Organism ;
+    rdfs:range :Organism ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:cited_by a owl:ObjectProperty ;
+    rdfs:label "cited_by"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P2860>"^^xsd:string ;
+    spar2:tooltip "cited by"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Publication ;
+    rdfs:range :Publication ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:cites a owl:ObjectProperty ;
+    rdfs:label "cites"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P2860>"^^xsd:string ;
+    spar2:tooltip "citation from one creative or scholarly work to another"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Publication ;
+    rdfs:range :Publication ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:comorbidity a owl:ObjectProperty ;
+    rdfs:label "comorbidity"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P7500>"^^xsd:string ;
+    spar2:tooltip "presence of one or more additional conditions co-occurring with (that is, concomitant or concurrent with) a primary condition"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Disease ;
+    rdfs:range :Disease ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:contains_gene a owl:ObjectProperty ;
+    rdfs:label "contains_gene"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P1057>"^^xsd:string ;
+    spar2:tooltip "contains gene"@en ;
+    spar:datasource :search_wikidata_domain_in_humans ;
+    rdfs:domain :Chromosome ;
+    rdfs:range :Gene ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:country a owl:ObjectProperty ;
+    rdfs:label "country"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P17>"^^xsd:string ;
+    spar2:tooltip "sovereign state of this item (not to be used for human beings)"^^xsd:string ;
+    spar:datasource :search_wikidata_all_of_the_type ;
+    rdfs:domain :Organization ;
+    rdfs:range :Country ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:country_of_citizenship a owl:ObjectProperty ;
+    rdfs:label "country_of_citizenship"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P27>"^^xsd:string ;
+    spar2:tooltip "the object is a country that recognizes the subject as its citizen"^^xsd:string ;
+    spar:datasource :search_wikidata_all_of_the_type ;
+    rdfs:domain :Person ;
+    rdfs:range :Country ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:dedicated_to a owl:ObjectProperty ;
+    rdfs:label "dedicated_to"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P825>"^^xsd:string ;
+    spar2:tooltip "person or organization to whom the subject was dedicated"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Publication ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:disease_studied_by_trial a owl:ObjectProperty ;
+    rdfs:label "disease_studied_by_trial"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P1050>"^^xsd:string ;
+    spar2:tooltip "disease studied by trial"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Disease ;
+    rdfs:range :Clinical_Trial ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:doctoral_advisor a owl:ObjectProperty ;
+    rdfs:label "doctoral_advisor"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P184>"^^xsd:string ;
+    spar2:tooltip "person who supervised the doctorate or PhD thesis of the subject"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Person ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:doctoral_student a owl:ObjectProperty ;
+    rdfs:label "doctoral_student"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P184>"^^xsd:string ;
+    spar2:tooltip "doctoral student"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Person ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:drug_studied_by_trial a owl:ObjectProperty ;
+    rdfs:label "drug_studied_by_trial"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P4844>"^^xsd:string ;
+    spar2:tooltip "drug studied by trial"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :Drug :Chemical_Compound ) ] ;
+    rdfs:range :Clinical_Trial ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:editor a owl:ObjectProperty ;
+    rdfs:label "editor"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P98>"^^xsd:string ;
+    spar2:tooltip "editor of a compiled work such as a book or a periodical (newspaper or an academic journal)"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Publisher ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:editor_of a owl:ObjectProperty ;
+    rdfs:label "editor_of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P98>"^^xsd:string ;
+    spar2:tooltip "editor of"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Person ;
+    rdfs:range :Publisher ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:educated a owl:ObjectProperty ;
+    rdfs:label "educated"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P69>"^^xsd:string ;
+    spar2:tooltip "educated"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Organization ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:educated_at a owl:ObjectProperty ;
+    rdfs:label "educated_at"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P69>"^^xsd:string ;
+    spar2:tooltip "educational institution attended by subject"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Person ;
+    rdfs:range :Organization ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:employer a owl:ObjectProperty ;
+    rdfs:label "employer"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P108>"^^xsd:string ;
+    spar2:tooltip "person or organization for which the subject works or worked"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Person ;
+    rdfs:range :Organization ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:employs a owl:ObjectProperty ;
+    rdfs:label "employs"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P108>"^^xsd:string ;
+    spar2:tooltip "employs"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Organization ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:encoded_by a owl:ObjectProperty ;
+    rdfs:label "encoded_by"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P702>"^^xsd:string ;
+    spar2:tooltip "the gene that encodes some gene product"^^xsd:string ;
+    spar:datasource :search_wikidata_in_humans ;
+    rdfs:domain :Protein ;
+    rdfs:range :Gene ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:encodes a owl:ObjectProperty ;
+    rdfs:label "encodes"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P688>"^^xsd:string ;
+    spar2:tooltip "the product of a gene (protein or RNA)"^^xsd:string ;
+    spar:datasource :search_wikidata_in_humans ;
+    rdfs:domain :Gene ;
+    rdfs:range :Protein ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:entry_receptor a owl:ObjectProperty ;
+    rdfs:label "entry_receptor"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P8339>"^^xsd:string ;
+    spar2:tooltip "receptor protein or protein whose receptor is being used by this subject virus/microorganism group to enter cells"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Organism ;
+    rdfs:range :Protein ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:exam_for a owl:ObjectProperty ;
+    rdfs:label "exam_for"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P923>"^^xsd:string ;
+    spar2:tooltip "exam for"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Medical_Test ;
+    rdfs:range :Disease ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:expressed_in a owl:ObjectProperty ;
+    rdfs:label "expressed_in"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P5572>"^^xsd:string ;
+    spar2:tooltip "gene or protein is expressed during a specific condition/cell cycle/process/form"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Gene ;
+    rdfs:range :Anatomical_Structure ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:expresses a owl:ObjectProperty ;
+    rdfs:label "expresses"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P5572>"^^xsd:string ;
+    spar2:tooltip "expresses"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Anatomical_Structure ;
+    rdfs:range :Gene ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:facilitates_flow_of a owl:ObjectProperty ;
+    rdfs:label "facilitates_flow_of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P10228>"^^xsd:string ;
+    spar2:tooltip "the cargo/substrate actively transported or passively channeled by a protein"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Protein ;
+    rdfs:range :Chemical_Compound ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:founded a owl:ObjectProperty ;
+    rdfs:label "founded"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P1066>"^^xsd:string ;
+    spar2:tooltip "founded"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Person ;
+    rdfs:range :Organization ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:founded_by a owl:ObjectProperty ;
+    rdfs:label "founded_by"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P1066>"^^xsd:string ;
+    spar2:tooltip "person who has taught this person"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Organization ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:genetic_association a owl:ObjectProperty ;
+    rdfs:label "genetic_association"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P2293>"^^xsd:string ;
+    spar2:tooltip "genetic association"@en ;
+    spar:datasource :search_wikidata_domain_in_humans ;
+    rdfs:domain :Gene ;
+    rdfs:range :Disease ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:has_active_ingredient a owl:ObjectProperty ;
+    rdfs:label "has_active_ingredient"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P3781>"^^xsd:string ;
+    spar2:tooltip "has part biologically active component. Inverse of \"active ingredient in\""^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Drug ;
+    rdfs:range :Chemical_Compound ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:has_cause a owl:ObjectProperty ;
+    rdfs:label "has_cause"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P828>"^^xsd:string ;
+    spar2:tooltip "underlying cause, thing that ultimately resulted in this effect"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Disease ;
+    rdfs:range :Organism ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:has_entry_receptor a owl:ObjectProperty ;
+    rdfs:label "has_entry_receptor"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P8339>"^^xsd:string ;
+    spar2:tooltip "has entry receptor"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Protein ;
+    rdfs:range :Organism ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:has_flow_facilitated_by a owl:ObjectProperty ;
+    rdfs:label "has_flow_facilitated_by"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P10228>"^^xsd:string ;
+    spar2:tooltip "has flow facilitated by"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Chemical_Compound ;
+    rdfs:range :Protein ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:has_marker a owl:ObjectProperty ;
+    rdfs:label "has_marker"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P8872>"^^xsd:string ;
+    spar2:tooltip "a gene or a protein published as a marker of a species-specific cell type"^^xsd:string ;
+    spar:datasource :search_wikidata_in_humans ;
+    rdfs:domain :Cell_Type ;
+    rdfs:range :Gene ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:has_natural_reservoir a owl:ObjectProperty ;
+    rdfs:label "has_natural_reservoir"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P1605>"^^xsd:string ;
+    spar2:tooltip "host species for the pathogen in which it is endemic"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Disease ;
+    rdfs:range :Organism ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:has_participant_in_process a owl:ObjectProperty ;
+    rdfs:label "has_participant_in_process"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P682>"^^xsd:string ;
+    spar2:tooltip "has participant in process"@en ;
+    spar:datasource :search_wikidata_in_humans ;
+    rdfs:domain :Biological_Process ;
+    rdfs:range :Protein ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:has_student a owl:ObjectProperty ;
+    rdfs:label "has_student"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P802>"^^xsd:string ;
+    spar2:tooltip "notable student(s) of the subject individual"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Person ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:has_subsidiary a owl:ObjectProperty ;
+    rdfs:label "has_subsidiary"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P355>"^^xsd:string ;
+    spar2:tooltip "subsidiary of a company or organization; generally a fully owned separate corporation. Compare with \"business division\" (P199). Opposite of parent organization (P749)."^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Organization ;
+    rdfs:range :Organization ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:has_symptom a owl:ObjectProperty ;
+    rdfs:label "has_symptom"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P780>"^^xsd:string ;
+    spar2:tooltip "possible symptoms of a medical condition"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Disease ;
+    rdfs:range :Symptom ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:has_variant a owl:ObjectProperty ;
+    rdfs:label "has_variant"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P3433>"^^xsd:string ;
+    spar2:tooltip "has variant"@en ;
+    spar:datasource :search_wikidata_domain_in_humans ;
+    rdfs:domain :Gene ;
+    rdfs:range :Gene_Variant ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:is_a_transmission_process_of a owl:ObjectProperty ;
+    rdfs:label "is_a_transmission_process_of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P1060>"^^xsd:string ;
+    spar2:tooltip "is a transmission process of"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Biological_Process ;
+    rdfs:range :Disease ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:is_acknowledged_by a owl:ObjectProperty ;
+    rdfs:label "is_acknowledged_by"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P7137>"^^xsd:string ;
+    spar2:tooltip "is acknowledged by"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Person ;
+    rdfs:range :Publication ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:is_afflicted_by a owl:ObjectProperty ;
+    rdfs:label "is_afflicted_by"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P689>"^^xsd:string ;
+    spar2:tooltip "is afflicted by"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Anatomical_Structure ;
+    rdfs:range :Disease ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:is_author_of a owl:ObjectProperty ;
+    rdfs:label "is_author_of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P50>"^^xsd:string ;
+    spar2:tooltip "is author of"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Person ;
+    rdfs:range :Publication ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:is_chairperson_of a owl:ObjectProperty ;
+    rdfs:label "is_chairperson_of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P488>"^^xsd:string ;
+    spar2:tooltip "is chairperson of"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Person ;
+    rdfs:range :Organization ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:is_country_of a owl:ObjectProperty ;
+    rdfs:label "is_country_of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P17>"^^xsd:string ;
+    spar2:tooltip "is country of"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Country ;
+    rdfs:range :Organization ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:is_country_of_citizenship_of a owl:ObjectProperty ;
+    rdfs:label "is_country_of_citizenship_of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P27>"^^xsd:string ;
+    spar2:tooltip "is country of citizenship of"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Country ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:is_inherited_in_the_mode a owl:ObjectProperty ;
+    rdfs:label "is_inherited_in_the_mode"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P1199>"^^xsd:string ;
+    spar2:tooltip "is inherited in the mode"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Mode_of_Inheritance ;
+    rdfs:range :Disease ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:is_pregnancy_category_of a owl:ObjectProperty ;
+    rdfs:label "is_pregnancy_category_of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P3489>"^^xsd:string ;
+    spar2:tooltip "is pregnancy category of"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :US_Pregnancy_Category ;
+    rdfs:range :Drug ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:is_side_effect_of a owl:ObjectProperty ;
+    rdfs:label "is_side_effect_of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P1909>"^^xsd:string ;
+    spar2:tooltip "is side effect of"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Symptom ;
+    rdfs:range :Drug ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:is_way_of_administration_of a owl:ObjectProperty ;
+    rdfs:label "is_way_of_administration_of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P636>"^^xsd:string ;
+    spar2:tooltip "is way of administration of"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Route_of_Administration ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( :Drug :Chemical_Compound ) ] ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:located_in_structure a owl:ObjectProperty ;
+    rdfs:label "located_in_structure"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P927>"^^xsd:string ;
+    spar2:tooltip "located in structure"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Anatomical_Structure ;
+    rdfs:range :Cell_Type ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:main_subject a owl:ObjectProperty ;
+    rdfs:label "main_subject"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P921>"^^xsd:string ;
+    spar2:tooltip "primary topic of a work (see also P180: depicts)"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Publisher ;
+    rdfs:range :Specialty ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:main_subject_of a owl:ObjectProperty ;
+    rdfs:label "main_subject_of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P921>"^^xsd:string ;
+    spar2:tooltip "main subject of"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Specialty ;
+    rdfs:range :Publisher ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:marker_of a owl:ObjectProperty ;
+    rdfs:label "marker_of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P8872>"^^xsd:string ;
+    spar2:tooltip "marker of"@en ;
+    spar:datasource :search_wikidata_domain_in_humans ;
+    rdfs:domain :Gene ;
+    rdfs:range :Cell_Type ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:may_be_prevented_by a owl:ObjectProperty ;
+    rdfs:label "may_be_prevented_by"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P4954>"^^xsd:string ;
+    spar2:tooltip "may be prevented by"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Disease ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( :Chemical_Compound :Drug ) ] ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:may_prevent a owl:ObjectProperty ;
+    rdfs:label "may_prevent"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P4954>"^^xsd:string ;
+    spar2:tooltip "disease which may be prevented by this substance"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :Chemical_Compound :Drug ) ] ;
+    rdfs:range :Disease ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:medical_condition a owl:ObjectProperty ;
+    rdfs:label "medical_condition"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P1050>"^^xsd:string ;
+    spar2:tooltip "any state relevant to the health of an organism, including diseases and positive conditions"^^xsd:string ;
+    spar:datasource :search_wikidata_all_of_the_type ;
+    rdfs:domain :Clinical_Trial ;
+    rdfs:range :Disease ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:medical_examinations a owl:ObjectProperty ;
+    rdfs:label "medical_examinations"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P923>"^^xsd:string ;
+    spar2:tooltip "examinations that might be used to diagnose and/or prognose the medical condition"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Disease ;
+    rdfs:range :Medical_Test ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:mode_of_inheritance a owl:ObjectProperty ;
+    rdfs:label "mode_of_inheritance"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P1199>"^^xsd:string ;
+    spar2:tooltip "manner in which a particular genetic trait or disorder is passed from one generation to the next"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Disease ;
+    rdfs:range :Mode_of_Inheritance ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:natural_product_of_taxon a owl:ObjectProperty ;
+    rdfs:label "natural_product_of_taxon"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P1582>"^^xsd:string ;
+    spar2:tooltip "links a natural product with its source (animal, plant, fungal, algal, etc.)"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Chemical_Compound ;
+    rdfs:range :Organism ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:natural_reservoir_of a owl:ObjectProperty ;
+    rdfs:label "natural_reservoir_of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P1606>"^^xsd:string ;
+    spar2:tooltip "pathogen of which this species is a long-term host"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Organism ;
+    rdfs:range :Disease ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:parent_organization a owl:ObjectProperty ;
+    rdfs:label "parent_organization"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P749>"^^xsd:string ;
+    spar2:tooltip "parent organization of an organization, opposite of subsidiaries (P355)"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Organization ;
+    rdfs:range :Organization ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:parent_taxon a owl:ObjectProperty ;
+    rdfs:label "parent_taxon"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P171>"^^xsd:string ;
+    spar2:tooltip "closest parent taxon of the taxon in question"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Organism ;
+    rdfs:range :Organism ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:participates_in_process a owl:ObjectProperty ;
+    rdfs:label "participates_in_process"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P682>"^^xsd:string ;
+    spar2:tooltip "is involved in the biological process"^^xsd:string ;
+    spar:datasource :search_wikidata_domain_in_humans ;
+    rdfs:domain :Protein ;
+    rdfs:range :Biological_Process ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:pregnancy_category a owl:ObjectProperty ;
+    rdfs:label "pregnancy_category"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P3489>"^^xsd:string ;
+    spar2:tooltip "official categorisation of safety of medicine in pregnancy"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Drug ;
+    rdfs:range :US_Pregnancy_Category ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:present_in_chromosome a owl:ObjectProperty ;
+    rdfs:label "present_in_chromosome"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P1057>"^^xsd:string ;
+    spar2:tooltip "chromosome on which an entity is localized"^^xsd:string ;
+    spar:datasource :search_wikidata_in_humans ;
+    rdfs:domain :Gene ;
+    rdfs:range :Chromosome ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:present_in_component a owl:ObjectProperty ;
+    rdfs:label "present_in_component"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P681>"^^xsd:string ;
+    spar2:tooltip "component of the cell in which this item is present"^^xsd:string ;
+    spar:datasource :search_wikidata_domain_in_humans ;
+    rdfs:domain :Protein ;
+    rdfs:range :Cell_Component ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:present_in_this_component a owl:ObjectProperty ;
+    rdfs:label "present_in_this_component"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P681>"^^xsd:string ;
+    spar2:tooltip "present in this component"@en ;
+    spar:datasource :search_wikidata_in_humans ;
+    rdfs:domain :Cell_Component ;
+    rdfs:range :Protein ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:published a owl:ObjectProperty ;
+    rdfs:label "published"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P123>"^^xsd:string ;
+    spar2:tooltip "published"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Publisher ;
+    rdfs:range :Publication ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:published_by a owl:ObjectProperty ;
+    rdfs:label "published_by"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P123>"^^xsd:string ;
+    spar2:tooltip "organization or person responsible for publishing books, periodicals, printed music, podcasts, games or software"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Publication ;
+    rdfs:range :Publisher ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:research_intervention a owl:ObjectProperty ;
+    rdfs:label "research_intervention"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P4844>"^^xsd:string ;
+    spar2:tooltip "the focus of an experiment, also called the experimental variable, research activity, or study intervention"^^xsd:string ;
+    spar:datasource :search_wikidata_all_of_the_type ;
+    rdfs:domain :Clinical_Trial ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( :Drug :Chemical_Compound ) ] ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:sexually_homologous_with a owl:ObjectProperty ;
+    rdfs:label "sexually_homologous_with"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P4545>"^^xsd:string ;
+    spar2:tooltip "body part that originates from the same tissue or cell during fetal development in the opposing sex"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Anatomical_Structure ;
+    rdfs:range :Anatomical_Structure ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:side_effect a owl:ObjectProperty ;
+    rdfs:label "side_effect"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P1909>"^^xsd:string ;
+    spar2:tooltip "effect of a medication or procedure, that occurs next to the desired effect"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Drug ;
+    rdfs:range :Symptom ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:significant_drug_interaction a owl:ObjectProperty ;
+    rdfs:label "significant_drug_interaction"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P769>"^^xsd:string ;
+    spar2:tooltip "clinically significant interaction between two pharmacologically active substances (i.e., drugs and/or active metabolites) where concomitant intake can lead to altered effectiveness or adverse drug events."^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Drug ;
+    rdfs:range :Drug ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:student_of a owl:ObjectProperty ;
+    rdfs:label "student_of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P1066>"^^xsd:string ;
+    spar2:tooltip "person who has taught this person"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Person ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:supervised a owl:ObjectProperty ;
+    rdfs:label "supervised"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P7604>"^^xsd:string ;
+    spar2:tooltip "supervised"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Person ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:supervised_by a owl:ObjectProperty ;
+    rdfs:label "supervised_by"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P7604>"^^xsd:string ;
+    spar2:tooltip "Is the natural person who has the authority of giving instructions and/or orders to subordinates and is held responsible for the work and actions of subordinates."^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Person ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:symptom_of a owl:ObjectProperty ;
+    rdfs:label "symptom_of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P780>"^^xsd:string ;
+    spar2:tooltip "symptom of"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Symptom ;
+    rdfs:range :Disease ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:taxon_is_source_of a owl:ObjectProperty ;
+    rdfs:label "taxon_is_source_of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P1582>"^^xsd:string ;
+    spar2:tooltip "taxon is source of"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Organism ;
+    rdfs:range :Chemical_Compound ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:transmission_process a owl:ObjectProperty ;
+    rdfs:label "transmission_process"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P1060>"^^xsd:string ;
+    spar2:tooltip "process by which a pathogen is transmitted, equivalent to \"transmitted by\" in the relation ontology http://purl.obolibrary.org/obo/RO_0002451"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Disease ;
+    rdfs:range :Biological_Process ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:treated_by a owl:ObjectProperty ;
+    rdfs:label "treated_by"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P2176>"^^xsd:string ;
+    spar2:tooltip "drug, procedure, or therapy that can be used to treat a medical condition"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Disease ;
+    rdfs:range :Drug ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:treats a owl:ObjectProperty ;
+    rdfs:label "treats"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P2175>"^^xsd:string ;
+    spar2:tooltip "disease that this pharmaceutical drug, procedure, or therapy is used to treat"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :Drug :Chemical_Compound ) ] ;
+    rdfs:range :Disease ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:variant_of a owl:ObjectProperty ;
+    rdfs:label "variant_of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P3433>"^^xsd:string ;
+    spar2:tooltip "a variant of a physical biological entity (e.g., gene sequence, protein sequence, epigenetic mark)"^^xsd:string ;
+    spar:datasource :search_wikidata_in_humans ;
+    rdfs:domain :Gene_Variant ;
+    rdfs:range :Gene ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:was_dedicated_ a owl:ObjectProperty ;
+    rdfs:label "was_dedicated_"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P825>"^^xsd:string ;
+    spar2:tooltip "was dedicated "@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Person ;
+    rdfs:range :Publication ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:query_search_wikidata_all_of_the_type a spar:SPARQLQuery,
+        :SPARQLQuery,
+        owl:NamedIndividual ;
+    spar:queryString """SELECT DISTINCT ?uri ?label
+WHERE {
+    ?uri <http://www.wikidata.org/prop/direct/P31>  $range .
+    ?uri rdfs:label ?label .
+    FILTER(isIRI(?uri))
+    FILTER(lang(?label) = "" || lang(?label) = $lang)
+    FILTER(CONTAINS(LCASE(STR(?label)), LCASE("$key")))
+}
+ORDER BY ?label
+LIMIT 50"""^^xsd:string .
+
+:query_search_wikidata_basic a spar:SPARQLQuery,
+        :SPARQLQuery,
+        owl:NamedIndividual ;
+    spar:queryString """SELECT DISTINCT ?uri ?label
+WHERE {
+    ?domain <http://www.wikidata.org/prop/direct/P31>  $domain .
+    ?uri <http://www.wikidata.org/prop/direct/P31>  $range .
+
+    ?domain $property ?uri .
+    ?uri rdfs:label ?label .
+    FILTER(isIRI(?uri))
+    FILTER(lang(?label) = "" || lang(?label) = $lang)
+    FILTER(CONTAINS(LCASE(STR(?label)), LCASE("$key")))
+}
+ORDER BY UCASE(?label)
+LIMIT 50"""^^xsd:string .
+
+:query_search_wikidata_domain_in_humans a spar:SPARQLQuery,
+        :SPARQLQuery,
+        owl:NamedIndividual ;
+    spar:queryString """SELECT DISTINCT ?uri ?label
+WHERE {
+    ?domain <http://www.wikidata.org/prop/direct/P31>  $domain .
+    ?uri <http://www.wikidata.org/prop/direct/P31>  $range .
+
+    ?domain $property ?uri .
+    ?uri <http://www.wikidata.org/prop/direct/P703>  wd:Q15978631 .
+    ?uri rdfs:label ?label .
+    FILTER(isIRI(?uri)) .
+    FILTER(lang(?label) = "" || lang(?label) = $lang) . 
+    FILTER(CONTAINS(LCASE(STR(?label)), LCASE("$key"))) .
+}
+ORDER BY ?label
+LIMIT 50"""^^xsd:string .
+
+:query_search_wikidata_in_humans a spar:SPARQLQuery,
+        :SPARQLQuery,
+        owl:NamedIndividual ;
+    spar:queryString """SELECT DISTINCT ?uri ?label
+WHERE {
+    ?domain <http://www.wikidata.org/prop/direct/P31>  $domain .
+     ?uri <http://www.wikidata.org/prop/direct/P31>  $range .
+
+    ?domain $property ?uri .
+    ?uri <http://www.wikidata.org/prop/direct/P703>  wd:Q15978631 .
+    ?uri rdfs:label ?label .
+    FILTER(isIRI(?uri)) .
+    FILTER(lang(?label) = "" || lang(?label) = $lang) . 
+    FILTER(CONTAINS(LCASE(STR(?label)), LCASE("$key"))) .
+}
+ORDER BY ?label
+LIMIT 50"""^^xsd:string .
+
+:Access_Status a owl:Class ;
+    rdfs:label "Access_Status"@en ;
+    spar2:faIcon "fas fa-block-brick-fire"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q66439731>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Award a owl:Class ;
+    rdfs:label "Award"@en ;
+    spar2:faIcon "fas fa-face-glasses"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q618779>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Cell_Component a owl:Class ;
+    rdfs:label "Cell_Component"@en ;
+    spar2:faIcon "fas fa-cloudsmith"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q5058355>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Chromosome a owl:Class ;
+    rdfs:label "Chromosome"@en ;
+    spar2:faIcon "fas fa-grip-lines-vertical"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q37748>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Gene_Variant a owl:Class ;
+    rdfs:label "Gene_Variant"@en ;
+    spar2:faIcon "fas fa-dna"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q15304597>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Medical_Test a owl:Class ;
+    rdfs:label "Medical_Test"@en ;
+    spar2:faIcon "fas fa-stethoscope"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q55215251>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Mode_of_Inheritance a owl:Class ;
+    rdfs:label "Mode_of_Inheritance"@en ;
+    spar2:faIcon "fas fa-sitemap"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q1348351>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Route_of_Administration a owl:Class ;
+    rdfs:label "Route_of_Administration"@en ;
+    spar2:faIcon "fas fa-syringe"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q621636>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Specialty a owl:Class ;
+    rdfs:label "Specialty"@en ;
+    spar2:faIcon "fas fa-face-glasses"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q1047113>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:US_Pregnancy_Category a owl:Class ;
+    rdfs:label "US_Pregnancy_Category"@en ;
+    spar2:faIcon "fas fa-baby-carriage"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q28123509>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Biological_Process a owl:Class ;
+    rdfs:label "Biological_Process"@en ;
+    spar2:faIcon "fas fa-egg"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q2996394>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Cell_Type a owl:Class ;
+    rdfs:label "Cell_Type"@en ;
+    spar2:faIcon "fas fa-bullseye"^^xsd:string ;
+    spar2:order 4 ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q189118>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Clinical_Trial a owl:Class ;
+    rdfs:label "Clinical_Trial"@en ;
+    spar2:faIcon "fas fa-stethoscope"^^xsd:string ;
+    spar2:order 5 ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q30612>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Country a owl:Class ;
+    rdfs:label "Country"@en ;
+    spar2:faIcon "fas fa-earth-americas"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q6256>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:SPARQLQuery a owl:Class ;
+    rdfs:subClassOf owl:Thing .
+
+:SparqlSearchDatasource a owl:Class ;
+    rdfs:subClassOf spar:SparqlDatasource .
+
+:Symptom a owl:Class ;
+    rdfs:label "Symptom"@en ;
+    spar2:faIcon "fas fa-head-side-cough"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q169872>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:search_wikidata_all_of_the_type a spar:SparqlSearchDatasource,
+        :SparqlSearchDatasource,
+        owl:NamedIndividual ;
+    spar:queryTemplate :query_search_wikidata_all_of_the_type .
+
+:search_wikidata_domain_in_humans a spar:SparqlSearchDatasource,
+        :SparqlSearchDatasource,
+        owl:NamedIndividual ;
+    spar:queryTemplate :query_search_wikidata_domain_in_humans .
+
+:Anatomical_Structure a owl:Class ;
+    rdfs:label "Anatomical_Structure"@en ;
+    spar2:faIcon "fas fa-lungs"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q4936952>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Publisher a owl:Class ;
+    rdfs:label "Publisher"@en ;
+    spar2:faIcon "fas fa-newspaper"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q737498>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:search_wikidata_in_humans a spar:SparqlSearchDatasource,
+        :SparqlSearchDatasource,
+        owl:NamedIndividual ;
+    spar:queryTemplate :query_search_wikidata_in_humans .
+
+:Gene a owl:Class ;
+    rdfs:label "Gene"@en ;
+    spar2:faIcon "fas fa-dna"^^xsd:string ;
+    spar2:order 2 ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q7187>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Organism a owl:Class ;
+    rdfs:label "Organism"@en ;
+    spar2:faIcon "fas fa-paw"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q16521>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Protein a owl:Class ;
+    rdfs:label "Protein"@en ;
+    spar2:faIcon "fas fa-certificate"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q8054>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Publication a owl:Class ;
+    rdfs:label "Publication"@en ;
+    spar2:faIcon "fas fa-newspaper"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q13442814>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Chemical_Compound a owl:Class ;
+    rdfs:label "Chemical_Compound"@en ;
+    spar2:faIcon "fas fa-flask"^^xsd:string ;
+    spar2:order 3 ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q11173>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Organization a owl:Class ;
+    rdfs:label "Organization"@en ;
+    spar2:faIcon "fas fa-building"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q43229>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Drug a owl:Class ;
+    rdfs:label "Drug"@en ;
+    spar2:faIcon "fas fa-capsules"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q28885102>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Disease a owl:Class ;
+    rdfs:label "Disease"@en ;
+    spar2:faIcon "fas fa-viruses"^^xsd:string ;
+    spar2:order 1 ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q112193867>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Person a owl:Class ;
+    rdfs:label "Person"@en ;
+    spar2:faIcon "fas fa-person"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q5>"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:search_wikidata_basic a spar:SparqlSearchDatasource,
+        :SparqlSearchDatasource,
+        owl:NamedIndividual ;
+    spar:queryTemplate :query_search_wikidata_basic .
+
