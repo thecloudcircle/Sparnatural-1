@@ -154,7 +154,7 @@ UiuxConfig = require("./UiuxConfig.js");
 				 * false otherwise.
 				 **/
 				enableMatch: function(domain, property, range) {
-					return false;
+					return true;
 				},
 			},
 			list : {

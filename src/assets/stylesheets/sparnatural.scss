@@ -244,16 +244,16 @@ $custom-silver-light: rgb(230, 230, 230) ;
 				display: none!important;
 				@include arrow-back-colors($custom-silver-light, #fff);
 			}
-			.componentBackArrow {
-				width: 41px;
-				height: 48px;
-				position: relative;
-				svg {
-					position: absolute;
-					z-index: 1;
-					left: -5px;
-				}
-			}
+			//.componentBackArrow {
+			//	width: 41px;
+			//	height: 48px;
+			//	position: relative;
+			//	svg {
+			//		position: absolute;
+			//		z-index: 1;
+			//		left: -5px;
+			//	}
+			//}
 		}
 		.OptionTypeId {
 			label {

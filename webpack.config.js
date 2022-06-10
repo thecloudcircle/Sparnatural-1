@@ -18,7 +18,7 @@ let multipleHtmlPlugins = htmlPageNames.map(name => {
 });
 
 module.exports = {
-  entry: [ "babel-polyfill", "./src/sparnatural.js" ],
+  entry: [ "babel-polyfill", "./src/sparnatural.js", "./src/init-custom-script.js" ],
   output: {
     path: path.resolve(__dirname, "./dist"),
     filename: "sparnatural.js"
@@ -33,12 +33,12 @@ module.exports = {
     	{
 			test: /\.(sass|scss)$/,
 			use: [
-			{ 
+			{
 				loader: MiniCssExtractPlugin.loader
 			},
 			{
 			    loader: "css-loader" // translates CSS into CommonJS
-			}, 
+			},
 			{
 			    loader: "sass-loader" // compiles Sass to CSS
 			}
@@ -47,7 +47,7 @@ module.exports = {
     	{
 			test: /\.css$/,
 			use: [
-			{ 
+			{
 				loader: MiniCssExtractPlugin.loader
 			},
 			{
@@ -59,12 +59,12 @@ module.exports = {
             test: /\.(png|jp(e*)g|svg|gif)$/,
             use: [{
                 loader: 'url-loader',
-                options: { 
+                options: {
                     limit: 8000,
                     // Convert images < 8kb to base64 strings
                     // in case larger images are processed by file-loader
                     name: 'images/[hash]-[name].[ext]'
-                } 
+                }
             }]
         }
     ]

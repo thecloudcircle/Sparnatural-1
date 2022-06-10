@@ -114,23 +114,23 @@ export class RDFSpecificationProvider {
 		    var classId = quad.object.id;
 
 		    if(this.getObjectPropertyType(objectPropertyId)) {
-		    	
+
 		    	// keep only Sparnatural classes in the list
 		    	if(this.isSparnaturalClass(classId) || typeClass == "BlankNode") {
 			    	// always exclude RemoteClasses from first list
 			    	if(!this.isRemoteClass(classId)) {
-			    		if(!this._isUnionClass(classId)) {			    
-						    this._pushIfNotExist(classId, items);	
+			    		if(!this._isUnionClass(classId)) {
+						    this._pushIfNotExist(classId, items);
 					    } else {
 					    	// read union content
 					    	var classesInUnion = this._readUnionContent(classId);
 					    	for (const aUnionClass of classesInUnion) {
-							    this._pushIfNotExist(aUnionClass, items);	
+							    this._pushIfNotExist(aUnionClass, items);
 					    	}
 					    }
 			    	}
 		   		}
-			    
+
 			}
 		}
 
@@ -152,14 +152,14 @@ export class RDFSpecificationProvider {
 		var faIcon = this._readAsLiteral(classId, factory.namedNode(Config.FA_ICON));
 		if(faIcon.length > 0) {
 			// use of fa-fw for fixed-width icons
-			return "<span style='font-size: 170%;' >&nbsp;<i class='" + faIcon + " fa-fw'></i></span>";
+			return "";
 		} else {
 			var icon = this._readAsLiteral(classId, factory.namedNode(Config.ICON));
 			if ( icon.length > 0) {
 				return icon;
 			} else {
 				// this is ugly, just so it aligns with other entries having an icon
-				return "<span style='font-size: 175%;' >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
+				return "";
 			}
 		}
 	}
@@ -210,7 +210,7 @@ export class RDFSpecificationProvider {
 		const properties = this._readPropertiesWithDomain(domainClassId);
 
 		for (const aProperty of properties) {
-		    
+
 			var classesInRange = this._readClassesInRangeOfProperty(aProperty);
 
 			if(classesInRange.indexOf(rangeClassId) > -1) {
@@ -256,7 +256,7 @@ export class RDFSpecificationProvider {
 				return aSuperProperty;
 			}
 		}
-		
+
 		return undefined;
 	}
 
@@ -298,7 +298,7 @@ export class RDFSpecificationProvider {
 			RDFS.SUBCLASS_OF,
 			factory.namedNode(Config.RDFS_LITERAL)
 		).length > 0
-		
+
 		);
 	}
 
@@ -315,13 +315,13 @@ export class RDFSpecificationProvider {
 			if(!equivalentPropertiesPerProperty[quad.subject.id]) {
 				equivalentPropertiesPerProperty[quad.subject.id] = [];
 			}
-			equivalentPropertiesPerProperty[quad.subject.id].push(quad.object.id);			
+			equivalentPropertiesPerProperty[quad.subject.id].push(quad.object.id);
 		});
 		// join the equivalences with a |
 		for (let [property, equivalents] of Object.entries(equivalentPropertiesPerProperty)) {
 			var re = new RegExp("<" + property + ">","g");
 			sparql = sparql.replace(re, "<" + equivalents.join(">|<") + ">");
-		}		
+		}
 
 		// for each owl:equivalentClass ...
 		var equivalentClassesPerClass = {};
@@ -334,7 +334,7 @@ export class RDFSpecificationProvider {
 			if(!equivalentClassesPerClass[quad.subject.id]) {
 				equivalentClassesPerClass[quad.subject.id] = [];
 			}
-			equivalentClassesPerClass[quad.subject.id].push(quad.object.id);			
+			equivalentClassesPerClass[quad.subject.id].push(quad.object.id);
 		});
 		// use a VALUES if needed
 		var i = 0;
@@ -356,7 +356,7 @@ export class RDFSpecificationProvider {
 		).forEach( quad => {
 			// find it with the full URI
 			var re = new RegExp("<" + quad.subject.id + ">","g");
-			sparql = sparql.replace(re, quad.object.value );			
+			sparql = sparql.replace(re, quad.object.value );
 		});
 
 		return sparql;
@@ -392,15 +392,15 @@ export class RDFSpecificationProvider {
 	}
 
 	isEnablingOptional(propertyId) {
-		return (this._readAsSingleLiteral(propertyId, Config.ENABLE_OPTIONAL) == "true");		
+		return (this._readAsSingleLiteral(propertyId, Config.ENABLE_OPTIONAL) == "true");
 	}
 
 	isEnablingNegation(propertyId) {
-		return (this._readAsSingleLiteral(propertyId, Config.ENABLE_NEGATION) == "true");	
+		return (this._readAsSingleLiteral(propertyId, Config.ENABLE_NEGATION) == "true");
 	}
 
 	isMultilingual(propertyId) {
-		return (this._readAsSingleLiteral(propertyId, Config.IS_MULTILINGUAL) == "true");	
+		return (this._readAsSingleLiteral(propertyId, Config.IS_MULTILINGUAL) == "true");
 	}
 
 	readRange(propertyId) {
@@ -426,7 +426,7 @@ export class RDFSpecificationProvider {
 		    if(knownDatasource != null) {
 		    	return knownDatasource;
 		    } else {
-		    	return this._buildDatasource(datasourceUri);	
+		    	return this._buildDatasource(datasourceUri);
 		    }
 		}
 
@@ -451,8 +451,8 @@ export class RDFSpecificationProvider {
     	// Alternative 1 : read optional queryString
     	var queryStrings = this._readAsLiteral(datasourceUri, Datasources.QUERY_STRING);
     	if(queryStrings.length > 0) {
-    		datasource.queryString = queryStrings[0];	
-    	}		    	
+    		datasource.queryString = queryStrings[0];
+    	}
 
     	// Alternative 2 : query template + label path
     	var queryTemplates = this._readAsResource(datasourceUri, Datasources.QUERY_TEMPLATE);
@@ -467,7 +467,7 @@ export class RDFSpecificationProvider {
 				var queryStrings = this._readAsResource(theQueryTemplate, Datasources.QUERY_STRING);
 				if(queryStrings.length > 0) {
 					var queryString = queryStrings[0];
-					datasource.queryTemplate = 
+					datasource.queryTemplate =
 					(queryString.startsWith('"') && queryString.endsWith('"'))
 						?queryString.substring(1,queryString.length-1)
 						:queryString
@@ -478,38 +478,38 @@ export class RDFSpecificationProvider {
 			// labelPath
 			var labelPaths = this._readAsLiteral(datasourceUri, Datasources.LABEL_PATH);
 	    	if(labelPaths.length > 0) {
-	    		datasource.labelPath = labelPaths[0];	
-	    	}	
+	    		datasource.labelPath = labelPaths[0];
+	    	}
 
 			// labelProperty
 			var labelProperties = this._readAsResource(datasourceUri, Datasources.LABEL_PROPERTY);
 	    	if(labelProperties.length > 0) {
-	    		datasource.labelProperty = labelProperties[0];	
+	    		datasource.labelProperty = labelProperties[0];
 	    	}
 
 	    	// childrenPath
 			var childrenPaths = this._readAsLiteral(datasourceUri, Datasources.CHILDREN_PATH);
 	    	if(childrenPaths.length > 0) {
-	    		datasource.childrenPath = childrenPaths[0];	
-	    	}	
+	    		datasource.childrenPath = childrenPaths[0];
+	    	}
 
 			// childrenProperty
 			var childrenProperties = this._readAsResource(datasourceUri, Datasources.CHILDREN_PROPERTY);
 	    	if(childrenProperties.length > 0) {
-	    		datasource.childrenProperty = childrenProperties[0];	
+	    		datasource.childrenProperty = childrenProperties[0];
 	    	}
     	}
 
     	// read optional sparqlEndpointUrl
     	var sparqlEndpointUrls = this._readAsLiteral(datasourceUri, Datasources.SPARQL_ENDPOINT_URL);
     	if(sparqlEndpointUrls.length > 0) {
-    		datasource.sparqlEndpointUrl = sparqlEndpointUrls[0];	
+    		datasource.sparqlEndpointUrl = sparqlEndpointUrls[0];
     	}
 
     	// read optional noSort
     	var noSorts = this._readAsLiteral(datasourceUri, Datasources.NO_SORT);
     	if(noSorts.length > 0) {
-    		datasource.noSort = (noSorts[0] === "true");	
+    		datasource.noSort = (noSorts[0] === "true");
     	}
 
     	return datasource;
@@ -566,7 +566,7 @@ export class RDFSpecificationProvider {
 
 		// read also the properties having as a domain a union containing this class
 		var unionsContainingThisClass = this._readUnionsContaining(classId);
-		
+
 		for (const aUnionContainingThisClass of unionsContainingThisClass) {
 		    const propertyQuadsHavingUnionAsDomain = this.store.getQuads(
 				undefined,
@@ -590,7 +590,7 @@ export class RDFSpecificationProvider {
 			for (const aProperty of propertiesFromSuperClass) {
 			    this._pushIfNotExist(aProperty, properties);
 			}
-		}		
+		}
 
 		return properties;
 	}
@@ -605,13 +605,13 @@ export class RDFSpecificationProvider {
 		);
 
 		for (const aQuad of propertyQuads) {
-			if(!this._isUnionClass(aQuad.object.id)) {	
+			if(!this._isUnionClass(aQuad.object.id)) {
 		    	this._pushIfNotExist(aQuad.object.id, classes);
 		    } else {
 		    	// read union content
 		    	var classesInUnion = this._readUnionContent(aQuad.object.id);
 		    	for (const aUnionClass of classesInUnion) {
-				    this._pushIfNotExist(aUnionClass, classes);	
+				    this._pushIfNotExist(aUnionClass, classes);
 		    	}
 		    }
 		}
@@ -844,7 +844,7 @@ export class RDFSpecificationProvider {
 			items.push(item) ;
 		}
 
-		return items ;			
+		return items ;
 	}
 
 }
