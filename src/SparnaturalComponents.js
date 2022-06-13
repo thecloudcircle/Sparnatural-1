@@ -59,13 +59,13 @@ export class HTMLComponent {
 	}
 
 	addBackArrow() {
-		// this.backArrow = $('<div class="componentBackArrow">'+UiuxConfig.COMPONENT_ARROW_BACK+'</div>') ;
-		// this.html.prepend(this.backArrow) ;
+		this.backArrow = $('<div class="componentBackArrow">'+UiuxConfig.COMPONENT_ARROW_BACK+'</div>') ;
+		this.html.prepend(this.backArrow) ;
 	}
 
 	addFrontArrow() {
-		// this.frontArrow = $('<div class="componentFrontArrow">'+UiuxConfig.COMPONENT_ARROW_FRONT+'</div>') ;
-		// this.html.append(this.frontArrow) ;
+		this.frontArrow = $('<div class="componentFrontArrow">'+UiuxConfig.COMPONENT_ARROW_FRONT+'</div>') ;
+		this.html.append(this.frontArrow) ;
 	}
 }
 
@@ -560,8 +560,8 @@ export class OptionsGroup extends GroupContenaire {
 		this.inputTypeComponent = new OptionTypeId(this, specProvider) ;
 
 		this.init() ;
-		// $(this.html).append('<div class="EditComponents flexWrap">'+ '<div class="componentBackArrow">'+ UiuxConfig.COMPONENT_OPTION_ARROW_FRONT + '</div></div>');
-		$(this.html).append('<div class="EditComponents flexWrap">'+ '<div class="componentBackArrow"></div></div>');
+		$(this.html).append('<div class="EditComponents flexWrap">'+ '<div class="componentBackArrow">'+ UiuxConfig.COMPONENT_OPTION_ARROW_FRONT + '</div></div>');
+		// $(this.html).append('<div class="EditComponents flexWrap">'+ '<div class="componentBackArrow"></div></div>');
 	}
 
 	reload() {

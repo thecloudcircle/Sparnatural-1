@@ -244,32 +244,41 @@ $custom-silver-light: rgb(230, 230, 230) ;
 				display: none!important;
 				@include arrow-back-colors($custom-silver-light, #fff);
 			}
-			//.componentBackArrow {
-			//	width: 41px;
-			//	height: 48px;
-			//	position: relative;
-			//	svg {
-			//		position: absolute;
-			//		z-index: 1;
-			//		left: -5px;
-			//	}
-			//}
+			.componentBackArrow {
+				margin-left: 10px;
+				//margin-right: 10px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 33px;
+				//width: 41px;
+				//height: 48px;
+				//position: relative;
+				//svg {
+				//	position: absolute;
+				//	z-index: 1;
+				//	left: -5px;
+				//}
+			}
 		}
 		.OptionTypeId {
 			label {
 				@include arrow-back-colors($custom-green-light, #fff);
 				@include arrow-front-colors($custom-green-light, #fff);
 				span {
-					background: $custom-green-light;
-					border-top: 3px solid #fff;
-					border-bottom: 3px solid #fff;
+					//background: $custom-green-light;
+					//border-top: 3px solid #fff;
+					//border-bottom: 3px solid #fff;
+					background: #F2F2F2;
+					border: 1px solid $blue-1;
+					color: $blue-1;
+					padding: 5px 30px;
+					position: relative;
 				}
 				&:hover,
 				&.Enabled {
-					@include arrow-back-colors($custom-green-bold, #fff);
-					@include arrow-front-colors($custom-green-bold, #fff);
 					span {
-						background: $custom-green-bold;
+						background: darken(#F2F2F2, 10%);
 					}
 				}
 			}
@@ -410,10 +419,11 @@ body {
 			min-width: auto;
 			/*padding-right: 15px;*/
 			//margin-left: -22px;
+			align-items: center;
 
 			.EditComponents {
 				position: relative;
-				width: 20px;
+				//width: 20px;
 				/*@include arrow-block($custom-silver-light);*/
 				/*display: flex!important;*/
 				/*background: $custom-silver-light;
@@ -439,8 +449,9 @@ body {
 			.OptionTypeId {
 				display: none ;
 				position: relative;
-				padding-right: 13px;
-				margin-left: -7px;
+				//padding-right: 13px;
+				//margin-left: -7px;
+				margin-left: 10px;
 
 				label {
 					position: relative;
@@ -448,16 +459,16 @@ body {
 					zoom: 1;
 					/*background: $custom-green-light;*/
 					margin-bottom: 0;
-					line-height: 42px;
+					//line-height: 42px;
 					color: #fff;
 					margin-left: 3px;
 					padding-right: 0;
 					font-size: 14px;
-					margin-right: -20px;
+					//margin-right: -20px;
 					cursor: pointer;
-					span {
-						text-indent: 13px;
-					}
+					//span {
+					//	text-indent: 13px;
+					//}
 
 					input {
 						display: none;
