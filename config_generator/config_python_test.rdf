@@ -1,0 +1,1568 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://www.semanticweb.org/lubianat/ontologies/2022/4/sparnanatural_wisecube"
+         xmlns="http://www.semanticweb.org/lubianat/ontologies/2022/4/sparnanatural_wisecube#"
+         xmlns:spar="http://data.sparna.fr/ontologies/sparnatural-config-datasources#"
+         xmlns:spar2="http://data.sparna.fr/ontologies/sparnatural-config-core#">
+
+<owl:Ontology rdf:about="http://www.semanticweb.org/lubianat/ontologies/2022/4/sparnanatural_wisecube">
+  <owl:imports rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core"/>
+  <owl:imports rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-datasources"/>
+</owl:Ontology>
+
+<owl:ObjectProperty rdf:about="#sexually_homologous_with">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Anatomical_Structure"/>
+  <rdfs:range rdf:resource="#Anatomical_Structure"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P4545&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">body part that originates from the same tissue or cell during fetal development in the opposing sex</spar2:tooltip>
+  <rdfs:label xml:lang="en">sexually homologous with</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_marker">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Cell_Type"/>
+  <rdfs:range rdf:resource="#Gene"/>
+  <spar:datasource rdf:resource="#search_wikidata_in_humans"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P8872&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a gene or a protein published as a marker of a species-specific cell type</spar2:tooltip>
+  <rdfs:label xml:lang="en">has marker</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#marker_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Gene"/>
+  <rdfs:range rdf:resource="#Cell_Type"/>
+  <spar:datasource rdf:resource="#search_wikidata_domain_in_humans"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P8872&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">marker of</spar2:tooltip>
+  <rdfs:label xml:lang="en">marker of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#anatomical_location">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Cell_Type"/>
+  <rdfs:range rdf:resource="#Anatomical_Structure"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P927&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">where in the body does this anatomical feature lie</spar2:tooltip>
+  <rdfs:label xml:lang="en">anatomical location</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#located_in_structure">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Anatomical_Structure"/>
+  <rdfs:range rdf:resource="#Cell_Type"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P927&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">located in structure</spar2:tooltip>
+  <rdfs:label xml:lang="en">located in structure</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#binds_protein">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Chemical_Compound"/>
+  <rdfs:range rdf:resource="#Protein"/>
+  <spar:datasource rdf:resource="#search_wikidata_in_humans"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P129&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">physical entity that the subject interacts with</spar2:tooltip>
+  <rdfs:label xml:lang="en">binds protein</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#binds_compound">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Protein"/>
+  <rdfs:range rdf:resource="#Chemical_Compound"/>
+  <spar:datasource rdf:resource="#search_wikidata_domain_in_humans"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P129&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">binds compound</spar2:tooltip>
+  <rdfs:label xml:lang="en">binds compound</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#natural_product_of_taxon">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Chemical_Compound"/>
+  <rdfs:range rdf:resource="#Organism"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P1582&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">links a natural product with its source (animal, plant, fungal, algal, etc.)</spar2:tooltip>
+  <rdfs:label xml:lang="en">natural product of taxon</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#taxon_is_source_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Organism"/>
+  <rdfs:range rdf:resource="#Chemical_Compound"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P1582&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">taxon is source of</spar2:tooltip>
+  <rdfs:label xml:lang="en">taxon is source of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#active_ingredient_in">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Chemical_Compound"/>
+  <rdfs:range rdf:resource="#Drug"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P3780&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">is part of and forms biologically active component. Inverse of "has active ingredient"</spar2:tooltip>
+  <rdfs:label xml:lang="en">active ingredient in</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_active_ingredient">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Drug"/>
+  <rdfs:range rdf:resource="#Chemical_Compound"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <rdfs:label xml:lang="en">has active ingredient</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P3781&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has part biologically active component. Inverse of "active ingredient in"</spar2:tooltip>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#transmission_process">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Disease"/>
+  <rdfs:range rdf:resource="#Biological_Process"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P1060&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">process by which a pathogen is transmitted, equivalent to "transmitted by" in the relation ontology http://purl.obolibrary.org/obo/RO_0002451</spar2:tooltip>
+  <rdfs:label xml:lang="en">transmission process</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#is_a_transmission_process_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Biological_Process"/>
+  <rdfs:range rdf:resource="#Disease"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P1060&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">is a transmission process of</spar2:tooltip>
+  <rdfs:label xml:lang="en">is a transmission process of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#mode_of_inheritance">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Disease"/>
+  <rdfs:range rdf:resource="#Mode_of_Inheritance"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P1199&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">manner in which a particular genetic trait or disorder is passed from one generation to the next</spar2:tooltip>
+  <rdfs:label xml:lang="en">mode of inheritance</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#is_inherited_in_the_mode">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Mode_of_Inheritance"/>
+  <rdfs:range rdf:resource="#Disease"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P1199&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">is inherited in the mode</spar2:tooltip>
+  <rdfs:label xml:lang="en">is inherited in the mode</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_cause">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Disease"/>
+  <rdfs:range rdf:resource="#Organism"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P828&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">underlying cause, thing that ultimately resulted in this effect</spar2:tooltip>
+  <rdfs:label xml:lang="en">has cause</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#cause_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Organism"/>
+  <rdfs:range rdf:resource="#Disease"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P828&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">cause of</spar2:tooltip>
+  <rdfs:label xml:lang="en">cause of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_natural_reservoir">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Disease"/>
+  <rdfs:range rdf:resource="#Organism"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P1605&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">host species for the pathogen in which it is endemic</spar2:tooltip>
+  <rdfs:label xml:lang="en">has natural reservoir</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#treated_by">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Disease"/>
+  <rdfs:range rdf:resource="#Drug"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P2176&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">drug, procedure, or therapy that can be used to treat a medical condition</spar2:tooltip>
+  <rdfs:label xml:lang="en">treated by</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#genetic_association">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Gene"/>
+  <rdfs:range rdf:resource="#Disease"/>
+  <spar:datasource rdf:resource="#search_wikidata_domain_in_humans"/>
+  <rdfs:label xml:lang="en">genetic association</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P2293&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">genetic association</spar2:tooltip>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#afflicts">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Disease"/>
+  <rdfs:range rdf:resource="#Anatomical_Structure"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P689&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">type of organism, organ or anatomical structure which a condition or disease afflicts</spar2:tooltip>
+  <rdfs:label xml:lang="en">afflicts</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#is_afflicted_by">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Anatomical_Structure"/>
+  <rdfs:range rdf:resource="#Disease"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P689&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">is afflicted by</spar2:tooltip>
+  <rdfs:label xml:lang="en">is afflicted by</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#comorbidity">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Disease"/>
+  <rdfs:range rdf:resource="#Disease"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P7500&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">presence of one or more additional conditions co-occurring with (that is, concomitant or concurrent with) a primary condition</spar2:tooltip>
+  <rdfs:label xml:lang="en">comorbidity</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_symptom">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Disease"/>
+  <rdfs:range rdf:resource="#Symptom"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P780&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">possible symptoms of a medical condition</spar2:tooltip>
+  <rdfs:label xml:lang="en">has symptom</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#symptom_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Symptom"/>
+  <rdfs:range rdf:resource="#Disease"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P780&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">symptom of</spar2:tooltip>
+  <rdfs:label xml:lang="en">symptom of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#medical_examinations">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Disease"/>
+  <rdfs:range rdf:resource="#Medical_Test"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P923&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">examinations that might be used to diagnose and/or prognose the medical condition</spar2:tooltip>
+  <rdfs:label xml:lang="en">medical examinations</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#exam_for">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Medical_Test"/>
+  <rdfs:range rdf:resource="#Disease"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P923&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">exam for</spar2:tooltip>
+  <rdfs:label xml:lang="en">exam for</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#side_effect">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Drug"/>
+  <rdfs:range rdf:resource="#Symptom"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P1909&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">effect of a medication or procedure, that occurs next to the desired effect</spar2:tooltip>
+  <rdfs:label xml:lang="en">side effect</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#is_side_effect_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Symptom"/>
+  <rdfs:range rdf:resource="#Drug"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P1909&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">is side effect of</spar2:tooltip>
+  <rdfs:label xml:lang="en">is side effect of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#treats">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Drug"/>
+        <rdf:Description rdf:about="#Chemical_Compound"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#Disease"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P2175&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">disease that this pharmaceutical drug, procedure, or therapy is used to treat</spar2:tooltip>
+  <rdfs:label xml:lang="en">treats</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#pregnancy_category">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Drug"/>
+  <rdfs:range rdf:resource="#US_Pregnancy_Category"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P3489&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">official categorisation of safety of medicine in pregnancy</spar2:tooltip>
+  <rdfs:label xml:lang="en">pregnancy category</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#is_pregnancy_category_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#US_Pregnancy_Category"/>
+  <rdfs:range rdf:resource="#Drug"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P3489&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">is pregnancy category of</spar2:tooltip>
+  <rdfs:label xml:lang="en">is pregnancy category of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#active_ingredient_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Chemical_Compound"/>
+  <rdfs:range rdf:resource="#Drug"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P3781&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">active ingredient of</spar2:tooltip>
+  <rdfs:label xml:lang="en">active ingredient of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#may_prevent">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Chemical_Compound"/>
+        <rdf:Description rdf:about="#Drug"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#Disease"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P4954&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">disease which may be prevented by this substance</spar2:tooltip>
+  <rdfs:label xml:lang="en">may prevent</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#may_be_prevented_by">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Disease"/>
+  <rdfs:range>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Chemical_Compound"/>
+        <rdf:Description rdf:about="#Drug"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:range>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P4954&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">may be prevented by</spar2:tooltip>
+  <rdfs:label xml:lang="en">may be prevented by</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#administration">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Drug"/>
+        <rdf:Description rdf:about="#Chemical_Compound"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#Route_of_Administration"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P636&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">path by which a drug, fluid, poison, or other substance is taken into the body</spar2:tooltip>
+  <rdfs:label xml:lang="en">administration</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#is_way_of_administration_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Route_of_Administration"/>
+  <rdfs:range>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Drug"/>
+        <rdf:Description rdf:about="#Chemical_Compound"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:range>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P636&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">is way of administration of</spar2:tooltip>
+  <rdfs:label xml:lang="en">is way of administration of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#significant_drug_interaction">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Drug"/>
+  <rdfs:range rdf:resource="#Drug"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P769&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">clinically significant interaction between two pharmacologically active substances (i.e., drugs and/or active metabolites) where concomitant intake can lead to altered effectiveness or adverse drug events.</spar2:tooltip>
+  <rdfs:label xml:lang="en">significant drug interaction</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#present_in_chromosome">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Gene"/>
+  <rdfs:range rdf:resource="#Chromosome"/>
+  <spar:datasource rdf:resource="#search_wikidata_in_humans"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P1057&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">chromosome on which an entity is localized</spar2:tooltip>
+  <rdfs:label xml:lang="en">present in chromosome</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#contains_gene">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Chromosome"/>
+  <rdfs:range rdf:resource="#Gene"/>
+  <spar:datasource rdf:resource="#search_wikidata_domain_in_humans"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P1057&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">contains gene</spar2:tooltip>
+  <rdfs:label xml:lang="en">contains gene</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#encodes">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Gene"/>
+  <rdfs:range rdf:resource="#Protein"/>
+  <spar:datasource rdf:resource="#search_wikidata_in_humans"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P688&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the product of a gene (protein or RNA)</spar2:tooltip>
+  <rdfs:label xml:lang="en">encodes</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#variant_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Gene_Variant"/>
+  <rdfs:range rdf:resource="#Gene"/>
+  <spar:datasource rdf:resource="#search_wikidata_in_humans"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P3433&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a variant of a physical biological entity (e.g., gene sequence, protein sequence, epigenetic mark)</spar2:tooltip>
+  <rdfs:label xml:lang="en">variant of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_variant">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Gene"/>
+  <rdfs:range rdf:resource="#Gene_Variant"/>
+  <spar:datasource rdf:resource="#search_wikidata_domain_in_humans"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P3433&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">has variant</spar2:tooltip>
+  <rdfs:label xml:lang="en">has variant</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#natural_reservoir_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Organism"/>
+  <rdfs:range rdf:resource="#Disease"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P1606&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pathogen of which this species is a long-term host</spar2:tooltip>
+  <rdfs:label xml:lang="en">natural reservoir of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#parent_taxon">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Organism"/>
+  <rdfs:range rdf:resource="#Organism"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P171&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">closest parent taxon of the taxon in question</spar2:tooltip>
+  <rdfs:label xml:lang="en">parent taxon</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#child_taxon">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Organism"/>
+  <rdfs:range rdf:resource="#Organism"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P171&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">child taxon</spar2:tooltip>
+  <rdfs:label xml:lang="en">child taxon</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#entry_receptor">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Organism"/>
+  <rdfs:range rdf:resource="#Protein"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P8339&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">receptor protein or protein whose receptor is being used by this subject virus/microorganism group to enter cells</spar2:tooltip>
+  <rdfs:label xml:lang="en">entry receptor</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_entry_receptor">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Protein"/>
+  <rdfs:range rdf:resource="#Organism"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P8339&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">has entry receptor</spar2:tooltip>
+  <rdfs:label xml:lang="en">has entry receptor</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#facilitates_flow_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Protein"/>
+  <rdfs:range rdf:resource="#Chemical_Compound"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P10228&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the cargo/substrate actively transported or passively channeled by a protein</spar2:tooltip>
+  <rdfs:label xml:lang="en">facilitates flow of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_flow_facilitated_by">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Chemical_Compound"/>
+  <rdfs:range rdf:resource="#Protein"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P10228&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">has flow facilitated by</spar2:tooltip>
+  <rdfs:label xml:lang="en">has flow facilitated by</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#present_in_component">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Protein"/>
+  <rdfs:range rdf:resource="#Cell_Component"/>
+  <spar:datasource rdf:resource="#search_wikidata_domain_in_humans"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P681&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">component of the cell in which this item is present</spar2:tooltip>
+  <rdfs:label xml:lang="en">present in component</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#present_in_this_component">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Cell_Component"/>
+  <rdfs:range rdf:resource="#Protein"/>
+  <spar:datasource rdf:resource="#search_wikidata_in_humans"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P681&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">present in this component</spar2:tooltip>
+  <rdfs:label xml:lang="en">present in this component</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#participates_in_process">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Protein"/>
+  <rdfs:range rdf:resource="#Biological_Process"/>
+  <spar:datasource rdf:resource="#search_wikidata_domain_in_humans"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P682&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">is involved in the biological process</spar2:tooltip>
+  <rdfs:label xml:lang="en">participates in process</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_participant_in_process">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Biological_Process"/>
+  <rdfs:range rdf:resource="#Protein"/>
+  <spar:datasource rdf:resource="#search_wikidata_in_humans"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P682&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">has participant in process</spar2:tooltip>
+  <rdfs:label xml:lang="en">has participant in process</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#encoded_by">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Protein"/>
+  <rdfs:range rdf:resource="#Gene"/>
+  <spar:datasource rdf:resource="#search_wikidata_in_humans"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P702&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the gene that encodes some gene product</spar2:tooltip>
+  <rdfs:label xml:lang="en">encoded by</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#founded_by">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Organization"/>
+  <rdfs:range rdf:resource="#Person"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P1066&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">person who has taught this person</spar2:tooltip>
+  <rdfs:label xml:lang="en">founded by</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#founded">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="#Organization"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P1066&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">founded</spar2:tooltip>
+  <rdfs:label xml:lang="en">founded</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#country">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Organization"/>
+  <rdfs:range rdf:resource="#Country"/>
+  <spar:datasource rdf:resource="#search_wikidata_all_of_the_type"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P17&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sovereign state of this item (not to be used for human beings)</spar2:tooltip>
+  <rdfs:label xml:lang="en">country</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#is_country_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Country"/>
+  <rdfs:range rdf:resource="#Organization"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P17&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">is country of</spar2:tooltip>
+  <rdfs:label xml:lang="en">is country of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#board_member">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Organization"/>
+  <rdfs:range rdf:resource="#Person"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P3320&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">member(s) of the board for the organization</spar2:tooltip>
+  <rdfs:label xml:lang="en">board member</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#board_member_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="#Organization"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P3320&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">board member of</spar2:tooltip>
+  <rdfs:label xml:lang="en">board member of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#chairperson">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Organization"/>
+  <rdfs:range rdf:resource="#Person"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P488&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">presiding member of an organization, group or body</spar2:tooltip>
+  <rdfs:label xml:lang="en">chairperson</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#is_chairperson_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="#Organization"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P488&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">is chairperson of</spar2:tooltip>
+  <rdfs:label xml:lang="en">is chairperson of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#parent_organization">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Organization"/>
+  <rdfs:range rdf:resource="#Organization"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P749&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">parent organization of an organization, opposite of subsidiaries (P355)</spar2:tooltip>
+  <rdfs:label xml:lang="en">parent organization</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_subsidiary">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Organization"/>
+  <rdfs:range rdf:resource="#Organization"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P355&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">subsidiary of a company or organization; generally a fully owned separate corporation. Compare with "business division" (P199). Opposite of parent organization (P749).</spar2:tooltip>
+  <rdfs:label xml:lang="en">has subsidiary</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#employer">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="#Organization"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P108&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">person or organization for which the subject works or worked</spar2:tooltip>
+  <rdfs:label xml:lang="en">employer</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#employs">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Organization"/>
+  <rdfs:range rdf:resource="#Person"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P108&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">employs</spar2:tooltip>
+  <rdfs:label xml:lang="en">employs</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#educated_at">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="#Organization"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P69&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">educational institution attended by subject</spar2:tooltip>
+  <rdfs:label xml:lang="en">educated at</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#educated">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Organization"/>
+  <rdfs:range rdf:resource="#Person"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P69&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">educated</spar2:tooltip>
+  <rdfs:label xml:lang="en">educated</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#doctoral_advisor">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="#Person"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P184&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">person who supervised the doctorate or PhD thesis of the subject</spar2:tooltip>
+  <rdfs:label xml:lang="en">doctoral advisor</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#doctoral_student">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="#Person"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P184&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">doctoral student</spar2:tooltip>
+  <rdfs:label xml:lang="en">doctoral student</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#country_of_citizenship">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="#Country"/>
+  <spar:datasource rdf:resource="#search_wikidata_all_of_the_type"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P27&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the object is a country that recognizes the subject as its citizen</spar2:tooltip>
+  <rdfs:label xml:lang="en">country of citizenship</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#is_country_of_citizenship_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Country"/>
+  <rdfs:range rdf:resource="#Person"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P27&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">is country of citizenship of</spar2:tooltip>
+  <rdfs:label xml:lang="en">is country of citizenship of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#supervised_by">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="#Person"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P7604&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Is the natural person who has the authority of giving instructions and/or orders to subordinates and is held responsible for the work and actions of subordinates.</spar2:tooltip>
+  <rdfs:label xml:lang="en">supervised by</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#supervised">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="#Person"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P7604&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">supervised</spar2:tooltip>
+  <rdfs:label xml:lang="en">supervised</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_student">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="#Person"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P802&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">notable student(s) of the subject individual</spar2:tooltip>
+  <rdfs:label xml:lang="en">has student</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#student_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="#Person"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P1066&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">person who has taught this person</spar2:tooltip>
+  <rdfs:label xml:lang="en">student of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#author">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Publication"/>
+  <rdfs:range rdf:resource="#Person"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P50&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">main creator(s) of a written work (use on works, not humans); use P2093 when Wikidata item is unknown or does not exist</spar2:tooltip>
+  <rdfs:label xml:lang="en">author</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#is_author_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="#Publication"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P50&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">is author of</spar2:tooltip>
+  <rdfs:label xml:lang="en">is author of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#published_by">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Publication"/>
+  <rdfs:range rdf:resource="#Publisher"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P123&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">organization or person responsible for publishing books, periodicals, printed music, podcasts, games or software</spar2:tooltip>
+  <rdfs:label xml:lang="en">published by</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#published">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Publisher"/>
+  <rdfs:range rdf:resource="#Publication"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P123&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">published</spar2:tooltip>
+  <rdfs:label xml:lang="en">published</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#acknowledges">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Publication"/>
+  <rdfs:range rdf:resource="#Person"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P7137&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">persons or institutions acknowledged on a creative work</spar2:tooltip>
+  <rdfs:label xml:lang="en">acknowledges</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#is_acknowledged_by">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="#Publication"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P7137&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">is acknowledged by</spar2:tooltip>
+  <rdfs:label xml:lang="en">is acknowledged by</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#dedicated_to">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Publication"/>
+  <rdfs:range rdf:resource="#Person"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P825&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">person or organization to whom the subject was dedicated</spar2:tooltip>
+  <rdfs:label xml:lang="en">dedicated to</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#was_dedicated_">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="#Publication"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P825&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">was dedicated </spar2:tooltip>
+  <rdfs:label xml:lang="en">was dedicated </rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#cites">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Publication"/>
+  <rdfs:range rdf:resource="#Publication"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P2860&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">citation from one creative or scholarly work to another</spar2:tooltip>
+  <rdfs:label xml:lang="en">cites</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#cited_by">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Publication"/>
+  <rdfs:range rdf:resource="#Publication"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P2860&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">cited by</spar2:tooltip>
+  <rdfs:label xml:lang="en">cited by</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#main_subject">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Publisher"/>
+  <rdfs:range rdf:resource="#Specialty"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P921&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">primary topic of a work (see also P180: depicts)</spar2:tooltip>
+  <rdfs:label xml:lang="en">main subject</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#main_subject_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Specialty"/>
+  <rdfs:range rdf:resource="#Publisher"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P921&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">main subject of</spar2:tooltip>
+  <rdfs:label xml:lang="en">main subject of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#editor">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Publisher"/>
+  <rdfs:range rdf:resource="#Person"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P98&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">editor of a compiled work such as a book or a periodical (newspaper or an academic journal)</spar2:tooltip>
+  <rdfs:label xml:lang="en">editor</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#editor_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="#Publisher"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P98&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">editor of</spar2:tooltip>
+  <rdfs:label xml:lang="en">editor of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#access_status">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Publisher"/>
+  <rdfs:range rdf:resource="#Access_Status"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P6954&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">property or qualifier for an ID property indicating whether linked content is directly readable online</spar2:tooltip>
+  <rdfs:label xml:lang="en">access status</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#access_status_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Access_Status"/>
+  <rdfs:range rdf:resource="#Publisher"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P6954&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">access status of</spar2:tooltip>
+  <rdfs:label xml:lang="en">access status of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#award_received">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="#Award"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P166&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">award or recognition received by a person, organisation or creative work</spar2:tooltip>
+  <rdfs:label xml:lang="en">award received</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#award_given_to">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Award"/>
+  <rdfs:range rdf:resource="#Person"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P166&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">award given to</spar2:tooltip>
+  <rdfs:label xml:lang="en">award given to</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#medical_condition">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Clinical_Trial"/>
+  <rdfs:range rdf:resource="#Disease"/>
+  <spar:datasource rdf:resource="#search_wikidata_all_of_the_type"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P1050&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">any state relevant to the health of an organism, including diseases and positive conditions</spar2:tooltip>
+  <rdfs:label xml:lang="en">medical condition</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#disease_studied_by_trial">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Disease"/>
+  <rdfs:range rdf:resource="#Clinical_Trial"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P1050&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">disease studied by trial</spar2:tooltip>
+  <rdfs:label xml:lang="en">disease studied by trial</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#research_intervention">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Clinical_Trial"/>
+  <rdfs:range>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Drug"/>
+        <rdf:Description rdf:about="#Chemical_Compound"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:range>
+  <spar:datasource rdf:resource="#search_wikidata_all_of_the_type"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P4844&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the focus of an experiment, also called the experimental variable, research activity, or study intervention</spar2:tooltip>
+  <rdfs:label xml:lang="en">research intervention</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#drug_studied_by_trial">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Drug"/>
+        <rdf:Description rdf:about="#Chemical_Compound"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#Clinical_Trial"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P4844&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">drug studied by trial</spar2:tooltip>
+  <rdfs:label xml:lang="en">drug studied by trial</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#expressed_in">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Gene"/>
+  <rdfs:range rdf:resource="#Anatomical_Structure"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P5572&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">gene or protein is expressed during a specific condition/cell cycle/process/form</spar2:tooltip>
+  <rdfs:label xml:lang="en">expressed in</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#expresses">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Anatomical_Structure"/>
+  <rdfs:range rdf:resource="#Gene"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P5572&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">expresses</spar2:tooltip>
+  <rdfs:label xml:lang="en">expresses</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:Class rdf:about="#SPARQLQuery">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#SparqlSearchDatasource">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-datasources#SparqlDatasource"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Drug">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q28885102&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Drug</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-capsules</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Disease">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q112193867&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Disease</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-viruses</spar2:faIcon>
+  <spar2:order rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</spar2:order>
+</owl:Class>
+
+<owl:Class rdf:about="#Symptom">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q169872&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Symptom</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-head-side-cough</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Gene">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q7187&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Gene</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-dna</spar2:faIcon>
+  <spar2:order rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</spar2:order>
+</owl:Class>
+
+<owl:Class rdf:about="#Chromosome">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q37748&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Chromosome</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-grip-lines-vertical</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Cell_Type">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q189118&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Cell Type</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-bullseye</spar2:faIcon>
+  <spar2:order rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</spar2:order>
+</owl:Class>
+
+<owl:Class rdf:about="#Protein">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q8054&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Protein</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-certificate</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Biological_Process">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q2996394&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Biological Process</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-egg</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Cell_Component">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q5058355&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Cell Component</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-cloudsmith</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Chemical_Compound">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q11173&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Chemical Compound</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-flask</spar2:faIcon>
+  <spar2:order rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</spar2:order>
+</owl:Class>
+
+<owl:Class rdf:about="#Anatomical_Structure">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q4936952&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Anatomical Structure</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-lungs</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Medical_Test">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q55215251&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Medical Test</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-stethoscope</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Route_of_Administration">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q621636&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Route of Administration</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-syringe</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Mode_of_Inheritance">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q1348351&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Mode of Inheritance</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-sitemap</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Organism">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q16521&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Organism</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-paw</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#US_Pregnancy_Category">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q28123509&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">US Pregnancy Category</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-baby-carriage</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Gene_Variant">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q15304597&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Gene Variant</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-dna</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Person">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q5&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Person</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-person</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Organization">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q43229&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Organization</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-building</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Publication">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q13442814&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Publication</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-newspaper</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Country">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q6256&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Country</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-earth-americas</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Publisher">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q737498&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Publisher</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-newspaper</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Specialty">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q1047113&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Specialty</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-face-glasses</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Access_Status">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q66439731&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Access Status</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-block-brick-fire</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Award">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q618779&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Award</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-face-glasses</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Clinical_Trial">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q30612&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Clinical Trial</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-stethoscope</spar2:faIcon>
+  <spar2:order rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</spar2:order>
+</owl:Class>
+
+<SPARQLQuery rdf:about="#query_search_wikidata_basic">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-datasources#SPARQLQuery"/>
+  <spar:queryString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SELECT DISTINCT ?uri ?label
+WHERE {
+    ?domain &lt;http://www.wikidata.org/prop/direct/P31&gt;  $domain .
+    ?uri &lt;http://www.wikidata.org/prop/direct/P31&gt;  $range .
+
+    ?domain $property ?uri .
+    ?uri rdfs:label ?label .
+    FILTER(isIRI(?uri))
+    FILTER(lang(?label) = "" || lang(?label) = $lang)
+    FILTER(CONTAINS(LCASE(STR(?label)), LCASE("$key")))
+}
+ORDER BY UCASE(?label)
+LIMIT 50</spar:queryString>
+</SPARQLQuery>
+
+<SparqlSearchDatasource rdf:about="#search_wikidata_basic">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <spar:queryTemplate rdf:resource="#query_search_wikidata_basic"/>
+  <rdf:type rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-datasources#SparqlSearchDatasource"/>
+</SparqlSearchDatasource>
+
+<SPARQLQuery rdf:about="#query_search_wikidata_in_humans">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-datasources#SPARQLQuery"/>
+  <spar:queryString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SELECT DISTINCT ?uri ?label
+WHERE {
+    ?domain &lt;http://www.wikidata.org/prop/direct/P31&gt;  $domain .
+     ?uri &lt;http://www.wikidata.org/prop/direct/P31&gt;  $range .
+
+    ?domain $property ?uri .
+    ?uri &lt;http://www.wikidata.org/prop/direct/P703&gt;  wd:Q15978631 .
+    ?uri rdfs:label ?label .
+    FILTER(isIRI(?uri)) .
+    FILTER(lang(?label) = "" || lang(?label) = $lang) . 
+    FILTER(CONTAINS(LCASE(STR(?label)), LCASE("$key"))) .
+}
+ORDER BY ?label
+LIMIT 50</spar:queryString>
+</SPARQLQuery>
+
+<SparqlSearchDatasource rdf:about="#search_wikidata_in_humans">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <spar:queryTemplate rdf:resource="#query_search_wikidata_in_humans"/>
+  <rdf:type rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-datasources#SparqlSearchDatasource"/>
+</SparqlSearchDatasource>
+
+<SPARQLQuery rdf:about="#query_search_wikidata_domain_in_humans">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-datasources#SPARQLQuery"/>
+  <spar:queryString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SELECT DISTINCT ?uri ?label
+WHERE {
+    ?domain &lt;http://www.wikidata.org/prop/direct/P31&gt;  $domain .
+    ?uri &lt;http://www.wikidata.org/prop/direct/P31&gt;  $range .
+
+    ?domain $property ?uri .
+    ?uri &lt;http://www.wikidata.org/prop/direct/P703&gt;  wd:Q15978631 .
+    ?uri rdfs:label ?label .
+    FILTER(isIRI(?uri)) .
+    FILTER(lang(?label) = "" || lang(?label) = $lang) . 
+    FILTER(CONTAINS(LCASE(STR(?label)), LCASE("$key"))) .
+}
+ORDER BY ?label
+LIMIT 50</spar:queryString>
+</SPARQLQuery>
+
+<SparqlSearchDatasource rdf:about="#search_wikidata_domain_in_humans">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <spar:queryTemplate rdf:resource="#query_search_wikidata_domain_in_humans"/>
+  <rdf:type rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-datasources#SparqlSearchDatasource"/>
+</SparqlSearchDatasource>
+
+<SPARQLQuery rdf:about="#query_search_wikidata_all_of_the_type">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-datasources#SPARQLQuery"/>
+  <spar:queryString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SELECT DISTINCT ?uri ?label
+WHERE {
+    ?uri &lt;http://www.wikidata.org/prop/direct/P31&gt;  $range .
+    ?uri rdfs:label ?label .
+    FILTER(isIRI(?uri))
+    FILTER(lang(?label) = "" || lang(?label) = $lang)
+    FILTER(CONTAINS(LCASE(STR(?label)), LCASE("$key")))
+}
+ORDER BY ?label
+LIMIT 50</spar:queryString>
+</SPARQLQuery>
+
+<SparqlSearchDatasource rdf:about="#search_wikidata_all_of_the_type">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <spar:queryTemplate rdf:resource="#query_search_wikidata_all_of_the_type"/>
+  <rdf:type rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-datasources#SparqlSearchDatasource"/>
+</SparqlSearchDatasource>
+
+
+</rdf:RDF>
