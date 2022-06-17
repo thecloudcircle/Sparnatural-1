@@ -181,8 +181,9 @@ for i, row in properties.iterrows():
         if row.datasource != "-":
             _g[prop_label].datasource = _g[row.datasource]
             _g[prop_label].defaultLabelProperty = name
-        else:
-            _g[prop_label].isMultilingual = "true"
+
+        if row.superproperty == "SearchProperty":
+            _g[prop_label].isMultilingual = True
 
         _g[prop_label].label = [locstr(prop_label.replace("_", " "), lang="en")]
         _g[prop_label].enableNegation = [locstr("true", lang="en")]

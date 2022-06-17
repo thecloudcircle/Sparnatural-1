@@ -50,7 +50,7 @@
   <rdfs:range rdf:resource="#Text"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.w3.org/2000/01/rdf-schema#label&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the main name of the object in the database</spar2:tooltip>
-  <spar2:isMultilingual rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</spar2:isMultilingual>
+  <spar2:isMultilingual rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</spar2:isMultilingual>
   <rdfs:label xml:lang="en">name</rdfs:label>
   <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
   <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
@@ -93,7 +93,7 @@
   <rdfs:range rdf:resource="#Text"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.w3.org/2004/02/skos/core#altLabel&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">alternative names of the object in the database</spar2:tooltip>
-  <spar2:isMultilingual rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</spar2:isMultilingual>
+  <spar2:isMultilingual rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</spar2:isMultilingual>
   <rdfs:label xml:lang="en">alias</rdfs:label>
   <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
   <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
@@ -1436,7 +1436,6 @@
   <rdfs:range rdf:resource="#Date"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P580&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">time a time period starts</spar2:tooltip>
-  <spar2:isMultilingual rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</spar2:isMultilingual>
   <rdfs:label xml:lang="en">start time</rdfs:label>
   <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
   <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
@@ -1460,7 +1459,6 @@
   <rdfs:range rdf:resource="#Date"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P582&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">time a time period ends</spar2:tooltip>
-  <spar2:isMultilingual rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</spar2:isMultilingual>
   <rdfs:label xml:lang="en">end time</rdfs:label>
   <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
   <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>

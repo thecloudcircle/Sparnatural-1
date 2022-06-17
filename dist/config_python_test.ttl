@@ -97,7 +97,7 @@
     rdfs:label "alias"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
-    spar2:isMultilingual "true"^^xsd:string ;
+    spar2:isMultilingual true ;
     spar2:sparqlString "<http://www.w3.org/2004/02/skos/core#altLabel>"^^xsd:string ;
     spar2:tooltip "alternative names of the object in the database"^^xsd:string ;
     rdfs:domain [ a owl:Class ;
@@ -492,7 +492,6 @@
     rdfs:label "end time"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
-    spar2:isMultilingual "true"^^xsd:string ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P582>"^^xsd:string ;
     spar2:tooltip "time a time period ends"^^xsd:string ;
     rdfs:domain :Clinical_Trial ;
@@ -1152,7 +1151,6 @@
     rdfs:label "start time"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
-    spar2:isMultilingual "true"^^xsd:string ;
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P580>"^^xsd:string ;
     spar2:tooltip "time a time period starts"^^xsd:string ;
     rdfs:domain :Clinical_Trial ;
@@ -1590,7 +1588,7 @@ LIMIT 50"""^^xsd:string .
     rdfs:label "name"@en ;
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
-    spar2:isMultilingual "true"^^xsd:string ;
+    spar2:isMultilingual true ;
     spar2:sparqlString "<http://www.w3.org/2000/01/rdf-schema#label>"^^xsd:string ;
     spar2:tooltip "the main name of the object in the database"^^xsd:string ;
     rdfs:domain [ a owl:Class ;
