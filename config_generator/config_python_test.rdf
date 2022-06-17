@@ -13,11 +13,98 @@
   <owl:imports rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-datasources"/>
 </owl:Ontology>
 
+<owl:ObjectProperty rdf:about="#name">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SearchProperty"/>
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Drug"/>
+        <rdf:Description rdf:about="#Disease"/>
+        <rdf:Description rdf:about="#Symptom"/>
+        <rdf:Description rdf:about="#Gene"/>
+        <rdf:Description rdf:about="#Chromosome"/>
+        <rdf:Description rdf:about="#Cell_Type"/>
+        <rdf:Description rdf:about="#Protein"/>
+        <rdf:Description rdf:about="#Biological_Process"/>
+        <rdf:Description rdf:about="#Cell_Component"/>
+        <rdf:Description rdf:about="#Chemical_Compound"/>
+        <rdf:Description rdf:about="#Anatomical_Structure"/>
+        <rdf:Description rdf:about="#Medical_Test"/>
+        <rdf:Description rdf:about="#Route_of_Administration"/>
+        <rdf:Description rdf:about="#Mode_of_Inheritance"/>
+        <rdf:Description rdf:about="#Organism"/>
+        <rdf:Description rdf:about="#US_Pregnancy_Category"/>
+        <rdf:Description rdf:about="#Gene_Variant"/>
+        <rdf:Description rdf:about="#Person"/>
+        <rdf:Description rdf:about="#Organization"/>
+        <rdf:Description rdf:about="#Publication"/>
+        <rdf:Description rdf:about="#Country"/>
+        <rdf:Description rdf:about="#Publisher"/>
+        <rdf:Description rdf:about="#Specialty"/>
+        <rdf:Description rdf:about="#Access_Status"/>
+        <rdf:Description rdf:about="#Award"/>
+        <rdf:Description rdf:about="#Clinical_Trial"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#Text"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.w3.org/2000/01/rdf-schema#label&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the main name of the object in the database</spar2:tooltip>
+  <spar2:isMultilingual rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</spar2:isMultilingual>
+  <rdfs:label xml:lang="en">name</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#alias">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SearchProperty"/>
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Disease"/>
+        <rdf:Description rdf:about="#Symptom"/>
+        <rdf:Description rdf:about="#Gene"/>
+        <rdf:Description rdf:about="#Chromosome"/>
+        <rdf:Description rdf:about="#Cell_Type"/>
+        <rdf:Description rdf:about="#Protein"/>
+        <rdf:Description rdf:about="#Biological_Process"/>
+        <rdf:Description rdf:about="#Cell_Component"/>
+        <rdf:Description rdf:about="#Chemical_Compound"/>
+        <rdf:Description rdf:about="#Anatomical_Structure"/>
+        <rdf:Description rdf:about="#Medical_Test"/>
+        <rdf:Description rdf:about="#Route_of_Administration"/>
+        <rdf:Description rdf:about="#Mode_of_Inheritance"/>
+        <rdf:Description rdf:about="#Organism"/>
+        <rdf:Description rdf:about="#US_Pregnancy_Category"/>
+        <rdf:Description rdf:about="#Gene_Variant"/>
+        <rdf:Description rdf:about="#Person"/>
+        <rdf:Description rdf:about="#Organization"/>
+        <rdf:Description rdf:about="#Publication"/>
+        <rdf:Description rdf:about="#Country"/>
+        <rdf:Description rdf:about="#Publisher"/>
+        <rdf:Description rdf:about="#Specialty"/>
+        <rdf:Description rdf:about="#Access_Status"/>
+        <rdf:Description rdf:about="#Award"/>
+        <rdf:Description rdf:about="#Clinical_Trial"/>
+        <rdf:Description rdf:about="#Date"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#Text"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.w3.org/2004/02/skos/core#altLabel&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">alternative names of the object in the database</spar2:tooltip>
+  <spar2:isMultilingual rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</spar2:isMultilingual>
+  <rdfs:label xml:lang="en">alias</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
 <owl:ObjectProperty rdf:about="#sexually_homologous_with">
   <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
   <rdfs:domain rdf:resource="#Anatomical_Structure"/>
   <rdfs:range rdf:resource="#Anatomical_Structure"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P4545&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">body part that originates from the same tissue or cell during fetal development in the opposing sex</spar2:tooltip>
   <rdfs:label xml:lang="en">sexually homologous with</rdfs:label>
@@ -30,6 +117,7 @@
   <rdfs:domain rdf:resource="#Cell_Type"/>
   <rdfs:range rdf:resource="#Gene"/>
   <spar:datasource rdf:resource="#search_wikidata_in_humans"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P8872&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a gene or a protein published as a marker of a species-specific cell type</spar2:tooltip>
   <rdfs:label xml:lang="en">has marker</rdfs:label>
@@ -43,7 +131,7 @@
   <rdfs:range rdf:resource="#Cell_Type"/>
   <spar:datasource rdf:resource="#search_wikidata_domain_in_humans"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P8872&gt;</spar2:sparqlString>
-  <spar2:tooltip xml:lang="en">marker of</spar2:tooltip>
+  <spar2:tooltip xml:lang="en">A gene that is reported as a marker of the cell type.</spar2:tooltip>
   <rdfs:label xml:lang="en">marker of</rdfs:label>
   <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
   <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
@@ -54,6 +142,7 @@
   <rdfs:domain rdf:resource="#Cell_Type"/>
   <rdfs:range rdf:resource="#Anatomical_Structure"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P927&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">where in the body does this anatomical feature lie</spar2:tooltip>
   <rdfs:label xml:lang="en">anatomical location</rdfs:label>
@@ -78,6 +167,7 @@
   <rdfs:domain rdf:resource="#Chemical_Compound"/>
   <rdfs:range rdf:resource="#Protein"/>
   <spar:datasource rdf:resource="#search_wikidata_in_humans"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P129&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">physical entity that the subject interacts with</spar2:tooltip>
   <rdfs:label xml:lang="en">binds protein</rdfs:label>
@@ -102,6 +192,7 @@
   <rdfs:domain rdf:resource="#Chemical_Compound"/>
   <rdfs:range rdf:resource="#Organism"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P1582&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">links a natural product with its source (animal, plant, fungal, algal, etc.)</spar2:tooltip>
   <rdfs:label xml:lang="en">natural product of taxon</rdfs:label>
@@ -126,6 +217,7 @@
   <rdfs:domain rdf:resource="#Chemical_Compound"/>
   <rdfs:range rdf:resource="#Drug"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P3780&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">is part of and forms biologically active component. Inverse of "has active ingredient"</spar2:tooltip>
   <rdfs:label xml:lang="en">active ingredient in</rdfs:label>
@@ -138,6 +230,7 @@
   <rdfs:domain rdf:resource="#Drug"/>
   <rdfs:range rdf:resource="#Chemical_Compound"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <rdfs:label xml:lang="en">has active ingredient</rdfs:label>
   <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
   <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
@@ -150,6 +243,7 @@
   <rdfs:domain rdf:resource="#Disease"/>
   <rdfs:range rdf:resource="#Biological_Process"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P1060&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">process by which a pathogen is transmitted, equivalent to "transmitted by" in the relation ontology http://purl.obolibrary.org/obo/RO_0002451</spar2:tooltip>
   <rdfs:label xml:lang="en">transmission process</rdfs:label>
@@ -174,6 +268,7 @@
   <rdfs:domain rdf:resource="#Disease"/>
   <rdfs:range rdf:resource="#Mode_of_Inheritance"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P1199&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">manner in which a particular genetic trait or disorder is passed from one generation to the next</spar2:tooltip>
   <rdfs:label xml:lang="en">mode of inheritance</rdfs:label>
@@ -198,6 +293,7 @@
   <rdfs:domain rdf:resource="#Disease"/>
   <rdfs:range rdf:resource="#Organism"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P828&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">underlying cause, thing that ultimately resulted in this effect</spar2:tooltip>
   <rdfs:label xml:lang="en">has cause</rdfs:label>
@@ -222,6 +318,7 @@
   <rdfs:domain rdf:resource="#Disease"/>
   <rdfs:range rdf:resource="#Organism"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P1605&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">host species for the pathogen in which it is endemic</spar2:tooltip>
   <rdfs:label xml:lang="en">has natural reservoir</rdfs:label>
@@ -234,6 +331,7 @@
   <rdfs:domain rdf:resource="#Disease"/>
   <rdfs:range rdf:resource="#Drug"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P2176&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">drug, procedure, or therapy that can be used to treat a medical condition</spar2:tooltip>
   <rdfs:label xml:lang="en">treated by</rdfs:label>
@@ -241,16 +339,29 @@
   <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
 </owl:ObjectProperty>
 
-<owl:ObjectProperty rdf:about="#genetic_association">
+<owl:ObjectProperty rdf:about="#associated_to_gene">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Disease"/>
+  <rdfs:range rdf:resource="#Gene"/>
+  <spar:datasource rdf:resource="#search_wikidata_in_humans"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P2293&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">general link between a disease and the causal genetic entity, if the detailed mechanism is unknown/unavailable</spar2:tooltip>
+  <rdfs:label xml:lang="en">associated to gene</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#associated_to_disease">
   <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
   <rdfs:domain rdf:resource="#Gene"/>
   <rdfs:range rdf:resource="#Disease"/>
   <spar:datasource rdf:resource="#search_wikidata_domain_in_humans"/>
-  <rdfs:label xml:lang="en">genetic association</rdfs:label>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P2293&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">associated to disease</spar2:tooltip>
+  <rdfs:label xml:lang="en">associated to disease</rdfs:label>
   <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
   <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
-  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P2293&gt;</spar2:sparqlString>
-  <spar2:tooltip xml:lang="en">genetic association</spar2:tooltip>
 </owl:ObjectProperty>
 
 <owl:ObjectProperty rdf:about="#afflicts">
@@ -258,6 +369,7 @@
   <rdfs:domain rdf:resource="#Disease"/>
   <rdfs:range rdf:resource="#Anatomical_Structure"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P689&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">type of organism, organ or anatomical structure which a condition or disease afflicts</spar2:tooltip>
   <rdfs:label xml:lang="en">afflicts</rdfs:label>
@@ -282,6 +394,7 @@
   <rdfs:domain rdf:resource="#Disease"/>
   <rdfs:range rdf:resource="#Disease"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P7500&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">presence of one or more additional conditions co-occurring with (that is, concomitant or concurrent with) a primary condition</spar2:tooltip>
   <rdfs:label xml:lang="en">comorbidity</rdfs:label>
@@ -294,6 +407,7 @@
   <rdfs:domain rdf:resource="#Disease"/>
   <rdfs:range rdf:resource="#Symptom"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P780&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">possible symptoms of a medical condition</spar2:tooltip>
   <rdfs:label xml:lang="en">has symptom</rdfs:label>
@@ -318,6 +432,7 @@
   <rdfs:domain rdf:resource="#Disease"/>
   <rdfs:range rdf:resource="#Medical_Test"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P923&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">examinations that might be used to diagnose and/or prognose the medical condition</spar2:tooltip>
   <rdfs:label xml:lang="en">medical examinations</rdfs:label>
@@ -342,6 +457,7 @@
   <rdfs:domain rdf:resource="#Drug"/>
   <rdfs:range rdf:resource="#Symptom"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P1909&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">effect of a medication or procedure, that occurs next to the desired effect</spar2:tooltip>
   <rdfs:label xml:lang="en">side effect</rdfs:label>
@@ -373,6 +489,7 @@
   </rdfs:domain>
   <rdfs:range rdf:resource="#Disease"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P2175&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">disease that this pharmaceutical drug, procedure, or therapy is used to treat</spar2:tooltip>
   <rdfs:label xml:lang="en">treats</rdfs:label>
@@ -385,6 +502,7 @@
   <rdfs:domain rdf:resource="#Drug"/>
   <rdfs:range rdf:resource="#US_Pregnancy_Category"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P3489&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">official categorisation of safety of medicine in pregnancy</spar2:tooltip>
   <rdfs:label xml:lang="en">pregnancy category</rdfs:label>
@@ -428,6 +546,7 @@
   </rdfs:domain>
   <rdfs:range rdf:resource="#Disease"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P4954&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">disease which may be prevented by this substance</spar2:tooltip>
   <rdfs:label xml:lang="en">may prevent</rdfs:label>
@@ -466,6 +585,7 @@
   </rdfs:domain>
   <rdfs:range rdf:resource="#Route_of_Administration"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P636&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">path by which a drug, fluid, poison, or other substance is taken into the body</spar2:tooltip>
   <rdfs:label xml:lang="en">administration</rdfs:label>
@@ -497,6 +617,7 @@
   <rdfs:domain rdf:resource="#Drug"/>
   <rdfs:range rdf:resource="#Drug"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P769&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">clinically significant interaction between two pharmacologically active substances (i.e., drugs and/or active metabolites) where concomitant intake can lead to altered effectiveness or adverse drug events.</spar2:tooltip>
   <rdfs:label xml:lang="en">significant drug interaction</rdfs:label>
@@ -509,6 +630,7 @@
   <rdfs:domain rdf:resource="#Gene"/>
   <rdfs:range rdf:resource="#Chromosome"/>
   <spar:datasource rdf:resource="#search_wikidata_in_humans"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P1057&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">chromosome on which an entity is localized</spar2:tooltip>
   <rdfs:label xml:lang="en">present in chromosome</rdfs:label>
@@ -533,6 +655,7 @@
   <rdfs:domain rdf:resource="#Gene"/>
   <rdfs:range rdf:resource="#Protein"/>
   <spar:datasource rdf:resource="#search_wikidata_in_humans"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P688&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the product of a gene (protein or RNA)</spar2:tooltip>
   <rdfs:label xml:lang="en">encodes</rdfs:label>
@@ -545,6 +668,7 @@
   <rdfs:domain rdf:resource="#Gene_Variant"/>
   <rdfs:range rdf:resource="#Gene"/>
   <spar:datasource rdf:resource="#search_wikidata_in_humans"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P3433&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a variant of a physical biological entity (e.g., gene sequence, protein sequence, epigenetic mark)</spar2:tooltip>
   <rdfs:label xml:lang="en">variant of</rdfs:label>
@@ -569,6 +693,7 @@
   <rdfs:domain rdf:resource="#Organism"/>
   <rdfs:range rdf:resource="#Disease"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P1606&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pathogen of which this species is a long-term host</spar2:tooltip>
   <rdfs:label xml:lang="en">natural reservoir of</rdfs:label>
@@ -581,6 +706,7 @@
   <rdfs:domain rdf:resource="#Organism"/>
   <rdfs:range rdf:resource="#Organism"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P171&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">closest parent taxon of the taxon in question</spar2:tooltip>
   <rdfs:label xml:lang="en">parent taxon</rdfs:label>
@@ -594,7 +720,7 @@
   <rdfs:range rdf:resource="#Organism"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P171&gt;</spar2:sparqlString>
-  <spar2:tooltip xml:lang="en">child taxon</spar2:tooltip>
+  <spar2:tooltip xml:lang="en">closest child taxon of the taxon in question</spar2:tooltip>
   <rdfs:label xml:lang="en">child taxon</rdfs:label>
   <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
   <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
@@ -605,6 +731,7 @@
   <rdfs:domain rdf:resource="#Organism"/>
   <rdfs:range rdf:resource="#Protein"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P8339&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">receptor protein or protein whose receptor is being used by this subject virus/microorganism group to enter cells</spar2:tooltip>
   <rdfs:label xml:lang="en">entry receptor</rdfs:label>
@@ -612,14 +739,14 @@
   <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
 </owl:ObjectProperty>
 
-<owl:ObjectProperty rdf:about="#has_entry_receptor">
+<owl:ObjectProperty rdf:about="#entry_receptor_of">
   <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
   <rdfs:domain rdf:resource="#Protein"/>
   <rdfs:range rdf:resource="#Organism"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P8339&gt;</spar2:sparqlString>
-  <spar2:tooltip xml:lang="en">has entry receptor</spar2:tooltip>
-  <rdfs:label xml:lang="en">has entry receptor</rdfs:label>
+  <spar2:tooltip xml:lang="en">the organisms for which this protein acts as an entry point</spar2:tooltip>
+  <rdfs:label xml:lang="en">entry receptor of</rdfs:label>
   <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
   <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
 </owl:ObjectProperty>
@@ -629,6 +756,7 @@
   <rdfs:domain rdf:resource="#Protein"/>
   <rdfs:range rdf:resource="#Chemical_Compound"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P10228&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the cargo/substrate actively transported or passively channeled by a protein</spar2:tooltip>
   <rdfs:label xml:lang="en">facilitates flow of</rdfs:label>
@@ -653,6 +781,7 @@
   <rdfs:domain rdf:resource="#Protein"/>
   <rdfs:range rdf:resource="#Cell_Component"/>
   <spar:datasource rdf:resource="#search_wikidata_domain_in_humans"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P681&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">component of the cell in which this item is present</spar2:tooltip>
   <rdfs:label xml:lang="en">present in component</rdfs:label>
@@ -677,6 +806,7 @@
   <rdfs:domain rdf:resource="#Protein"/>
   <rdfs:range rdf:resource="#Biological_Process"/>
   <spar:datasource rdf:resource="#search_wikidata_domain_in_humans"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P682&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">is involved in the biological process</spar2:tooltip>
   <rdfs:label xml:lang="en">participates in process</rdfs:label>
@@ -701,6 +831,7 @@
   <rdfs:domain rdf:resource="#Protein"/>
   <rdfs:range rdf:resource="#Gene"/>
   <spar:datasource rdf:resource="#search_wikidata_in_humans"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P702&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the gene that encodes some gene product</spar2:tooltip>
   <rdfs:label xml:lang="en">encoded by</rdfs:label>
@@ -713,6 +844,7 @@
   <rdfs:domain rdf:resource="#Organization"/>
   <rdfs:range rdf:resource="#Person"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P1066&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">person who has taught this person</spar2:tooltip>
   <rdfs:label xml:lang="en">founded by</rdfs:label>
@@ -737,6 +869,7 @@
   <rdfs:domain rdf:resource="#Organization"/>
   <rdfs:range rdf:resource="#Country"/>
   <spar:datasource rdf:resource="#search_wikidata_all_of_the_type"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P17&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sovereign state of this item (not to be used for human beings)</spar2:tooltip>
   <rdfs:label xml:lang="en">country</rdfs:label>
@@ -761,6 +894,7 @@
   <rdfs:domain rdf:resource="#Organization"/>
   <rdfs:range rdf:resource="#Person"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P3320&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">member(s) of the board for the organization</spar2:tooltip>
   <rdfs:label xml:lang="en">board member</rdfs:label>
@@ -785,6 +919,7 @@
   <rdfs:domain rdf:resource="#Organization"/>
   <rdfs:range rdf:resource="#Person"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P488&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">presiding member of an organization, group or body</spar2:tooltip>
   <rdfs:label xml:lang="en">chairperson</rdfs:label>
@@ -809,6 +944,7 @@
   <rdfs:domain rdf:resource="#Organization"/>
   <rdfs:range rdf:resource="#Organization"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P749&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">parent organization of an organization, opposite of subsidiaries (P355)</spar2:tooltip>
   <rdfs:label xml:lang="en">parent organization</rdfs:label>
@@ -821,6 +957,7 @@
   <rdfs:domain rdf:resource="#Organization"/>
   <rdfs:range rdf:resource="#Organization"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P355&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">subsidiary of a company or organization; generally a fully owned separate corporation. Compare with "business division" (P199). Opposite of parent organization (P749).</spar2:tooltip>
   <rdfs:label xml:lang="en">has subsidiary</rdfs:label>
@@ -833,6 +970,7 @@
   <rdfs:domain rdf:resource="#Person"/>
   <rdfs:range rdf:resource="#Organization"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P108&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">person or organization for which the subject works or worked</spar2:tooltip>
   <rdfs:label xml:lang="en">employer</rdfs:label>
@@ -857,6 +995,7 @@
   <rdfs:domain rdf:resource="#Person"/>
   <rdfs:range rdf:resource="#Organization"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P69&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">educational institution attended by subject</spar2:tooltip>
   <rdfs:label xml:lang="en">educated at</rdfs:label>
@@ -881,6 +1020,7 @@
   <rdfs:domain rdf:resource="#Person"/>
   <rdfs:range rdf:resource="#Person"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P184&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">person who supervised the doctorate or PhD thesis of the subject</spar2:tooltip>
   <rdfs:label xml:lang="en">doctoral advisor</rdfs:label>
@@ -905,6 +1045,7 @@
   <rdfs:domain rdf:resource="#Person"/>
   <rdfs:range rdf:resource="#Country"/>
   <spar:datasource rdf:resource="#search_wikidata_all_of_the_type"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P27&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the object is a country that recognizes the subject as its citizen</spar2:tooltip>
   <rdfs:label xml:lang="en">country of citizenship</rdfs:label>
@@ -929,6 +1070,7 @@
   <rdfs:domain rdf:resource="#Person"/>
   <rdfs:range rdf:resource="#Person"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P7604&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Is the natural person who has the authority of giving instructions and/or orders to subordinates and is held responsible for the work and actions of subordinates.</spar2:tooltip>
   <rdfs:label xml:lang="en">supervised by</rdfs:label>
@@ -953,6 +1095,7 @@
   <rdfs:domain rdf:resource="#Person"/>
   <rdfs:range rdf:resource="#Person"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P802&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">notable student(s) of the subject individual</spar2:tooltip>
   <rdfs:label xml:lang="en">has student</rdfs:label>
@@ -965,6 +1108,7 @@
   <rdfs:domain rdf:resource="#Person"/>
   <rdfs:range rdf:resource="#Person"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P1066&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">person who has taught this person</spar2:tooltip>
   <rdfs:label xml:lang="en">student of</rdfs:label>
@@ -977,6 +1121,7 @@
   <rdfs:domain rdf:resource="#Publication"/>
   <rdfs:range rdf:resource="#Person"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P50&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">main creator(s) of a written work (use on works, not humans); use P2093 when Wikidata item is unknown or does not exist</spar2:tooltip>
   <rdfs:label xml:lang="en">author</rdfs:label>
@@ -1001,6 +1146,7 @@
   <rdfs:domain rdf:resource="#Publication"/>
   <rdfs:range rdf:resource="#Publisher"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P123&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">organization or person responsible for publishing books, periodicals, printed music, podcasts, games or software</spar2:tooltip>
   <rdfs:label xml:lang="en">published by</rdfs:label>
@@ -1025,6 +1171,7 @@
   <rdfs:domain rdf:resource="#Publication"/>
   <rdfs:range rdf:resource="#Person"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P7137&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">persons or institutions acknowledged on a creative work</spar2:tooltip>
   <rdfs:label xml:lang="en">acknowledges</rdfs:label>
@@ -1049,6 +1196,7 @@
   <rdfs:domain rdf:resource="#Publication"/>
   <rdfs:range rdf:resource="#Person"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P825&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">person or organization to whom the subject was dedicated</spar2:tooltip>
   <rdfs:label xml:lang="en">dedicated to</rdfs:label>
@@ -1073,6 +1221,7 @@
   <rdfs:domain rdf:resource="#Publication"/>
   <rdfs:range rdf:resource="#Publication"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P2860&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">citation from one creative or scholarly work to another</spar2:tooltip>
   <rdfs:label xml:lang="en">cites</rdfs:label>
@@ -1097,6 +1246,7 @@
   <rdfs:domain rdf:resource="#Publisher"/>
   <rdfs:range rdf:resource="#Specialty"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P921&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">primary topic of a work (see also P180: depicts)</spar2:tooltip>
   <rdfs:label xml:lang="en">main subject</rdfs:label>
@@ -1121,6 +1271,7 @@
   <rdfs:domain rdf:resource="#Publisher"/>
   <rdfs:range rdf:resource="#Person"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P98&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">editor of a compiled work such as a book or a periodical (newspaper or an academic journal)</spar2:tooltip>
   <rdfs:label xml:lang="en">editor</rdfs:label>
@@ -1145,6 +1296,7 @@
   <rdfs:domain rdf:resource="#Publisher"/>
   <rdfs:range rdf:resource="#Access_Status"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P6954&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">property or qualifier for an ID property indicating whether linked content is directly readable online</spar2:tooltip>
   <rdfs:label xml:lang="en">access status</rdfs:label>
@@ -1169,6 +1321,7 @@
   <rdfs:domain rdf:resource="#Person"/>
   <rdfs:range rdf:resource="#Award"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P166&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">award or recognition received by a person, organisation or creative work</spar2:tooltip>
   <rdfs:label xml:lang="en">award received</rdfs:label>
@@ -1192,7 +1345,8 @@
   <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
   <rdfs:domain rdf:resource="#Clinical_Trial"/>
   <rdfs:range rdf:resource="#Disease"/>
-  <spar:datasource rdf:resource="#search_wikidata_all_of_the_type"/>
+  <spar:datasource rdf:resource="#search_wikidata_all_of_the_type_run_last_prop"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P1050&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">any state relevant to the health of an organism, including diseases and positive conditions</spar2:tooltip>
   <rdfs:label xml:lang="en">medical condition</rdfs:label>
@@ -1224,6 +1378,7 @@
     </owl:Class>
   </rdfs:range>
   <spar:datasource rdf:resource="#search_wikidata_all_of_the_type"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P4844&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the focus of an experiment, also called the experimental variable, research activity, or study intervention</spar2:tooltip>
   <rdfs:label xml:lang="en">research intervention</rdfs:label>
@@ -1255,6 +1410,7 @@
   <rdfs:domain rdf:resource="#Gene"/>
   <rdfs:range rdf:resource="#Anatomical_Structure"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P5572&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">gene or protein is expressed during a specific condition/cell cycle/process/form</spar2:tooltip>
   <rdfs:label xml:lang="en">expressed in</rdfs:label>
@@ -1274,6 +1430,79 @@
   <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
 </owl:ObjectProperty>
 
+<owl:ObjectProperty rdf:about="#start_time">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#TimeProperty-Date"/>
+  <rdfs:domain rdf:resource="#Clinical_Trial"/>
+  <rdfs:range rdf:resource="#Date"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P580&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">time a time period starts</spar2:tooltip>
+  <spar2:isMultilingual rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</spar2:isMultilingual>
+  <rdfs:label xml:lang="en">start time</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#is_the_start_time_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Date"/>
+  <rdfs:range rdf:resource="#Clinical_Trial"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P580&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">is the start time of</spar2:tooltip>
+  <rdfs:label xml:lang="en">is the start time of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#end_time">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#TimeProperty-Date"/>
+  <rdfs:domain rdf:resource="#Clinical_Trial"/>
+  <rdfs:range rdf:resource="#Date"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P582&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">time a time period ends</spar2:tooltip>
+  <spar2:isMultilingual rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</spar2:isMultilingual>
+  <rdfs:label xml:lang="en">end time</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#is_the_end_time_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Date"/>
+  <rdfs:range rdf:resource="#Clinical_Trial"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P582&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">is the end time of</spar2:tooltip>
+  <rdfs:label xml:lang="en">is the end time of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#arterial_supply">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Anatomical_Structure"/>
+  <rdfs:range rdf:resource="#Anatomical_Structure"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P2286&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">arterial supply of an anatomical structure</spar2:tooltip>
+  <rdfs:label xml:lang="en">arterial supply</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#is_arterial_supply_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Anatomical_Structure"/>
+  <rdfs:range rdf:resource="#Anatomical_Structure"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P2286&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">is the end time of</spar2:tooltip>
+  <rdfs:label xml:lang="en">is arterial supply of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
 <owl:Class rdf:about="#SPARQLQuery">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
 </owl:Class>
@@ -1287,13 +1516,15 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q28885102&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Drug</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-capsules</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">qualitative and quantitative composition of a medicinal product in the dose form authorized for administration by a medicines regulatory agency and as represented with any corresponding regulated product information</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Disease">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
-  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q112193867&gt;</spar2:sparqlString>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q12136&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Disease</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-viruses</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">abnormal condition negatively affecting organisms</spar2:tooltip>
   <spar2:order rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</spar2:order>
 </owl:Class>
 
@@ -1302,6 +1533,7 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q169872&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Symptom</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-head-side-cough</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">departure from normal function or feeling which is noticed by a patient, reflecting the presence of an unusual state, or of a disease; subjective, observed by the patient, cannot be measured directly</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Gene">
@@ -1309,6 +1541,7 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q7187&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Gene</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-dna</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">basic physical and functional unit of heredity</spar2:tooltip>
   <spar2:order rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</spar2:order>
 </owl:Class>
 
@@ -1317,6 +1550,7 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q37748&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Chromosome</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-grip-lines-vertical</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DNA molecule containing genetic material of a cell</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Cell_Type">
@@ -1324,6 +1558,7 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q189118&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Cell Type</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-bullseye</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">metaclass used to distinguish between morphologically or phenotypically distinct cell forms</spar2:tooltip>
   <spar2:order rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</spar2:order>
 </owl:Class>
 
@@ -1332,6 +1567,7 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q8054&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Protein</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-certificate</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">biological molecule consisting of chains of amino acid residues</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Biological_Process">
@@ -1339,13 +1575,15 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q2996394&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Biological Process</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-egg</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">process specifically pertinent to the functioning of integrated living units</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Cell_Component">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q5058355&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Cell Component</rdfs:label>
-  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-cloudsmith</spar2:faIcon>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-egg</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">component of a cell</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Chemical_Compound">
@@ -1353,6 +1591,7 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q11173&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Chemical Compound</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-flask</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pure chemical substance consisting of two or more different chemical elements</spar2:tooltip>
   <spar2:order rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</spar2:order>
 </owl:Class>
 
@@ -1361,6 +1600,7 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q4936952&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Anatomical Structure</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-lungs</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">entity with a single connected inherent 3D shape that's created by coordinated expression of the organism's own DNA</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Medical_Test">
@@ -1368,6 +1608,7 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q55215251&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Medical Test</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-stethoscope</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">type or family of medical test</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Route_of_Administration">
@@ -1375,6 +1616,7 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q621636&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Route of Administration</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-syringe</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">path by which a drug, fluid, poison, or other substance is taken into the body</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Mode_of_Inheritance">
@@ -1382,6 +1624,7 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q1348351&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Mode of Inheritance</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-sitemap</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the manner in which a particular genetic trait or disorder is passed from one generation to the next</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Organism">
@@ -1389,6 +1632,7 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q16521&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Organism</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-paw</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">group of one or more organism(s), which a taxonomist adjudges to be a unit</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#US_Pregnancy_Category">
@@ -1396,6 +1640,7 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q28123509&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">US Pregnancy Category</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-baby-carriage</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pregnancy category as defined by the Food and Drug Administration (FDA) of the United States</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Gene_Variant">
@@ -1403,6 +1648,7 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q15304597&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Gene Variant</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-dna</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">non-exact copy of a sequence feature or genome exhibiting one or more sequence alterations</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Person">
@@ -1410,6 +1656,7 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q5&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Person</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-person</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">common name of Homo sapiens, unique extant species of the genus Homo</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Organization">
@@ -1417,6 +1664,7 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q43229&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Organization</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-building</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">social entity established to meet needs or pursue goals</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Publication">
@@ -1424,6 +1672,7 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q13442814&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Publication</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-newspaper</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">article in an academic publication, usually peer reviewed</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Country">
@@ -1431,6 +1680,7 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q6256&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Country</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-earth-americas</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">distinct territorial body or political entity</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Publisher">
@@ -1438,6 +1688,7 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q737498&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Publisher</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-newspaper</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">peer-reviewed periodical relating to an academic discipline</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Specialty">
@@ -1445,6 +1696,7 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q1047113&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Specialty</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-face-glasses</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">field limited to a specific area of knowledge; specialization in an occupation or branch of learning; a specific use</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Access_Status">
@@ -1452,13 +1704,15 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q66439731&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Access Status</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-block-brick-fire</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">limitation applied to access of an object; measure to restrict use or access of something</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Award">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q618779&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Award</rdfs:label>
-  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-face-glasses</spar2:faIcon>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-award</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">something given to a person or a group of people to recognize their merit or excellence</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Clinical_Trial">
@@ -1466,7 +1720,23 @@
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q30612&gt;</spar2:sparqlString>
   <rdfs:label xml:lang="en">Clinical Trial</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-stethoscope</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">interventional study in clinical research</spar2:tooltip>
   <spar2:order rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</spar2:order>
+</owl:Class>
+
+<owl:Class rdf:about="#Date">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  <rdfs:label xml:lang="en">Date</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-calendar-alt</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a date or a year</spar2:tooltip>
+</owl:Class>
+
+<owl:Class rdf:about="#Text">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/none&gt;</spar2:sparqlString>
+  <rdfs:label xml:lang="en">Text</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-font-case</spar2:faIcon>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the name or description of an object</spar2:tooltip>
 </owl:Class>
 
 <SPARQLQuery rdf:about="#query_search_wikidata_basic">
@@ -1548,11 +1818,12 @@ LIMIT 50</spar:queryString>
   <rdf:type rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-datasources#SPARQLQuery"/>
   <spar:queryString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SELECT DISTINCT ?uri ?label
 WHERE {
-    ?uri &lt;http://www.wikidata.org/prop/direct/P31&gt;  $range .
+    ?uri &lt;http://www.wikidata.org/prop/direct/P31&gt;  &lt;http://www.wikidata.org/entity/Q11173&gt; .
+    [] $property ?uri .
     ?uri rdfs:label ?label .
     FILTER(isIRI(?uri))
-    FILTER(lang(?label) = "" || lang(?label) = $lang)
-    FILTER(CONTAINS(LCASE(STR(?label)), LCASE("$key")))
+    FILTER(lang(?label) = "" || lang(?label) = 'en')
+    FILTER(CONTAINS(LCASE(?label), LCASE("ab")))
 }
 ORDER BY ?label
 LIMIT 50</spar:queryString>
@@ -1561,6 +1832,29 @@ LIMIT 50</spar:queryString>
 <SparqlSearchDatasource rdf:about="#search_wikidata_all_of_the_type">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <spar:queryTemplate rdf:resource="#query_search_wikidata_all_of_the_type"/>
+  <rdf:type rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-datasources#SparqlSearchDatasource"/>
+</SparqlSearchDatasource>
+
+<SPARQLQuery rdf:about="#query_search_wikidata_all_of_the_type_run_last_prop">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-datasources#SPARQLQuery"/>
+  <spar:queryString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SELECT DISTINCT ?uri ?label
+WHERE {
+    ?uri &lt;http://www.wikidata.org/prop/direct/P31&gt;  $range .
+    ?domain $property ?uri .
+    hint:Prior hint:runLast true .
+    ?uri rdfs:label ?label .
+    FILTER(isIRI(?uri))
+    FILTER(lang(?label) = "" || lang(?label) = $lang)
+    FILTER(CONTAINS(LCASE(?label), LCASE("$key")))
+}
+ORDER BY ?label
+LIMIT 50</spar:queryString>
+</SPARQLQuery>
+
+<SparqlSearchDatasource rdf:about="#search_wikidata_all_of_the_type_run_last_prop">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <spar:queryTemplate rdf:resource="#query_search_wikidata_all_of_the_type_run_last_prop"/>
   <rdf:type rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-datasources#SparqlSearchDatasource"/>
 </SparqlSearchDatasource>
 
