@@ -1,0 +1,12 @@
+SELECT DISTINCT ?uri ?label
+WHERE {
+    ?uri <http://www.wikidata.org/prop/direct/P31>  $range .
+    ?domain $property ?uri .
+    hint:Prior hint:runLast true .
+    ?uri rdfs:label ?label .
+    FILTER(isIRI(?uri))
+    FILTER(lang(?label) = "" || lang(?label) = $lang)
+    FILTER(CONTAINS(LCASE(?label), LCASE("$key")))
+}
+ORDER BY ?label
+LIMIT 50
