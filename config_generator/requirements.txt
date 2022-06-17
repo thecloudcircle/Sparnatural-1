@@ -1,0 +1,6 @@
+xlrd
+openpyxl
+pandas
+owlready2
+rdflib
+wikidata2df
