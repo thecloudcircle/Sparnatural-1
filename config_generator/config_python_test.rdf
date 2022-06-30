@@ -1432,8 +1432,163 @@
   <rdfs:range rdf:resource="#Anatomical_Structure"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P2286&gt;</spar2:sparqlString>
-  <spar2:tooltip xml:lang="en">is the end time of</spar2:tooltip>
+  <spar2:tooltip xml:lang="en">is arterial supply of</spar2:tooltip>
   <rdfs:label xml:lang="en">is arterial supply of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#venous_drainage">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Anatomical_Structure"/>
+  <rdfs:range rdf:resource="#Anatomical_Structure"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P2289&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vein draining the anatomical structure</spar2:tooltip>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+  <rdfs:label xml:lang="en">venous drainage</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#is_venous_drainage_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Anatomical_Structure"/>
+  <rdfs:range rdf:resource="#Anatomical_Structure"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P2289&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">is venous drainage of</spar2:tooltip>
+  <rdfs:label xml:lang="en">is venous drainage of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#lymphatic_drainage">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Anatomical_Structure"/>
+  <rdfs:range rdf:resource="#Anatomical_Structure"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P2288&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lymphatic drainage of an anatomical structure</spar2:tooltip>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+  <rdfs:label xml:lang="en">lymphatic drainage</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#is_lymphatic_drainage_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Anatomical_Structure"/>
+  <rdfs:range rdf:resource="#Anatomical_Structure"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P2288&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">is lymphatic drainage of</spar2:tooltip>
+  <rdfs:label xml:lang="en">is lymphatic drainage of</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#antagonist_muscle">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Anatomical_Structure"/>
+  <rdfs:range rdf:resource="#Anatomical_Structure"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P2329&gt;</spar2:sparqlString>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+  <rdfs:label xml:lang="en">antagonist muscle</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_anatomical_branch">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Anatomical_Structure"/>
+  <rdfs:range rdf:resource="#Anatomical_Structure"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P3262&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">branches of this blood vessel, lymphatic vessel or nerve</spar2:tooltip>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+  <rdfs:label xml:lang="en">has anatomical branch</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#anatomical_branch_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Anatomical_Structure"/>
+  <rdfs:range rdf:resource="#Anatomical_Structure"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P3261&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">main stem of this blood vessel, lymphatic vessel or nerve</spar2:tooltip>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+  <rdfs:label xml:lang="en">anatomical branch of</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#muscle_insertion">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Anatomical_Structure"/>
+  <rdfs:range rdf:resource="#Anatomical_Structure"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P3491&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the anatomic entity to which the end of a muscle is anchored</spar2:tooltip>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+  <rdfs:label xml:lang="en">muscle insertion</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#muscle_origin_">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Anatomical_Structure"/>
+  <rdfs:range rdf:resource="#Anatomical_Structure"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P3490&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the anatomic entity to which the beginning of a muscle is anchored</spar2:tooltip>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+  <rdfs:label xml:lang="en">muscle origin </rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#innervated_by">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Anatomical_Structure"/>
+  <rdfs:range rdf:resource="#Anatomical_Structure"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P3189&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">nerves which innervate this anatomical structure</spar2:tooltip>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+  <rdfs:label xml:lang="en">innervated by</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#innervates">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Anatomical_Structure"/>
+  <rdfs:range rdf:resource="#Anatomical_Structure"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P3190&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">anatomical structures innervated by this nerve</spar2:tooltip>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+  <rdfs:label xml:lang="en">innervates</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#segmental_innervation">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Anatomical_Structure"/>
+  <rdfs:range rdf:resource="#Anatomical_Structure"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P4882&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">specific level(s) of spinal cord responsible for the function of this muscle or organ</spar2:tooltip>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+  <rdfs:label xml:lang="en">segmental innervation</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#is_segmental_innervation_of">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Anatomical_Structure"/>
+  <rdfs:range rdf:resource="#Anatomical_Structure"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P4882&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">is segmental innervation of</spar2:tooltip>
+  <rdfs:label xml:lang="en">is segmental innervation of</rdfs:label>
   <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
   <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
 </owl:ObjectProperty>

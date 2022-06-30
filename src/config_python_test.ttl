@@ -98,6 +98,17 @@
     rdfs:range :Text ;
     rdfs:subPropertyOf spar2:SearchProperty .
 
+:anatomical_branch_of a owl:ObjectProperty ;
+    rdfs:label "anatomical branch of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P3261>"^^xsd:string ;
+    spar2:tooltip "main stem of this blood vessel, lymphatic vessel or nerve"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Anatomical_Structure ;
+    rdfs:range :Anatomical_Structure ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
 :anatomical_location a owl:ObjectProperty ;
     rdfs:label "anatomical location"@en ;
     spar2:enableNegation "true"@en ;
@@ -106,6 +117,16 @@
     spar2:tooltip "where in the body does this anatomical feature lie"^^xsd:string ;
     spar:datasource :search_wikidata_basic ;
     rdfs:domain :Cell_Type ;
+    rdfs:range :Anatomical_Structure ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:antagonist_muscle a owl:ObjectProperty ;
+    rdfs:label "antagonist muscle"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P2329>"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Anatomical_Structure ;
     rdfs:range :Anatomical_Structure ;
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
@@ -571,6 +592,17 @@
     rdfs:range :Chemical_Compound ;
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
+:has_anatomical_branch a owl:ObjectProperty ;
+    rdfs:label "has anatomical branch"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P3262>"^^xsd:string ;
+    spar2:tooltip "branches of this blood vessel, lymphatic vessel or nerve"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Anatomical_Structure ;
+    rdfs:range :Anatomical_Structure ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
 :has_cause a owl:ObjectProperty ;
     rdfs:label "has cause"@en ;
     spar2:enableNegation "true"@en ;
@@ -670,6 +702,28 @@
     rdfs:range :Gene_Variant ;
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
+:innervated_by a owl:ObjectProperty ;
+    rdfs:label "innervated by"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P3189>"^^xsd:string ;
+    spar2:tooltip "nerves which innervate this anatomical structure"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Anatomical_Structure ;
+    rdfs:range :Anatomical_Structure ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:innervates a owl:ObjectProperty ;
+    rdfs:label "innervates"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P3190>"^^xsd:string ;
+    spar2:tooltip "anatomical structures innervated by this nerve"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Anatomical_Structure ;
+    rdfs:range :Anatomical_Structure ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
 :is_a_transmission_process_of a owl:ObjectProperty ;
     rdfs:label "is a transmission process of"@en ;
     spar2:enableNegation "true"@en ;
@@ -708,7 +762,7 @@
     spar2:enableNegation "true"@en ;
     spar2:enableOptional "true"@en ;
     spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P2286>"^^xsd:string ;
-    spar2:tooltip "is the end time of"@en ;
+    spar2:tooltip "is arterial supply of"@en ;
     spar:datasource :search_wikidata_basic ;
     rdfs:domain :Anatomical_Structure ;
     rdfs:range :Anatomical_Structure ;
@@ -769,6 +823,17 @@
     rdfs:range :Disease ;
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
+:is_lymphatic_drainage_of a owl:ObjectProperty ;
+    rdfs:label "is lymphatic drainage of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P2288>"^^xsd:string ;
+    spar2:tooltip "is lymphatic drainage of"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Anatomical_Structure ;
+    rdfs:range :Anatomical_Structure ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
 :is_pregnancy_category_of a owl:ObjectProperty ;
     rdfs:label "is pregnancy category of"@en ;
     spar2:enableNegation "true"@en ;
@@ -778,6 +843,17 @@
     spar:datasource :search_wikidata_basic ;
     rdfs:domain :US_Pregnancy_Category ;
     rdfs:range :Drug ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:is_segmental_innervation_of a owl:ObjectProperty ;
+    rdfs:label "is segmental innervation of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P4882>"^^xsd:string ;
+    spar2:tooltip "is segmental innervation of"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Anatomical_Structure ;
+    rdfs:range :Anatomical_Structure ;
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :is_side_effect_of a owl:ObjectProperty ;
@@ -813,6 +889,17 @@
     rdfs:range :Clinical_Trial ;
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
+:is_venous_drainage_of a owl:ObjectProperty ;
+    rdfs:label "is venous drainage of"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P2289>"^^xsd:string ;
+    spar2:tooltip "is venous drainage of"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Anatomical_Structure ;
+    rdfs:range :Anatomical_Structure ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
 :is_way_of_administration_of a owl:ObjectProperty ;
     rdfs:label "is way of administration of"@en ;
     spar2:enableNegation "true"@en ;
@@ -834,6 +921,17 @@
     spar:datasource :search_wikidata_basic ;
     rdfs:domain :Anatomical_Structure ;
     rdfs:range :Cell_Type ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:lymphatic_drainage a owl:ObjectProperty ;
+    rdfs:label "lymphatic drainage"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P2288>"^^xsd:string ;
+    spar2:tooltip "lymphatic drainage of an anatomical structure"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Anatomical_Structure ;
+    rdfs:range :Anatomical_Structure ;
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :main_subject a owl:ObjectProperty ;
@@ -924,6 +1022,28 @@
     spar:datasource :search_wikidata_basic ;
     rdfs:domain :Disease ;
     rdfs:range :Mode_of_Inheritance ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:muscle_insertion a owl:ObjectProperty ;
+    rdfs:label "muscle insertion"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P3491>"^^xsd:string ;
+    spar2:tooltip "the anatomic entity to which the end of a muscle is anchored"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Anatomical_Structure ;
+    rdfs:range :Anatomical_Structure ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:muscle_origin_ a owl:ObjectProperty ;
+    rdfs:label "muscle origin "@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P3490>"^^xsd:string ;
+    spar2:tooltip "the anatomic entity to which the beginning of a muscle is anchored"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Anatomical_Structure ;
+    rdfs:range :Anatomical_Structure ;
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :natural_product_of_taxon a owl:ObjectProperty ;
@@ -1057,6 +1177,17 @@
     rdfs:domain :Clinical_Trial ;
     rdfs:range [ a owl:Class ;
             owl:unionOf ( :Drug :Chemical_Compound ) ] ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:segmental_innervation a owl:ObjectProperty ;
+    rdfs:label "segmental innervation"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P4882>"^^xsd:string ;
+    spar2:tooltip "specific level(s) of spinal cord responsible for the function of this muscle or organ"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Anatomical_Structure ;
+    rdfs:range :Anatomical_Structure ;
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :sexually_homologous_with a owl:ObjectProperty ;
@@ -1200,6 +1331,17 @@
     spar:datasource :search_wikidata_in_humans ;
     rdfs:domain :Gene_Variant ;
     rdfs:range :Gene ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:venous_drainage a owl:ObjectProperty ;
+    rdfs:label "venous drainage"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P2289>"^^xsd:string ;
+    spar2:tooltip "vein draining the anatomical structure"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Anatomical_Structure ;
+    rdfs:range :Anatomical_Structure ;
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :was_dedicated_ a owl:ObjectProperty ;
@@ -1465,14 +1607,6 @@ LIMIT 50"""^^xsd:string .
     spar2:tooltip "peer-reviewed periodical relating to an academic discipline"^^xsd:string ;
     rdfs:subClassOf spar2:SparnaturalClass .
 
-:Anatomical_Structure a owl:Class ;
-    rdfs:label "Anatomical Structure"@en ;
-    spar2:defaultLabelProperty :name ;
-    spar2:faIcon "fas fa-lungs"^^xsd:string ;
-    spar2:sparqlString "<http://www.wikidata.org/entity/Q4936952>"^^xsd:string ;
-    spar2:tooltip "entity with a single connected inherent 3D shape that's created by coordinated expression of the organism's own DNA"^^xsd:string ;
-    rdfs:subClassOf spar2:SparnaturalClass .
-
 :Gene a owl:Class ;
     rdfs:label "Gene"@en ;
     spar2:defaultLabelProperty :name ;
@@ -1556,6 +1690,14 @@ LIMIT 50"""^^xsd:string .
     spar2:faIcon "fas fa-person"^^xsd:string ;
     spar2:sparqlString "<http://www.wikidata.org/entity/Q5>"^^xsd:string ;
     spar2:tooltip "common name of Homo sapiens, unique extant species of the genus Homo"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Anatomical_Structure a owl:Class ;
+    rdfs:label "Anatomical Structure"@en ;
+    spar2:defaultLabelProperty :name ;
+    spar2:faIcon "fas fa-lungs"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q4936952>"^^xsd:string ;
+    spar2:tooltip "entity with a single connected inherent 3D shape that's created by coordinated expression of the organism's own DNA"^^xsd:string ;
     rdfs:subClassOf spar2:SparnaturalClass .
 
 :search_wikidata_basic a spar:SparqlSearchDatasource,
