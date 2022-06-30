@@ -103,6 +103,11 @@ for query_name in query_names:
 
 # endregion --------
 
+# Create labelling property
+with onto:
+    prop_label = "name"
+    _g[prop_label] = types.new_class(prop_label, (ObjectProperty,))
+
 # Create classes
 # region --------
 os.system(
@@ -116,7 +121,7 @@ for i, row in classes.iterrows():
 
     with onto:
         class_label = row.label.replace(" ", "_")
-        if class_label == "Date":
+        if class_label == "Date" or class_label == "Text":
             _g[class_label] = types.new_class(class_label, (rdfs.Literal,))
         else:
             _g[class_label] = types.new_class(
@@ -132,6 +137,9 @@ for i, row in classes.iterrows():
 
         if class_label in order_dict:
             _g[class_label].order = order_dict[class_label]
+
+        if class_label != "Text":
+            _g[class_label].defaultLabelProperty = name
 # endregion --------
 
 # Create properties
@@ -180,14 +188,14 @@ for i, row in properties.iterrows():
 
         if row.datasource != "-":
             _g[prop_label].datasource = _g[row.datasource]
-            _g[prop_label].defaultLabelProperty = name
 
         if row.superproperty == "SearchProperty":
             _g[prop_label].isMultilingual = True
+        else:
+            _g[prop_label].enableNegation = [locstr("true", lang="en")]
+            _g[prop_label].enableOptional = [locstr("true", lang="en")]
 
         _g[prop_label].label = [locstr(prop_label.replace("_", " "), lang="en")]
-        _g[prop_label].enableNegation = [locstr("true", lang="en")]
-        _g[prop_label].enableOptional = [locstr("true", lang="en")]
 
         if row.infer_inverse == "yes":
 
