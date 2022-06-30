@@ -128,18 +128,20 @@ for i, row in classes.iterrows():
                 class_label, (config_core.SparnaturalClass,)
             )
             _g[class_label].sparqlString = f"<http://www.wikidata.org/entity/{row.id}>"
+            _g[class_label].defaultLabelProperty = name
+
+        if row["tool_tip"] == "-":
+            tooltip_value = class_tooltips_dict[row["id"]]
+        else:
+            tooltip_value = row["tool_tip"]
+
+        _g[class_label].tooltip = tooltip_value
         _g[class_label].label = [locstr(class_label.replace("_", " "), lang="en")]
         _g[class_label].faIcon = f"fas {row['font_awesome']}"
-        if row["tool_tip"] != "-":
-            _g[class_label].tooltip = row["tool_tip"]
-        else:
-            _g[class_label].tooltip = class_tooltips_dict[row["id"]]
 
         if class_label in order_dict:
             _g[class_label].order = order_dict[class_label]
 
-        if class_label != "Text":
-            _g[class_label].defaultLabelProperty = name
 # endregion --------
 
 # Create properties
@@ -147,6 +149,19 @@ for i, row in classes.iterrows():
 properties = pd.read_excel("config.xlsx", sheet_name=f"properties")
 properties = properties.dropna(subset=["label"])
 tooltips_dict = get_tooltips_dict(properties["id"])
+
+
+def get_domains_or_ranges(entry):
+    if "&" in entry:
+        names = [name.strip().replace(" ", "_") for name in entry.split("&")]
+        # _g is a global variable
+        classes = [_g[name] for name in names]
+        sentence_for_classes = Or(classes)
+    else:
+        sentence_for_classes = [_g[entry.replace(" ", "_")]]
+    return sentence_for_classes
+
+
 for i, row in properties.iterrows():
 
     with onto:
@@ -154,26 +169,12 @@ for i, row in properties.iterrows():
         _g[prop_label] = types.new_class(prop_label, (ObjectProperty,))
         _g[prop_label].is_a.append(config_core[row.superproperty])
 
-        if "&" in row.domain:
-            domain_names = [
-                name.strip().replace(" ", "_") for name in row.domain.split("&")
-            ]
-            domain_classes = [_g[prop_name] for prop_name in domain_names]
-            prop_domains = Or(domain_classes)
-        else:
-            prop_domains = [_g[row.domain.replace(" ", "_")]]
-
-        if "&" in row.range:
-            range_names = [
-                name.strip().replace(" ", "_") for name in row.range.split("&")
-            ]
-            range_classes = [_g[prop_name] for prop_name in range_names]
-            prop_ranges = Or(range_classes)
-        else:
-            prop_ranges = [_g[row.range.replace(" ", "_")]]
+        prop_domains = get_domains_or_ranges(row.domain)
+        prop_ranges = get_domains_or_ranges(row.range)
 
         _g[prop_label].domain = prop_domains
         _g[prop_label].range = prop_ranges
+
         if row.id[0] != "P":
             _g[prop_label].sparqlString = row.id
         else:

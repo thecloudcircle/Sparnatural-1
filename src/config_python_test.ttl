@@ -1395,7 +1395,6 @@ LIMIT 50"""^^xsd:string .
 
 :Date a owl:Class ;
     rdfs:label "Date"@en ;
-    spar2:defaultLabelProperty :name ;
     spar2:faIcon "fas fa-calendar-alt"^^xsd:string ;
     spar2:tooltip "a date or a year"^^xsd:string ;
     rdfs:subClassOf rdfs:Literal .

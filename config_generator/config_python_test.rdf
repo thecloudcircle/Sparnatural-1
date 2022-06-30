@@ -1450,18 +1450,18 @@
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q28885102&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">qualitative and quantitative composition of a medicinal product in the dose form authorized for administration by a medicines regulatory agency and as represented with any corresponding regulated product information</spar2:tooltip>
   <rdfs:label xml:lang="en">Drug</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-capsules</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">qualitative and quantitative composition of a medicinal product in the dose form authorized for administration by a medicines regulatory agency and as represented with any corresponding regulated product information</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Disease">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q12136&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">abnormal condition negatively affecting organisms</spar2:tooltip>
   <rdfs:label xml:lang="en">Disease</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-viruses</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">abnormal condition negatively affecting organisms</spar2:tooltip>
   <spar2:order rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</spar2:order>
 </owl:Class>
 
@@ -1469,18 +1469,18 @@
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q169872&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">departure from normal function or feeling which is noticed by a patient, reflecting the presence of an unusual state, or of a disease; subjective, observed by the patient, cannot be measured directly</spar2:tooltip>
   <rdfs:label xml:lang="en">Symptom</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-head-side-cough</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">departure from normal function or feeling which is noticed by a patient, reflecting the presence of an unusual state, or of a disease; subjective, observed by the patient, cannot be measured directly</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Gene">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q7187&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">basic physical and functional unit of heredity</spar2:tooltip>
   <rdfs:label xml:lang="en">Gene</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-dna</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">basic physical and functional unit of heredity</spar2:tooltip>
   <spar2:order rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</spar2:order>
 </owl:Class>
 
@@ -1488,18 +1488,18 @@
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q37748&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DNA molecule containing genetic material of a cell</spar2:tooltip>
   <rdfs:label xml:lang="en">Chromosome</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-grip-lines-vertical</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DNA molecule containing genetic material of a cell</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Cell_Type">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q189118&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">metaclass used to distinguish between morphologically or phenotypically distinct cell forms</spar2:tooltip>
   <rdfs:label xml:lang="en">Cell Type</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-bullseye</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">metaclass used to distinguish between morphologically or phenotypically distinct cell forms</spar2:tooltip>
   <spar2:order rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</spar2:order>
 </owl:Class>
 
@@ -1507,36 +1507,36 @@
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q8054&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">biological molecule consisting of chains of amino acid residues</spar2:tooltip>
   <rdfs:label xml:lang="en">Protein</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-certificate</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">biological molecule consisting of chains of amino acid residues</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Biological_Process">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q2996394&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">process specifically pertinent to the functioning of integrated living units</spar2:tooltip>
   <rdfs:label xml:lang="en">Biological Process</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-egg</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">process specifically pertinent to the functioning of integrated living units</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Cell_Component">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q5058355&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">component of a cell</spar2:tooltip>
   <rdfs:label xml:lang="en">Cell Component</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-egg</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">component of a cell</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Chemical_Compound">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q11173&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pure chemical substance consisting of two or more different chemical elements</spar2:tooltip>
   <rdfs:label xml:lang="en">Chemical Compound</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-flask</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pure chemical substance consisting of two or more different chemical elements</spar2:tooltip>
   <spar2:order rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</spar2:order>
 </owl:Class>
 
@@ -1544,160 +1544,159 @@
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q4936952&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">entity with a single connected inherent 3D shape that's created by coordinated expression of the organism's own DNA</spar2:tooltip>
   <rdfs:label xml:lang="en">Anatomical Structure</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-lungs</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">entity with a single connected inherent 3D shape that's created by coordinated expression of the organism's own DNA</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Medical_Test">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q55215251&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">type or family of medical test</spar2:tooltip>
   <rdfs:label xml:lang="en">Medical Test</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-stethoscope</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">type or family of medical test</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Route_of_Administration">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q621636&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">path by which a drug, fluid, poison, or other substance is taken into the body</spar2:tooltip>
   <rdfs:label xml:lang="en">Route of Administration</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-syringe</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">path by which a drug, fluid, poison, or other substance is taken into the body</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Mode_of_Inheritance">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q1348351&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the manner in which a particular genetic trait or disorder is passed from one generation to the next</spar2:tooltip>
   <rdfs:label xml:lang="en">Mode of Inheritance</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-sitemap</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the manner in which a particular genetic trait or disorder is passed from one generation to the next</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Organism">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q16521&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">group of one or more organism(s), which a taxonomist adjudges to be a unit</spar2:tooltip>
   <rdfs:label xml:lang="en">Organism</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-paw</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">group of one or more organism(s), which a taxonomist adjudges to be a unit</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#US_Pregnancy_Category">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q28123509&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pregnancy category as defined by the Food and Drug Administration (FDA) of the United States</spar2:tooltip>
   <rdfs:label xml:lang="en">US Pregnancy Category</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-baby-carriage</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pregnancy category as defined by the Food and Drug Administration (FDA) of the United States</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Gene_Variant">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q15304597&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">non-exact copy of a sequence feature or genome exhibiting one or more sequence alterations</spar2:tooltip>
   <rdfs:label xml:lang="en">Gene Variant</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-dna</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">non-exact copy of a sequence feature or genome exhibiting one or more sequence alterations</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Person">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q5&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">common name of Homo sapiens, unique extant species of the genus Homo</spar2:tooltip>
   <rdfs:label xml:lang="en">Person</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-person</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">common name of Homo sapiens, unique extant species of the genus Homo</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Organization">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q43229&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">social entity established to meet needs or pursue goals</spar2:tooltip>
   <rdfs:label xml:lang="en">Organization</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-building</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">social entity established to meet needs or pursue goals</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Publication">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q13442814&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">article in an academic publication, usually peer reviewed</spar2:tooltip>
   <rdfs:label xml:lang="en">Publication</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-newspaper</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">article in an academic publication, usually peer reviewed</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Country">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q6256&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">distinct territorial body or political entity</spar2:tooltip>
   <rdfs:label xml:lang="en">Country</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-earth-americas</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">distinct territorial body or political entity</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Publisher">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q737498&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">peer-reviewed periodical relating to an academic discipline</spar2:tooltip>
   <rdfs:label xml:lang="en">Publisher</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-newspaper</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">peer-reviewed periodical relating to an academic discipline</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Specialty">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q1047113&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">field limited to a specific area of knowledge; specialization in an occupation or branch of learning; a specific use</spar2:tooltip>
   <rdfs:label xml:lang="en">Specialty</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-face-glasses</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">field limited to a specific area of knowledge; specialization in an occupation or branch of learning; a specific use</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Access_Status">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q66439731&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">limitation applied to access of an object; measure to restrict use or access of something</spar2:tooltip>
   <rdfs:label xml:lang="en">Access Status</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-block-brick-fire</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">limitation applied to access of an object; measure to restrict use or access of something</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Award">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q618779&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">something given to a person or a group of people to recognize their merit or excellence</spar2:tooltip>
   <rdfs:label xml:lang="en">Award</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-award</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">something given to a person or a group of people to recognize their merit or excellence</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Clinical_Trial">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q30612&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">interventional study in clinical research</spar2:tooltip>
   <rdfs:label xml:lang="en">Clinical Trial</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-stethoscope</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">interventional study in clinical research</spar2:tooltip>
   <spar2:order rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</spar2:order>
 </owl:Class>
 
 <owl:Class rdf:about="#Date">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-  <spar2:defaultLabelProperty rdf:resource="#name"/>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a date or a year</spar2:tooltip>
   <rdfs:label xml:lang="en">Date</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-calendar-alt</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a date or a year</spar2:tooltip>
 </owl:Class>
 
 <owl:Class rdf:about="#Text">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the name or description of an object</spar2:tooltip>
   <rdfs:label xml:lang="en">Text</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-font-case</spar2:faIcon>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the name or description of an object</spar2:tooltip>
 </owl:Class>
 
 <SPARQLQuery rdf:about="#query_search_wikidata_basic">
