@@ -295,6 +295,17 @@
     rdfs:range :Publication ;
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
+:clinical_trial_phase a owl:ObjectProperty ;
+    rdfs:label "clinical trial phase"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P6099>"^^xsd:string ;
+    spar2:tooltip "step designation for a clinical trial"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Clinical_Trial ;
+    rdfs:range :Phase_of_Clinical_Research ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
 :comorbidity a owl:ObjectProperty ;
     rdfs:label "comorbidity"@en ;
     spar2:enableNegation "true"@en ;
@@ -1355,6 +1366,14 @@
     rdfs:range :Publication ;
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
+:Phase_of_Clinical_Research a owl:Class ;
+    rdfs:label "Phase of Clinical Research"@en ;
+    spar2:defaultLabelProperty :name ;
+    spar2:faIcon "fas fa-stethoscope"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q7180990>"^^xsd:string ;
+    spar2:tooltip "steps for human subject medical research"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
 :query_search_wikidata_all_of_the_type a spar:SPARQLQuery,
         :SPARQLQuery,
         owl:NamedIndividual ;
@@ -1590,6 +1609,14 @@ LIMIT 50"""^^xsd:string .
         owl:NamedIndividual ;
     spar:queryTemplate :query_search_wikidata_in_humans .
 
+:Publisher a owl:Class ;
+    rdfs:label "Publisher"@en ;
+    spar2:defaultLabelProperty :name ;
+    spar2:faIcon "fas fa-newspaper"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q737498>"^^xsd:string ;
+    spar2:tooltip "peer-reviewed periodical relating to an academic discipline"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
 :Clinical_Trial a owl:Class ;
     rdfs:label "Clinical Trial"@en ;
     spar2:defaultLabelProperty :name ;
@@ -1597,14 +1624,6 @@ LIMIT 50"""^^xsd:string .
     spar2:order 5 ;
     spar2:sparqlString "<http://www.wikidata.org/entity/Q30612>"^^xsd:string ;
     spar2:tooltip "interventional study in clinical research"^^xsd:string ;
-    rdfs:subClassOf spar2:SparnaturalClass .
-
-:Publisher a owl:Class ;
-    rdfs:label "Publisher"@en ;
-    spar2:defaultLabelProperty :name ;
-    spar2:faIcon "fas fa-newspaper"^^xsd:string ;
-    spar2:sparqlString "<http://www.wikidata.org/entity/Q737498>"^^xsd:string ;
-    spar2:tooltip "peer-reviewed periodical relating to an academic discipline"^^xsd:string ;
     rdfs:subClassOf spar2:SparnaturalClass .
 
 :Gene a owl:Class ;

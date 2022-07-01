@@ -1593,6 +1593,18 @@
   <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
 </owl:ObjectProperty>
 
+<owl:ObjectProperty rdf:about="#clinical_trial_phase">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Clinical_Trial"/>
+  <rdfs:range rdf:resource="#Phase_of_Clinical_Research"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P6099&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">step designation for a clinical trial</spar2:tooltip>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+  <rdfs:label xml:lang="en">clinical trial phase</rdfs:label>
+</owl:ObjectProperty>
+
 <owl:Class rdf:about="#SPARQLQuery">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
 </owl:Class>
@@ -1852,6 +1864,15 @@
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the name or description of an object</spar2:tooltip>
   <rdfs:label xml:lang="en">Text</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-font-case</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Phase_of_Clinical_Research">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q7180990&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">steps for human subject medical research</spar2:tooltip>
+  <rdfs:label xml:lang="en">Phase of Clinical Research</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-stethoscope</spar2:faIcon>
 </owl:Class>
 
 <SPARQLQuery rdf:about="#query_search_wikidata_basic">
