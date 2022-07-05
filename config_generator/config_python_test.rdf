@@ -828,7 +828,14 @@
 
 <owl:ObjectProperty rdf:about="#country">
   <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
-  <rdfs:domain rdf:resource="#Organization"/>
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Organization"/>
+        <rdf:Description rdf:about="#Clinical_Trial"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
   <rdfs:range rdf:resource="#Country"/>
   <spar:datasource rdf:resource="#search_wikidata_all_of_the_type"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P17&gt;</spar2:sparqlString>
@@ -841,7 +848,14 @@
 <owl:ObjectProperty rdf:about="#is_country_of">
   <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
   <rdfs:domain rdf:resource="#Country"/>
-  <rdfs:range rdf:resource="#Organization"/>
+  <rdfs:range>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Organization"/>
+        <rdf:Description rdf:about="#Clinical_Trial"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:range>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P17&gt;</spar2:sparqlString>
   <spar2:tooltip xml:lang="en">is country of</spar2:tooltip>
@@ -1605,6 +1619,42 @@
   <rdfs:label xml:lang="en">clinical trial phase</rdfs:label>
 </owl:ObjectProperty>
 
+<owl:ObjectProperty rdf:about="#liver_toxicity_likelihood">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Chemical_Compound"/>
+  <rdfs:range rdf:resource="#LiverTox_Toxicity_Category"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P8026&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">categorization of the likelihood that a medication is associated with drug induced liver injury that was developed by the Drug-Induced Liver Injury Network (DILIN) Network and published in NCBI's LiverTox</spar2:tooltip>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+  <rdfs:label xml:lang="en">liver toxicity likelihood</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#pathway_has_member">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Biological_Pathway"/>
+  <rdfs:range rdf:resource="#Gene"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P527&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">part of this subject; inverse property of "part of" (P361). See also "has parts of the class" (P2670).</spar2:tooltip>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+  <rdfs:label xml:lang="en">pathway has member</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#member_of_pathway">
+  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
+  <rdfs:domain rdf:resource="#Gene"/>
+  <rdfs:range rdf:resource="#Biological_Pathway"/>
+  <spar:datasource rdf:resource="#search_wikidata_basic"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P527&gt;</spar2:sparqlString>
+  <spar2:tooltip xml:lang="en">member of pathway</spar2:tooltip>
+  <rdfs:label xml:lang="en">member of pathway</rdfs:label>
+  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
+  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+</owl:ObjectProperty>
+
 <owl:Class rdf:about="#SPARQLQuery">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
 </owl:Class>
@@ -1873,6 +1923,24 @@
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">steps for human subject medical research</spar2:tooltip>
   <rdfs:label xml:lang="en">Phase of Clinical Research</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-stethoscope</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#LiverTox_Toxicity_Category">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q112845071&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a toxicity category in LiverTox where A is the most dangerous and E the least dangerous</spar2:tooltip>
+  <rdfs:label xml:lang="en">LiverTox Toxicity Category</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-skull</spar2:faIcon>
+</owl:Class>
+
+<owl:Class rdf:about="#Biological_Pathway">
+  <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
+  <spar2:defaultLabelProperty rdf:resource="#name"/>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q4915012&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">set of inter-connected reactions and interactions whose delineation and scope are used as a model for exploring and studying, describing and understanding the working of and relationships between biomolecules within a context</spar2:tooltip>
+  <rdfs:label xml:lang="en">Biological Pathway</rdfs:label>
+  <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-sitemap</spar2:faIcon>
 </owl:Class>
 
 <SPARQLQuery rdf:about="#query_search_wikidata_basic">

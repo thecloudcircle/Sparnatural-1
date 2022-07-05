@@ -335,7 +335,8 @@
     spar2:sparqlString "<http://www.wikidata.org/prop/direct/P17>"^^xsd:string ;
     spar2:tooltip "sovereign state of this item (not to be used for human beings)"^^xsd:string ;
     spar:datasource :search_wikidata_all_of_the_type ;
-    rdfs:domain :Organization ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :Organization :Clinical_Trial ) ] ;
     rdfs:range :Country ;
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
@@ -809,7 +810,8 @@
     spar2:tooltip "is country of"@en ;
     spar:datasource :search_wikidata_basic ;
     rdfs:domain :Country ;
-    rdfs:range :Organization ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( :Organization :Clinical_Trial ) ] ;
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :is_country_of_citizenship_of a owl:ObjectProperty ;
@@ -923,6 +925,17 @@
             owl:unionOf ( :Drug :Chemical_Compound ) ] ;
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
+:liver_toxicity_likelihood a owl:ObjectProperty ;
+    rdfs:label "liver toxicity likelihood"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P8026>"^^xsd:string ;
+    spar2:tooltip "categorization of the likelihood that a medication is associated with drug induced liver injury that was developed by the Drug-Induced Liver Injury Network (DILIN) Network and published in NCBI's LiverTox"^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Chemical_Compound ;
+    rdfs:range :LiverTox_Toxicity_Category ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
 :located_in_structure a owl:ObjectProperty ;
     rdfs:label "located in structure"@en ;
     spar2:enableNegation "true"@en ;
@@ -1024,6 +1037,17 @@
     rdfs:range :Medical_Test ;
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
+:member_of_pathway a owl:ObjectProperty ;
+    rdfs:label "member of pathway"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "^<http://www.wikidata.org/prop/direct/P527>"^^xsd:string ;
+    spar2:tooltip "member of pathway"@en ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Gene ;
+    rdfs:range :Biological_Pathway ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
 :mode_of_inheritance a owl:ObjectProperty ;
     rdfs:label "mode of inheritance"@en ;
     spar2:enableNegation "true"@en ;
@@ -1110,6 +1134,17 @@
     spar:datasource :search_wikidata_domain_in_humans ;
     rdfs:domain :Protein ;
     rdfs:range :Biological_Process ;
+    rdfs:subPropertyOf spar2:AutocompleteProperty .
+
+:pathway_has_member a owl:ObjectProperty ;
+    rdfs:label "pathway has member"@en ;
+    spar2:enableNegation "true"@en ;
+    spar2:enableOptional "true"@en ;
+    spar2:sparqlString "<http://www.wikidata.org/prop/direct/P527>"^^xsd:string ;
+    spar2:tooltip "part of this subject; inverse property of \"part of\" (P361). See also \"has parts of the class\" (P2670)."^^xsd:string ;
+    spar:datasource :search_wikidata_basic ;
+    rdfs:domain :Biological_Pathway ;
+    rdfs:range :Gene ;
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
 :pregnancy_category a owl:ObjectProperty ;
@@ -1366,6 +1401,14 @@
     rdfs:range :Publication ;
     rdfs:subPropertyOf spar2:AutocompleteProperty .
 
+:LiverTox_Toxicity_Category a owl:Class ;
+    rdfs:label "LiverTox Toxicity Category"@en ;
+    spar2:defaultLabelProperty :name ;
+    spar2:faIcon "fas fa-skull"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q112845071>"^^xsd:string ;
+    spar2:tooltip "a toxicity category in LiverTox where A is the most dangerous and E the least dangerous"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
 :Phase_of_Clinical_Research a owl:Class ;
     rdfs:label "Phase of Clinical Research"@en ;
     spar2:defaultLabelProperty :name ;
@@ -1462,6 +1505,14 @@ LIMIT 50"""^^xsd:string .
         :SparqlSearchDatasource,
         owl:NamedIndividual ;
     spar:queryTemplate :query_search_wikidata_all_of_the_type_run_last_prop .
+
+:Biological_Pathway a owl:Class ;
+    rdfs:label "Biological Pathway"@en ;
+    spar2:defaultLabelProperty :name ;
+    spar2:faIcon "fas fa-sitemap"^^xsd:string ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q4915012>"^^xsd:string ;
+    spar2:tooltip "set of inter-connected reactions and interactions whose delineation and scope are used as a model for exploring and studying, describing and understanding the working of and relationships between biomolecules within a context"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
 
 :Text a owl:Class ;
     rdfs:label "Text"@en ;
@@ -1626,15 +1677,6 @@ LIMIT 50"""^^xsd:string .
     spar2:tooltip "interventional study in clinical research"^^xsd:string ;
     rdfs:subClassOf spar2:SparnaturalClass .
 
-:Gene a owl:Class ;
-    rdfs:label "Gene"@en ;
-    spar2:defaultLabelProperty :name ;
-    spar2:faIcon "fas fa-dna"^^xsd:string ;
-    spar2:order 2 ;
-    spar2:sparqlString "<http://www.wikidata.org/entity/Q7187>"^^xsd:string ;
-    spar2:tooltip "basic physical and functional unit of heredity"^^xsd:string ;
-    rdfs:subClassOf spar2:SparnaturalClass .
-
 :Organism a owl:Class ;
     rdfs:label "Organism"@en ;
     spar2:defaultLabelProperty :name ;
@@ -1659,13 +1701,13 @@ LIMIT 50"""^^xsd:string .
     spar2:tooltip "article in an academic publication, usually peer reviewed"^^xsd:string ;
     rdfs:subClassOf spar2:SparnaturalClass .
 
-:Chemical_Compound a owl:Class ;
-    rdfs:label "Chemical Compound"@en ;
+:Gene a owl:Class ;
+    rdfs:label "Gene"@en ;
     spar2:defaultLabelProperty :name ;
-    spar2:faIcon "fas fa-flask"^^xsd:string ;
-    spar2:order 3 ;
-    spar2:sparqlString "<http://www.wikidata.org/entity/Q11173>"^^xsd:string ;
-    spar2:tooltip "pure chemical substance consisting of two or more different chemical elements"^^xsd:string ;
+    spar2:faIcon "fas fa-dna"^^xsd:string ;
+    spar2:order 2 ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q7187>"^^xsd:string ;
+    spar2:tooltip "basic physical and functional unit of heredity"^^xsd:string ;
     rdfs:subClassOf spar2:SparnaturalClass .
 
 :Drug a owl:Class ;
@@ -1682,6 +1724,15 @@ LIMIT 50"""^^xsd:string .
     spar2:faIcon "fas fa-building"^^xsd:string ;
     spar2:sparqlString "<http://www.wikidata.org/entity/Q43229>"^^xsd:string ;
     spar2:tooltip "social entity established to meet needs or pursue goals"^^xsd:string ;
+    rdfs:subClassOf spar2:SparnaturalClass .
+
+:Chemical_Compound a owl:Class ;
+    rdfs:label "Chemical Compound"@en ;
+    spar2:defaultLabelProperty :name ;
+    spar2:faIcon "fas fa-flask"^^xsd:string ;
+    spar2:order 3 ;
+    spar2:sparqlString "<http://www.wikidata.org/entity/Q11173>"^^xsd:string ;
+    spar2:tooltip "pure chemical substance consisting of two or more different chemical elements"^^xsd:string ;
     rdfs:subClassOf spar2:SparnaturalClass .
 
 :Disease a owl:Class ;
