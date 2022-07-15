@@ -29,8 +29,7 @@
     }
   </style>
 
-  <link href="sparnatural.css" rel="stylesheet">
-</head>
+<link href="sparnatural.css" rel="stylesheet"></head>
 
 <body>
   <header>
@@ -196,13 +195,13 @@
     }
 
 
-
     limitPostProcess = function (queryString, queryJson) {
       queryString = queryString.replace(new RegExp('$'), "\nLIMIT 1000");
       // queryString = queryString.replace(new RegExp('}$'), "}\nORDER BY ?label LIMIT 1000");
       // queryString = queryString.replace(new RegExp('}$'), "}\nLIMIT 1000");
       return queryString;
     }
+
 
     prefixesPostProcess = function (queryString, queryJson) {
       if (queryString.indexOf("rdf-schema#") == -1) {
@@ -251,7 +250,6 @@
     }) ;*/
 
   </script>
-  <script type="text/javascript" src="sparnatural.js"></script>
-</body>
+<script type="text/javascript" src="sparnatural.js"></script></body>
 
 </html>

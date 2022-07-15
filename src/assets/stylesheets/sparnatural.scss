@@ -246,7 +246,7 @@ $custom-silver-light: rgb(230, 230, 230) ;
 			}
 			.componentBackArrow {
 				margin-left: 10px;
-				//margin-right: 10px;
+				margin-right: 10px;
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -408,7 +408,7 @@ body {
 
 		&>div {
 
-			min-width: 80px;
+			//min-width: 80px;
 			/*background: #fff;*/
 			//padding: 2px 5px;
 		}
@@ -451,7 +451,7 @@ body {
 				position: relative;
 				//padding-right: 13px;
 				//margin-left: -7px;
-				margin-left: 10px;
+				//margin-left: 10px;
 
 				label {
 					position: relative;
@@ -679,9 +679,7 @@ body {
 							width: 60px;
 						}
 						&>button {
-							height: 35px;
-							line-height: 20px;
-							margin-left: 5px;
+							margin-left: 10px;
 						}
 					}
 					&>.date-widget {
@@ -956,14 +954,21 @@ body {
 					}
 				}
 				.button-add {
-					border: 3px solid $custom-red;
-					border-radius: 15px;
-					background: #fff;
+					padding: 5px 10px;
+					background: $blue-1;
+					border: none;
+					border-radius: 2px;
+					font-weight: normal;
+					font-size: 14px;
+					line-height: 22px;
+					color: #fff;
+					//border: 3px solid $custom-red;
+					//border-radius: 15px;
+					//background: #fff;
 					/*color: #212529;*/
-					box-sizing: border-box;
-					padding: 0 10px;
+					//box-sizing: border-box;
+					//padding: 0 10px;
 					&:hover {
-						color: $custom-red;
 						cursor: pointer;
 					}
 				}
@@ -1980,7 +1985,7 @@ body {
 					}*/
 					&>div .StartClassGroup,
 					&>div .EndClassGroup {
-						margin-left: -8px;
+						//margin-left: -8px;
 						&>.selectViewVariable {
 							display: block;
 							right: 18px; //+10 pour retrait dans fleche
@@ -2221,7 +2226,7 @@ body .select2-container--default {
 	font-size: 14px;
 	line-height: 22px;
 	color: #4F4F4F;
-	padding: 5px 30px;
+	padding: 5px 0;
 }
 
 .easy-autocomplete-container {
@@ -2254,4 +2259,9 @@ body {
 			right: 0;
 		}
 	}
+}
+
+.ObjectPropertyGroup {
+	margin-left: 10px;
+	margin-right: 10px;
 }
