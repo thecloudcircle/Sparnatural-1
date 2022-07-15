@@ -18,7 +18,7 @@
   <rdfs:domain>
     <owl:Class>
       <owl:unionOf rdf:parseType="Collection">
-        <rdf:Description rdf:about="#Drug"/>
+        <rdf:Description rdf:about="#Pharmaceutical_Product"/>
         <rdf:Description rdf:about="#Disease"/>
         <rdf:Description rdf:about="#Symptom"/>
         <rdf:Description rdf:about="#Gene"/>
@@ -206,25 +206,13 @@
 <owl:ObjectProperty rdf:about="#active_ingredient_in">
   <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
   <rdfs:domain rdf:resource="#Chemical_Compound"/>
-  <rdfs:range rdf:resource="#Drug"/>
+  <rdfs:range rdf:resource="#Pharmaceutical_Product"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P3780&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">is part of and forms biologically active component. Inverse of "has active ingredient"</spar2:tooltip>
   <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
   <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
   <rdfs:label xml:lang="en">active ingredient in</rdfs:label>
-</owl:ObjectProperty>
-
-<owl:ObjectProperty rdf:about="#has_active_ingredient">
-  <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
-  <rdfs:domain rdf:resource="#Drug"/>
-  <rdfs:range rdf:resource="#Chemical_Compound"/>
-  <spar:datasource rdf:resource="#search_wikidata_basic"/>
-  <rdfs:label xml:lang="en">has active ingredient</rdfs:label>
-  <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
-  <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
-  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P3781&gt;</spar2:sparqlString>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has part biologically active component. Inverse of "active ingredient in"</spar2:tooltip>
 </owl:ObjectProperty>
 
 <owl:ObjectProperty rdf:about="#transmission_process">
@@ -314,7 +302,7 @@
 <owl:ObjectProperty rdf:about="#treated_by">
   <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
   <rdfs:domain rdf:resource="#Disease"/>
-  <rdfs:range rdf:resource="#Drug"/>
+  <rdfs:range rdf:resource="#Chemical_Compound"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P2176&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">drug, procedure, or therapy that can be used to treat a medical condition</spar2:tooltip>
@@ -389,7 +377,7 @@
   <rdfs:range rdf:resource="#Symptom"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P780&gt;</spar2:sparqlString>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">possible symptoms of a medical condition</spar2:tooltip>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">possible symptoms or signs of a medical condition</spar2:tooltip>
   <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
   <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
   <rdfs:label xml:lang="en">has symptom</rdfs:label>
@@ -433,7 +421,7 @@
 
 <owl:ObjectProperty rdf:about="#side_effect">
   <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
-  <rdfs:domain rdf:resource="#Drug"/>
+  <rdfs:domain rdf:resource="#Pharmaceutical_Product"/>
   <rdfs:range rdf:resource="#Symptom"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P1909&gt;</spar2:sparqlString>
@@ -446,7 +434,7 @@
 <owl:ObjectProperty rdf:about="#is_side_effect_of">
   <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
   <rdfs:domain rdf:resource="#Symptom"/>
-  <rdfs:range rdf:resource="#Drug"/>
+  <rdfs:range rdf:resource="#Pharmaceutical_Product"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P1909&gt;</spar2:sparqlString>
   <spar2:tooltip xml:lang="en">is side effect of</spar2:tooltip>
@@ -457,14 +445,7 @@
 
 <owl:ObjectProperty rdf:about="#treats">
   <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
-  <rdfs:domain>
-    <owl:Class>
-      <owl:unionOf rdf:parseType="Collection">
-        <rdf:Description rdf:about="#Drug"/>
-        <rdf:Description rdf:about="#Chemical_Compound"/>
-      </owl:unionOf>
-    </owl:Class>
-  </rdfs:domain>
+  <rdfs:domain rdf:resource="#Chemical_Compound"/>
   <rdfs:range rdf:resource="#Disease"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P2175&gt;</spar2:sparqlString>
@@ -476,7 +457,7 @@
 
 <owl:ObjectProperty rdf:about="#pregnancy_category">
   <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
-  <rdfs:domain rdf:resource="#Drug"/>
+  <rdfs:domain rdf:resource="#Pharmaceutical_Product"/>
   <rdfs:range rdf:resource="#US_Pregnancy_Category"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P3489&gt;</spar2:sparqlString>
@@ -489,7 +470,7 @@
 <owl:ObjectProperty rdf:about="#is_pregnancy_category_of">
   <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
   <rdfs:domain rdf:resource="#US_Pregnancy_Category"/>
-  <rdfs:range rdf:resource="#Drug"/>
+  <rdfs:range rdf:resource="#Pharmaceutical_Product"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P3489&gt;</spar2:sparqlString>
   <spar2:tooltip xml:lang="en">is pregnancy category of</spar2:tooltip>
@@ -498,16 +479,16 @@
   <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
 </owl:ObjectProperty>
 
-<owl:ObjectProperty rdf:about="#active_ingredient_of">
+<owl:ObjectProperty rdf:about="#has_active_ingredient">
   <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
-  <rdfs:domain rdf:resource="#Chemical_Compound"/>
-  <rdfs:range rdf:resource="#Drug"/>
+  <rdfs:domain rdf:resource="#Pharmaceutical_Product"/>
+  <rdfs:range rdf:resource="#Chemical_Compound"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
-  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P3781&gt;</spar2:sparqlString>
-  <spar2:tooltip xml:lang="en">active ingredient of</spar2:tooltip>
-  <rdfs:label xml:lang="en">active ingredient of</rdfs:label>
+  <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P3781&gt;</spar2:sparqlString>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has part biologically active component. Inverse of "active ingredient in"</spar2:tooltip>
   <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
   <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
+  <rdfs:label xml:lang="en">has active ingredient</rdfs:label>
 </owl:ObjectProperty>
 
 <owl:ObjectProperty rdf:about="#may_prevent">
@@ -516,7 +497,7 @@
     <owl:Class>
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description rdf:about="#Chemical_Compound"/>
-        <rdf:Description rdf:about="#Drug"/>
+        <rdf:Description rdf:about="#Pharmaceutical_Product"/>
       </owl:unionOf>
     </owl:Class>
   </rdfs:domain>
@@ -536,7 +517,7 @@
     <owl:Class>
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description rdf:about="#Chemical_Compound"/>
-        <rdf:Description rdf:about="#Drug"/>
+        <rdf:Description rdf:about="#Pharmaceutical_Product"/>
       </owl:unionOf>
     </owl:Class>
   </rdfs:range>
@@ -553,7 +534,7 @@
   <rdfs:domain>
     <owl:Class>
       <owl:unionOf rdf:parseType="Collection">
-        <rdf:Description rdf:about="#Drug"/>
+        <rdf:Description rdf:about="#Pharmaceutical_Product"/>
         <rdf:Description rdf:about="#Chemical_Compound"/>
       </owl:unionOf>
     </owl:Class>
@@ -573,7 +554,7 @@
   <rdfs:range>
     <owl:Class>
       <owl:unionOf rdf:parseType="Collection">
-        <rdf:Description rdf:about="#Drug"/>
+        <rdf:Description rdf:about="#Pharmaceutical_Product"/>
         <rdf:Description rdf:about="#Chemical_Compound"/>
       </owl:unionOf>
     </owl:Class>
@@ -588,8 +569,8 @@
 
 <owl:ObjectProperty rdf:about="#significant_drug_interaction">
   <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
-  <rdfs:domain rdf:resource="#Drug"/>
-  <rdfs:range rdf:resource="#Drug"/>
+  <rdfs:domain rdf:resource="#Pharmaceutical_Product"/>
+  <rdfs:range rdf:resource="#Pharmaceutical_Product"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P769&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">clinically significant interaction between two pharmacologically active substances (i.e., drugs and/or active metabolites) where concomitant intake can lead to altered effectiveness or adverse drug events.</spar2:tooltip>
@@ -1038,7 +1019,7 @@
   <rdfs:range rdf:resource="#Person"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/prop/direct/P7604&gt;</spar2:sparqlString>
-  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Is the natural person who has the authority of giving instructions and/or orders to subordinates and is held responsible for the work and actions of subordinates.</spar2:tooltip>
+  <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">natural person who has the authority of giving instructions and/or orders to subordinates and is held responsible for the work and actions of subordinates</spar2:tooltip>
   <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
   <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
   <rdfs:label xml:lang="en">supervised by</rdfs:label>
@@ -1326,7 +1307,7 @@
   <rdfs:range>
     <owl:Class>
       <owl:unionOf rdf:parseType="Collection">
-        <rdf:Description rdf:about="#Drug"/>
+        <rdf:Description rdf:about="#Pharmaceutical_Product"/>
         <rdf:Description rdf:about="#Chemical_Compound"/>
       </owl:unionOf>
     </owl:Class>
@@ -1339,12 +1320,12 @@
   <rdfs:label xml:lang="en">research intervention</rdfs:label>
 </owl:ObjectProperty>
 
-<owl:ObjectProperty rdf:about="#drug_studied_by_trial">
+<owl:ObjectProperty rdf:about="#Pharmaceutical_Product_studied_by_trial">
   <rdfs:subPropertyOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#AutocompleteProperty"/>
   <rdfs:domain>
     <owl:Class>
       <owl:unionOf rdf:parseType="Collection">
-        <rdf:Description rdf:about="#Drug"/>
+        <rdf:Description rdf:about="#Pharmaceutical_Product"/>
         <rdf:Description rdf:about="#Chemical_Compound"/>
       </owl:unionOf>
     </owl:Class>
@@ -1352,8 +1333,8 @@
   <rdfs:range rdf:resource="#Clinical_Trial"/>
   <spar:datasource rdf:resource="#search_wikidata_basic"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^&lt;http://www.wikidata.org/prop/direct/P4844&gt;</spar2:sparqlString>
-  <spar2:tooltip xml:lang="en">drug studied by trial</spar2:tooltip>
-  <rdfs:label xml:lang="en">drug studied by trial</rdfs:label>
+  <spar2:tooltip xml:lang="en">Pharmaceutical Product studied by trial</spar2:tooltip>
+  <rdfs:label xml:lang="en">Pharmaceutical Product studied by trial</rdfs:label>
   <spar2:enableNegation xml:lang="en">true</spar2:enableNegation>
   <spar2:enableOptional xml:lang="en">true</spar2:enableOptional>
 </owl:ObjectProperty>
@@ -1663,12 +1644,12 @@
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-datasources#SparqlDatasource"/>
 </owl:Class>
 
-<owl:Class rdf:about="#Drug">
+<owl:Class rdf:about="#Pharmaceutical_Product">
   <rdfs:subClassOf rdf:resource="http://data.sparna.fr/ontologies/sparnatural-config-core#SparnaturalClass"/>
   <spar2:defaultLabelProperty rdf:resource="#name"/>
   <spar2:sparqlString rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;http://www.wikidata.org/entity/Q28885102&gt;</spar2:sparqlString>
   <spar2:tooltip rdf:datatype="http://www.w3.org/2001/XMLSchema#string">qualitative and quantitative composition of a medicinal product in the dose form authorized for administration by a medicines regulatory agency and as represented with any corresponding regulated product information</spar2:tooltip>
-  <rdfs:label xml:lang="en">Drug</rdfs:label>
+  <rdfs:label xml:lang="en">Pharmaceutical Product</rdfs:label>
   <spar2:faIcon rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fas fa-capsules</spar2:faIcon>
 </owl:Class>
 
@@ -2001,7 +1982,7 @@ WHERE {
     ?uri &lt;http://www.wikidata.org/prop/direct/P31&gt;  $range .
 
     ?domain $property ?uri .
-    ?uri &lt;http://www.wikidata.org/prop/direct/P703&gt;  wd:Q15978631 .
+    ?domain &lt;http://www.wikidata.org/prop/direct/P703&gt;  wd:Q15978631 .
     ?uri rdfs:label ?label .
     FILTER(isIRI(?uri)) .
     FILTER(lang(?label) = "" || lang(?label) = $lang) . 
