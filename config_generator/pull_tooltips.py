@@ -3,7 +3,6 @@ from wikidata2df import wikidata2df
 
 
 def get_tooltips_dict(list_of_wikidata_ids):
-
     query = f"""
   SELECT 
     ?prop_string 
