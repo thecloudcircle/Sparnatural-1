@@ -1,8 +1,15 @@
+"""
+Builds a Sparnatural configuration file in .owl format from a Google Spreadsheet 
+
+"""
+
 import os
-import pandas as pd
-from owlready2 import *
 from pathlib import Path
+
+import pandas as pd
 import rdflib
+from owlready2 import *
+
 from pull_tooltips import get_tooltips_dict
 
 _g = globals()
@@ -43,6 +50,8 @@ with config_core:
         pass
 
     class tooltip(AnnotationProperty):
+        """Relation for the tooltip annotations shown when hovering"""
+
         pass
 
     class faIcon(AnnotationProperty):
@@ -111,7 +120,10 @@ with onto:
 # Create classes
 # region --------
 os.system(
-    "wget -O config.xlsx https://docs.google.com/spreadsheets/d/e/2PACX-1vQr05HsgKSLxbcghffHtYypd-sLWC6wUnfsp4BeXfwV2UeQUqOZKloZAHZo4e4pcUwyzxS7ayKqZq4-/pub?output=xlsx"
+    "wget -O config.xlsx https://docs.google.com/spreadsheets/d/e/"
+    "2PACX-1vQr05HsgKSLxbcghffHtYypd"
+    "-sLWC6wUnfsp4BeXfwV2UeQUqOZKloZAHZo4e4pcUwyzxS7ayKqZq4-/"
+    "pub?output=xlsx"
 )
 
 classes = pd.read_excel("config.xlsx", sheet_name=f"classes")
